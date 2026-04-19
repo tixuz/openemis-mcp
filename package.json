@@ -22,11 +22,23 @@
   "engines": {
     "node": ">=22.0.0"
   },
+  "files": [
+    "dist",
+    "data",
+    "docs/playbooks",
+    "README.md",
+    "LICENSE.md"
+  ],
+  "exports": {
+    ".": "./dist/server.js"
+  },
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "check": "tsc --noEmit -p tsconfig.json",
     "start": "node dist/server.js",
-    "dev": "tsx src/server.ts"
+    "dev": "tsx src/server.ts",
+    "smoke": "node scripts/smoke-login.mjs",
+    "prepublishOnly": "npm run check && npm run build"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.12.1",
