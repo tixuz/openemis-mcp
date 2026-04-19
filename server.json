@@ -1,0 +1,54 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.tixuz/openemis",
+  "description": "Read-only MCP server for OpenEMIS v5 — 645 resources, 24 playbooks, natural-language queries",
+  "repository": {
+    "url": "https://github.com/tixuz/openemis-mcp",
+    "source": "github"
+  },
+  "version": "0.3.1",
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "openemis-mcp",
+      "version": "0.3.1",
+      "transport": {
+        "type": "stdio"
+      },
+      "environmentVariables": [
+        {
+          "name": "OPENEMIS_BASE_URL",
+          "description": "Base URL of your OpenEMIS instance (e.g., https://demo.openemis.org/core)",
+          "isRequired": true,
+          "format": "string"
+        },
+        {
+          "name": "OPENEMIS_USERNAME",
+          "description": "OpenEMIS login username",
+          "isRequired": true,
+          "format": "string"
+        },
+        {
+          "name": "OPENEMIS_PASSWORD",
+          "description": "OpenEMIS login password",
+          "isRequired": true,
+          "format": "string",
+          "isSecret": true
+        },
+        {
+          "name": "OPENEMIS_API_KEY",
+          "description": "OpenEMIS API key (issued by the OpenEMIS admin)",
+          "isRequired": true,
+          "format": "string",
+          "isSecret": true
+        },
+        {
+          "name": "OPENEMIS_TIMEOUT_MS",
+          "description": "Request timeout in milliseconds (default 30000)",
+          "isRequired": false,
+          "format": "string"
+        }
+      ]
+    }
+  ]
+}
