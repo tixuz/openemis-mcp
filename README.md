@@ -88,32 +88,32 @@ Works with any MCP-compatible client: Claude Code, Cursor, Cline, Codex (via [ge
 
 24 curated workflow guides — see [docs/playbooks/](docs/playbooks/):
 
-| # | Playbook | Domain |
-|---|---|---|
-| 1 | [Count Vacant Positions](docs/playbooks/count-vacant-positions.md) | Staff |
-| 2 | [Mark Student Attendance](docs/playbooks/mark-student-attendance.md) | Attendance |
-| 3 | [Mark Staff Attendance](docs/playbooks/mark-staff-attendance.md) | Staff |
-| 4 | [View Student Timetable](docs/playbooks/view-student-timetable.md) | Schedule |
-| 5 | [Student Dashboard](docs/playbooks/student-dashboard.md) | Student |
-| 6 | [Generate Student Report Card PDF](docs/playbooks/generate-student-report-card-pdf.md) | Report |
-| 7 | [Enrol a New Student](docs/playbooks/enroll-new-student.md) | Student |
-| 8 | [Record a Behaviour Incident](docs/playbooks/record-behavior-incident.md) | Student |
-| 9 | [Submit Exam Marks](docs/playbooks/submit-exam-marks.md) | Assessment |
-| 10 | [Institution Summary](docs/playbooks/institution-summary.md) | Institution |
-| 11 | [Generate Institution Statistics PDF](docs/playbooks/generate-institution-statistics-pdf.md) | Report |
-| 12 | [View Latest Attendance](docs/playbooks/view-latest-attendance.md) | Attendance |
-| 13 | [View Student Profile](docs/playbooks/view-student-profile.md) | Student |
-| 14 | [View Student Marks](docs/playbooks/view-student-marks.md) | Assessment |
-| 15 | [View Class Report](docs/playbooks/view-class-report.md) | Report |
-| 16 | [View Timetable](docs/playbooks/view-timetable.md) | Schedule |
-| 17 | [View Full Institution Profile](docs/playbooks/view-institution-profile.md) | Institution |
-| 18 | [View Full Class Profile](docs/playbooks/view-class-profile.md) | Student |
-| 19 | [View a Staff Member's Full Profile](docs/playbooks/view-staff-profile.md) | Staff |
-| 20 | [Enhance Student Profile](docs/playbooks/enhance-student-profile.md) | Student |
-| 21 | [View Institution Infrastructure](docs/playbooks/view-institution-infrastructure.md) | Institution |
-| 22 | [View Institution Meals](docs/playbooks/view-institution-meals.md) | Institution |
-| 23 | [View Student Risk Profile and Welfare Cases](docs/playbooks/view-student-risks.md) | Student |
-| 24 | [View Institution Risk Summary and Alert Rules](docs/playbooks/view-institution-risks.md) | Institution |
+| # | Playbook | Domain | Translations |
+|---|---|---|---|
+| 1 | [Count Vacant Positions](docs/playbooks/count-vacant-positions.md) | Staff | [RU](docs/playbooks/count-vacant-positions.ru.md) · [ES](docs/playbooks/count-vacant-positions.es.md) |
+| 2 | [Mark Student Attendance](docs/playbooks/mark-student-attendance.md) | Attendance | [RU](docs/playbooks/mark-student-attendance.ru.md) · [ES](docs/playbooks/mark-student-attendance.es.md) |
+| 3 | [Mark Staff Attendance](docs/playbooks/mark-staff-attendance.md) | Staff | [RU](docs/playbooks/mark-staff-attendance.ru.md) · [ES](docs/playbooks/mark-staff-attendance.es.md) |
+| 4 | [View Student Timetable](docs/playbooks/view-student-timetable.md) | Schedule | [RU](docs/playbooks/view-student-timetable.ru.md) |
+| 5 | [Student Dashboard](docs/playbooks/student-dashboard.md) | Student | [RU](docs/playbooks/student-dashboard.ru.md) |
+| 6 | [Generate Student Report Card PDF](docs/playbooks/generate-student-report-card-pdf.md) | Report | [RU](docs/playbooks/generate-student-report-card-pdf.ru.md) · [ES](docs/playbooks/generate-student-report-card-pdf.es.md) |
+| 7 | [Enrol a New Student](docs/playbooks/enroll-new-student.md) | Student | [RU](docs/playbooks/enroll-new-student.ru.md) · [ES](docs/playbooks/enroll-new-student.es.md) |
+| 8 | [Record a Behaviour Incident](docs/playbooks/record-behavior-incident.md) | Student | [RU](docs/playbooks/record-behavior-incident.ru.md) · [ES](docs/playbooks/record-behavior-incident.es.md) |
+| 9 | [Submit Exam Marks](docs/playbooks/submit-exam-marks.md) | Assessment | [RU](docs/playbooks/submit-exam-marks.ru.md) |
+| 10 | [Institution Summary](docs/playbooks/institution-summary.md) | Institution | [RU](docs/playbooks/institution-summary.ru.md) |
+| 11 | [Generate Institution Statistics PDF](docs/playbooks/generate-institution-statistics-pdf.md) | Report | [RU](docs/playbooks/generate-institution-statistics-pdf.ru.md) · [ES](docs/playbooks/generate-institution-statistics-pdf.es.md) |
+| 12 | [View Latest Attendance](docs/playbooks/view-latest-attendance.md) | Attendance | |
+| 13 | [View Student Profile](docs/playbooks/view-student-profile.md) | Student | [RU](docs/playbooks/view-student-profile.ru.md) |
+| 14 | [View Student Marks](docs/playbooks/view-student-marks.md) | Assessment | [RU](docs/playbooks/view-student-marks.ru.md) |
+| 15 | [View Class Report](docs/playbooks/view-class-report.md) | Report | [RU](docs/playbooks/view-class-report.ru.md) |
+| 16 | [View Timetable](docs/playbooks/view-timetable.md) | Schedule | [RU](docs/playbooks/view-timetable.ru.md) |
+| 17 | [View Full Institution Profile](docs/playbooks/view-institution-profile.md) | Institution | |
+| 18 | [View Full Class Profile](docs/playbooks/view-class-profile.md) | Student | |
+| 19 | [View a Staff Member's Full Profile](docs/playbooks/view-staff-profile.md) | Staff | [RU](docs/playbooks/view-staff-profile.ru.md) |
+| 20 | [Enhance Student Profile](docs/playbooks/enhance-student-profile.md) | Student | [ES](docs/playbooks/enhance-student-profile.es.md) |
+| 21 | [View Institution Infrastructure](docs/playbooks/view-institution-infrastructure.md) | Institution | |
+| 22 | [View Institution Meals](docs/playbooks/view-institution-meals.md) | Institution | |
+| 23 | [View Student Risk Profile and Welfare Cases](docs/playbooks/view-student-risks.md) | Student | |
+| 24 | [View Institution Risk Summary and Alert Rules](docs/playbooks/view-institution-risks.md) | Institution | |
 
 ---
 
