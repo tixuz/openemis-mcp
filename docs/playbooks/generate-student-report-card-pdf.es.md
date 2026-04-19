@@ -2,6 +2,7 @@
 
 > 📖 **Read-only server.** Playbooks that create or update records require **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
 
+
 **Dominio:** Informe · **Audiencia:** profesor, administrador
 
 Desencadena el generador de boletines de calificaciones asíncrono para un estudiante. Devuelve un identificador de proceso que el llamante consulta hasta que el PDF esté listo para descargar. Este es un flujo de trabajo de dos fases: iniciar la generación y luego esperar que el estado sea "completado" antes de obtener el enlace de descarga.

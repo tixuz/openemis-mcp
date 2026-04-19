@@ -2,6 +2,7 @@
 
 > 📖 **Read-only server.** Playbooks that create or update records require **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
 
+
 **Dominio:** Reporte · **Audiencia:** admin
 
 Un administrador solicita un PDF resumen para una institución que cubra estadísticas de matrícula, personal y asistencia. Este manual describe los pasos de búsqueda de datos; el PDF real se genera dentro de la aplicación OpenEMIS.
@@ -43,7 +44,7 @@ Un administrador solicita un PDF resumen para una institución que cubra estadí
 El agente hará lo siguiente:
 1. Llamar a `openemis_discover` o `openemis_list_playbooks` para encontrar este manual de procedimientos.
 2. Seguir los pasos anteriores.
-3. Devolver la respuesta en inglés sencillo.
+3. Devolver la respuesta en lenguaje sencillo.
 
 ---
 

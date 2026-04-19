@@ -41,11 +41,10 @@ server.tool(
   {},
   async () => {
     try {
-      const token = await client.getToken();
-      const tokenPreview = token.slice(0, 20) + "..." + token.slice(-6);
+      await client.getToken();
       return {
-        content: [{ type: "text", text: `OpenEMIS is reachable at ${config.baseUrl} — login succeeded (JWT ${tokenPreview}).` }],
-        structuredContent: { ok: true, baseUrl: config.baseUrl, login: "ok", tokenPreview },
+        content: [{ type: "text", text: `OpenEMIS is reachable at ${config.baseUrl} — login succeeded.` }],
+        structuredContent: { ok: true, baseUrl: config.baseUrl, login: "ok" },
       };
     } catch (err) {
       const message = err instanceof Error ? err.message : "Unknown error";

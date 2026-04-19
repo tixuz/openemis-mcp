@@ -29,7 +29,7 @@ No code. No JSON. Just ask.
 
 **24 curated playbooks** covering attendance, assessment, student profiles, staff profiles, infrastructure, meals, risk dashboards, class reports, timetables, and more — each verified against the v5 manifest at 100% resource coverage.
 
-**Translations available:** Russian (11 of 24 playbooks). Spanish, Arabic, and Hindi in progress.
+**Translations available:** Russian · Spanish · Hindi · Arabic — all 24 playbooks in all four languages.
 
 > ✏️ **Write operations** (creating/updating records in OpenEMIS) require **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**. This free server is intentionally read-only — `post`, `put`, and `delete` are not available.
 
@@ -104,31 +104,30 @@ Works with any MCP-compatible client: Claude Code, Cursor, Cline, Codex (via [ge
 
 | # | Playbook | Domain | Translations |
 |---|---|---|---|
-| 1 | [Count Vacant Positions](docs/playbooks/count-vacant-positions.md) | Staff | [RU](docs/playbooks/count-vacant-positions.ru.md) · [ES](docs/playbooks/count-vacant-positions.es.md) |
-| 2 | [Mark Student Attendance](docs/playbooks/mark-student-attendance.md) | Attendance | [RU](docs/playbooks/mark-student-attendance.ru.md) · [ES](docs/playbooks/mark-student-attendance.es.md) |
-| 3 | [Mark Staff Attendance](docs/playbooks/mark-staff-attendance.md) | Staff | [RU](docs/playbooks/mark-staff-attendance.ru.md) · [ES](docs/playbooks/mark-staff-attendance.es.md) |
-| 4 | [View Student Timetable](docs/playbooks/view-student-timetable.md) | Schedule | [RU](docs/playbooks/view-student-timetable.ru.md) |
-| 5 | [Student Dashboard](docs/playbooks/student-dashboard.md) | Student | [RU](docs/playbooks/student-dashboard.ru.md) |
-| 6 | [Generate Student Report Card PDF](docs/playbooks/generate-student-report-card-pdf.md) | Report | [RU](docs/playbooks/generate-student-report-card-pdf.ru.md) · [ES](docs/playbooks/generate-student-report-card-pdf.es.md) |
-| 7 | [Enrol a New Student](docs/playbooks/enroll-new-student.md) | Student | [RU](docs/playbooks/enroll-new-student.ru.md) · [ES](docs/playbooks/enroll-new-student.es.md) |
-| 8 | [Record a Behaviour Incident](docs/playbooks/record-behavior-incident.md) | Student | [RU](docs/playbooks/record-behavior-incident.ru.md) · [ES](docs/playbooks/record-behavior-incident.es.md) |
-| 9 | [Submit Exam Marks](docs/playbooks/submit-exam-marks.md) | Assessment | [RU](docs/playbooks/submit-exam-marks.ru.md) |
-| 10 | [Institution Summary](docs/playbooks/institution-summary.md) | Institution | [RU](docs/playbooks/institution-summary.ru.md) |
-| 11 | [Generate Institution Statistics PDF](docs/playbooks/generate-institution-statistics-pdf.md) | Report | [RU](docs/playbooks/generate-institution-statistics-pdf.ru.md) · [ES](docs/playbooks/generate-institution-statistics-pdf.es.md) |
-| 12 | [View Latest Attendance](docs/playbooks/view-latest-attendance.md) | Attendance | |
-| 13 | [View Student Profile](docs/playbooks/view-student-profile.md) | Student | [RU](docs/playbooks/view-student-profile.ru.md) |
-| 14 | [View Student Marks](docs/playbooks/view-student-marks.md) | Assessment | [RU](docs/playbooks/view-student-marks.ru.md) |
-| 15 | [View Class Report](docs/playbooks/view-class-report.md) | Report | [RU](docs/playbooks/view-class-report.ru.md) |
-| 16 | [View Timetable](docs/playbooks/view-timetable.md) | Schedule | [RU](docs/playbooks/view-timetable.ru.md) |
-| 17 | [View Full Institution Profile](docs/playbooks/view-institution-profile.md) | Institution | |
-| 18 | [View Full Class Profile](docs/playbooks/view-class-profile.md) | Student | |
-| 19 | [View a Staff Member's Full Profile](docs/playbooks/view-staff-profile.md) | Staff | [RU](docs/playbooks/view-staff-profile.ru.md) |
-| 20 | [Enhance Student Profile](docs/playbooks/enhance-student-profile.md) | Student | [ES](docs/playbooks/enhance-student-profile.es.md) |
-| 21 | [View Institution Infrastructure](docs/playbooks/view-institution-infrastructure.md) | Institution | |
-| 22 | [View Institution Meals](docs/playbooks/view-institution-meals.md) | Institution | |
-| 23 | [View Student Risk Profile and Welfare Cases](docs/playbooks/view-student-risks.md) | Student | |
-| 24 | [View Institution Risk Summary and Alert Rules](docs/playbooks/view-institution-risks.md) | Institution | |
-
+| 1 | [Count Vacant Positions](docs/playbooks/count-vacant-positions.md) | Staff | [RU](docs/playbooks/count-vacant-positions.ru.md) · [ES](docs/playbooks/count-vacant-positions.es.md) · [HI](docs/playbooks/count-vacant-positions.hi.md) · [AR](docs/playbooks/count-vacant-positions.ar.md) |
+| 2 | [Mark Student Attendance](docs/playbooks/mark-student-attendance.md) | Attendance | [RU](docs/playbooks/mark-student-attendance.ru.md) · [ES](docs/playbooks/mark-student-attendance.es.md) · [HI](docs/playbooks/mark-student-attendance.hi.md) · [AR](docs/playbooks/mark-student-attendance.ar.md) |
+| 3 | [Mark Staff Attendance](docs/playbooks/mark-staff-attendance.md) | Staff | [RU](docs/playbooks/mark-staff-attendance.ru.md) · [ES](docs/playbooks/mark-staff-attendance.es.md) · [HI](docs/playbooks/mark-staff-attendance.hi.md) · [AR](docs/playbooks/mark-staff-attendance.ar.md) |
+| 4 | [View Student Timetable](docs/playbooks/view-student-timetable.md) | Schedule | [RU](docs/playbooks/view-student-timetable.ru.md) · [ES](docs/playbooks/view-student-timetable.es.md) · [HI](docs/playbooks/view-student-timetable.hi.md) · [AR](docs/playbooks/view-student-timetable.ar.md) |
+| 5 | [Student Dashboard](docs/playbooks/student-dashboard.md) | Student | [RU](docs/playbooks/student-dashboard.ru.md) · [ES](docs/playbooks/student-dashboard.es.md) · [HI](docs/playbooks/student-dashboard.hi.md) · [AR](docs/playbooks/student-dashboard.ar.md) |
+| 6 | [Generate Student Report Card PDF](docs/playbooks/generate-student-report-card-pdf.md) | Report | [RU](docs/playbooks/generate-student-report-card-pdf.ru.md) · [ES](docs/playbooks/generate-student-report-card-pdf.es.md) · [HI](docs/playbooks/generate-student-report-card-pdf.hi.md) · [AR](docs/playbooks/generate-student-report-card-pdf.ar.md) |
+| 7 | [Enrol a New Student](docs/playbooks/enroll-new-student.md) | Student | [RU](docs/playbooks/enroll-new-student.ru.md) · [ES](docs/playbooks/enroll-new-student.es.md) · [HI](docs/playbooks/enroll-new-student.hi.md) · [AR](docs/playbooks/enroll-new-student.ar.md) |
+| 8 | [Record a Behaviour Incident](docs/playbooks/record-behavior-incident.md) | Student | [RU](docs/playbooks/record-behavior-incident.ru.md) · [ES](docs/playbooks/record-behavior-incident.es.md) · [HI](docs/playbooks/record-behavior-incident.hi.md) · [AR](docs/playbooks/record-behavior-incident.ar.md) |
+| 9 | [Submit Exam Marks](docs/playbooks/submit-exam-marks.md) | Assessment | [RU](docs/playbooks/submit-exam-marks.ru.md) · [ES](docs/playbooks/submit-exam-marks.es.md) · [HI](docs/playbooks/submit-exam-marks.hi.md) · [AR](docs/playbooks/submit-exam-marks.ar.md) |
+| 10 | [Institution Summary](docs/playbooks/institution-summary.md) | Institution | [RU](docs/playbooks/institution-summary.ru.md) · [ES](docs/playbooks/institution-summary.es.md) · [HI](docs/playbooks/institution-summary.hi.md) · [AR](docs/playbooks/institution-summary.ar.md) |
+| 11 | [Generate Institution Statistics PDF](docs/playbooks/generate-institution-statistics-pdf.md) | Report | [RU](docs/playbooks/generate-institution-statistics-pdf.ru.md) · [ES](docs/playbooks/generate-institution-statistics-pdf.es.md) · [HI](docs/playbooks/generate-institution-statistics-pdf.hi.md) · [AR](docs/playbooks/generate-institution-statistics-pdf.ar.md) |
+| 12 | [View Latest Attendance](docs/playbooks/view-latest-attendance.md) | Attendance | [RU](docs/playbooks/view-latest-attendance.ru.md) · [ES](docs/playbooks/view-latest-attendance.es.md) · [HI](docs/playbooks/view-latest-attendance.hi.md) · [AR](docs/playbooks/view-latest-attendance.ar.md) |
+| 13 | [View Student Profile](docs/playbooks/view-student-profile.md) | Student | [RU](docs/playbooks/view-student-profile.ru.md) · [ES](docs/playbooks/view-student-profile.es.md) · [HI](docs/playbooks/view-student-profile.hi.md) · [AR](docs/playbooks/view-student-profile.ar.md) |
+| 14 | [View Student Marks](docs/playbooks/view-student-marks.md) | Assessment | [RU](docs/playbooks/view-student-marks.ru.md) · [ES](docs/playbooks/view-student-marks.es.md) · [HI](docs/playbooks/view-student-marks.hi.md) · [AR](docs/playbooks/view-student-marks.ar.md) |
+| 15 | [View Class Report](docs/playbooks/view-class-report.md) | Report | [RU](docs/playbooks/view-class-report.ru.md) · [ES](docs/playbooks/view-class-report.es.md) · [HI](docs/playbooks/view-class-report.hi.md) · [AR](docs/playbooks/view-class-report.ar.md) |
+| 16 | [View Timetable](docs/playbooks/view-timetable.md) | Schedule | [RU](docs/playbooks/view-timetable.ru.md) · [ES](docs/playbooks/view-timetable.es.md) · [HI](docs/playbooks/view-timetable.hi.md) · [AR](docs/playbooks/view-timetable.ar.md) |
+| 17 | [View Full Institution Profile](docs/playbooks/view-institution-profile.md) | Institution | [RU](docs/playbooks/view-institution-profile.ru.md) · [ES](docs/playbooks/view-institution-profile.es.md) · [HI](docs/playbooks/view-institution-profile.hi.md) · [AR](docs/playbooks/view-institution-profile.ar.md) |
+| 18 | [View Full Class Profile](docs/playbooks/view-class-profile.md) | Student | [RU](docs/playbooks/view-class-profile.ru.md) · [ES](docs/playbooks/view-class-profile.es.md) · [HI](docs/playbooks/view-class-profile.hi.md) · [AR](docs/playbooks/view-class-profile.ar.md) |
+| 19 | [View a Staff Member's Full Profile](docs/playbooks/view-staff-profile.md) | Staff | [RU](docs/playbooks/view-staff-profile.ru.md) · [ES](docs/playbooks/view-staff-profile.es.md) · [HI](docs/playbooks/view-staff-profile.hi.md) · [AR](docs/playbooks/view-staff-profile.ar.md) |
+| 20 | [Enhance Student Profile](docs/playbooks/enhance-student-profile.md) | Student | [RU](docs/playbooks/enhance-student-profile.ru.md) · [ES](docs/playbooks/enhance-student-profile.es.md) · [HI](docs/playbooks/enhance-student-profile.hi.md) · [AR](docs/playbooks/enhance-student-profile.ar.md) |
+| 21 | [View Institution Infrastructure](docs/playbooks/view-institution-infrastructure.md) | Institution | [RU](docs/playbooks/view-institution-infrastructure.ru.md) · [ES](docs/playbooks/view-institution-infrastructure.es.md) · [HI](docs/playbooks/view-institution-infrastructure.hi.md) · [AR](docs/playbooks/view-institution-infrastructure.ar.md) |
+| 22 | [View Institution Meals](docs/playbooks/view-institution-meals.md) | Institution | [RU](docs/playbooks/view-institution-meals.ru.md) · [ES](docs/playbooks/view-institution-meals.es.md) · [HI](docs/playbooks/view-institution-meals.hi.md) · [AR](docs/playbooks/view-institution-meals.ar.md) |
+| 23 | [View Student Risk Profile and Welfare Cases](docs/playbooks/view-student-risks.md) | Student | [RU](docs/playbooks/view-student-risks.ru.md) · [ES](docs/playbooks/view-student-risks.es.md) · [HI](docs/playbooks/view-student-risks.hi.md) · [AR](docs/playbooks/view-student-risks.ar.md) |
+| 24 | [View Institution Risk Summary and Alert Rules](docs/playbooks/view-institution-risks.md) | Institution | [RU](docs/playbooks/view-institution-risks.ru.md) · [ES](docs/playbooks/view-institution-risks.es.md) · [HI](docs/playbooks/view-institution-risks.hi.md) · [AR](docs/playbooks/view-institution-risks.ar.md) |
 ---
 
 ## Architecture
@@ -148,7 +147,7 @@ Domain-scoped discovery keeps conversations small — `openemis_discover("attend
 ## Docs
 
 - [Resource Reference](docs/resources.md) — all 645 resources with method availability
-- [Playbooks](docs/playbooks/) — 24 workflow guides (Russian translations available for 11)
+- [Playbooks](docs/playbooks/) — 24 workflow guides in Russian, Spanish, Hindi, and Arabic
 - [ACKNOWLEDGEMENTS.md](ACKNOWLEDGEMENTS.md) — the AI team that built this
 
 ---

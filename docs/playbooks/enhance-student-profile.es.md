@@ -2,6 +2,7 @@
 
 > 📖 **Read-only server.** Playbooks that create or update records require **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
 
+
 **Dominio:** Estudiante  
 **Audiencia:** profesor, administrador, consejero  
 **ID del Manual de Procedimientos:** `enhance-student-profile`

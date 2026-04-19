@@ -2,6 +2,7 @@
 
 > 📖 **Read-only server.** Playbooks that create or update records require **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
 
+
 **Dominio:** Estudiante · **Audiencia:** administrador, registrador
 
 MODO DEBYPASS SOLAMENTE: la matrícula directa solo funciona cuando la configuración del sistema tiene habilitado "bypass enrolment workflow". Si el flujo de trabajo de admisión → matrícula está activo, utilice la aplicación OpenEMIS — el flujo de trabajo requiere la aprobación del supervisor en cada etapa y no puede gestionarse únicamente mediante API.
@@ -57,4 +58,4 @@ MODO DEBYPASS SOLAMENTE: la matrícula directa solo funciona cuando la configura
 El agente hará lo siguiente:
 1. Llamar a `openemis_discover` o `openemis_list_playbooks` para encontrar este playbook
 2. Seguir los pasos anteriores
-3. Devolver la respuesta en inglés sencillo
+3. Devolver la respuesta en lenguaje sencillo

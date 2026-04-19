@@ -1,5 +1,7 @@
 # Registrar Asistencia del Estudiante para una Clase (Lista de Asistencia por Periodo)
 
+> 📖 **Read-only server.** Playbooks that create or update records require **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
+
 > 📖 **Servidor de solo lectura.** Los Playbooks que crean o actualizan registros requieren **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
 
 **Dominio:** Asistencia · **Audiencia:** profesor, administrador

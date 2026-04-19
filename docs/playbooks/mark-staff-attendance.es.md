@@ -1,5 +1,7 @@
 # Registrar Asistencia del Personal (Presente) O Solicitar Licencia (Ausente)
 
+> 📖 **Read-only server.** Playbooks that create or update records require **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
+
 > 📖 **Servidor de solo lectura.** Los Playbooks que crean o actualizan registros requieren **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
 
 **Dominio:** Personal · **Audiencia:** admin, hr, profesor
