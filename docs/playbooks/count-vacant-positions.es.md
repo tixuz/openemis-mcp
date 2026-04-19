@@ -1,5 +1,7 @@
 # Contar Puestos Vacantes (por institución o a nivel de sistema, opcionalmente filtrado por rol)
 
+> 📖 **Read-only server.** Playbooks that create or update records require **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
+
 **Dominio:** Personal · **Audiencia:** admin, hr
 
 Un puesto está vacante cuando o bien (a) no se le ha asignado ningún miembro del personal, o bien (b) el FTE (Equivalente de Tiempo Completo) total de todo el personal en ese puesto es inferior a 1.00 (100%). Esto captura tanto los casos de "nadie asignado" como los de "infra-dotación". La consulta puede acotarse a una única institución o ejecutarse en todo el sistema. Para filtrar por un rol específico —como profesor—, se debe hacer coincidir contra los nombres del título del puesto.
