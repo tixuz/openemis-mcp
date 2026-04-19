@@ -1,6 +1,6 @@
 {
   "name": "openemis-mcp",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": false,
   "description": "Free, read-only MCP server for the OpenEMIS v5 REST API — natural-language queries over 645 resources and 24 curated playbooks",
   "license": "MIT",
