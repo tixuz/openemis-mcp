@@ -35,20 +35,25 @@ No code. No JSON. Just ask.
 
 ## What's in Pro
 
-`openemis-mcp-pro` comes in three tiers:
+`openemis-mcp-pro` adds write tools, remote hosting, and ChatGPT compatibility on top of this free read-only server.
 
-| | **Individual Pro** | **Institution Pro** | **Country Pro** |
-|---|---|---|---|
-| Direct write — single record | ✅ | ✅ | ✅ |
-| Institution audit trail | — | ✅ | ✅ |
-| Workflow route execution | — | ✅ | ✅ |
-| Institution-admin approval gate | — | ✅ | ✅ |
-| Batch ops within one institution | — | ✅ | ✅ |
-| Multi-institution batch ops | — | — | ✅ |
-| Ministry approval gates | — | — | ✅ |
-| Cross-institution oversight | — | — | ✅ |
+| | **Free** | **Individual Pro** | **Institution Pro** | **Country Pro** |
+|---|---|---|---|---|
+| Read tools (all 645 resources) | ✅ | ✅ | ✅ | ✅ |
+| 27 curated playbooks + translations | ✅ | ✅ | ✅ | ✅ |
+| stdio mode (Claude Code, Cursor, Cline) | ✅ | ✅ | ✅ | ✅ |
+| **HTTP server mode** (Oracle / VPS — install once, connect by URL) | — | ✅ | ✅ | ✅ |
+| **OpenAPI adapter** (ChatGPT Custom GPT, any REST client) | — | ✅ | ✅ | ✅ |
+| Direct write — single record | — | ✅ | ✅ | ✅ |
+| Institution audit trail | — | — | ✅ | ✅ |
+| Workflow route execution | — | — | ✅ | ✅ |
+| Institution-admin approval gate | — | — | ✅ | ✅ |
+| Batch ops within one institution | — | — | ✅ | ✅ |
+| Multi-institution batch ops | — | — | — | ✅ |
+| Ministry approval gates | — | — | — | ✅ |
+| Cross-institution oversight | — | — | — | ✅ |
 
-All Pro tiers also include browser auth (auto-captures credentials and base URL from an active browser session) and priority support.
+**HTTP server mode** lets you install Pro once on an [Oracle Always Free](https://www.oracle.com/cloud/free/) ARM instance and connect from any device — no per-machine setup. The built-in OpenAPI adapter means teachers can use **ChatGPT** (or any AI assistant) to mark attendance and look up student records by importing a single schema URL. See the [ChatGPT Teacher Guide](https://github.com/tixuz/openemis-mcp-pro/blob/main/docs/CHATGPT-TEACHER-GUIDE.md) for step-by-step setup.
 
 → **Pricing:** khindol.madraimov@gmail.com
 
@@ -96,6 +101,8 @@ claude mcp add openemis \
 
 Works with any MCP-compatible client: Claude Code, Cursor, Cline, Codex (via [gemmy-and-qwenny](https://github.com/tixuz/gemmy-and-qwenny)), or any stdio MCP client.
 
+> 🌐 **Remote / server install:** [openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro) adds an HTTP server mode — install once on Oracle Always Free and every AI assistant (Claude Code, Cursor, **ChatGPT**) connects by URL with no per-machine setup. See the [ChatGPT Teacher Guide](https://github.com/tixuz/openemis-mcp-pro/blob/main/docs/CHATGPT-TEACHER-GUIDE.md) for how to let teachers mark attendance via ChatGPT.
+
 ---
 
 ## Playbooks
@@ -142,12 +149,14 @@ OpenEMIS Core API  /api/v5/{resource}
 
 Domain-scoped discovery keeps conversations small — `openemis_discover("attendance")` returns the 20–30 endpoints relevant to attendance, not all 1,350.
 
+> 🖥️ **Server / HTTP mode** (install once on Oracle, connect from anywhere including ChatGPT) is available in **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
+
 ---
 
 ## Docs
 
 - [Resource Reference](docs/resources.md) — all 645 resources with method availability
-- [Playbooks](docs/playbooks/) — 24 workflow guides in Russian, Spanish, Hindi, and Arabic
+- [Playbooks](docs/playbooks/) — 24 workflow guides in English, Russian, Spanish, Hindi, and Arabic
 - [ACKNOWLEDGEMENTS.md](ACKNOWLEDGEMENTS.md) — the AI team that built this
 
 ---
