@@ -17,12 +17,20 @@ function parseResult(result: { content: { text: string }[] }) {
   return JSON.parse(result.content[0].text);
 }
 
+/**
+ * Extract the id from a path like "/api/v5/security-users/42" → 42.
+ * Fan-out uses path-based lookup (GET /resource/{id}), not ?id= query param.
+ */
+function idFromPath(path: unknown): number {
+  return Number(String(path).split("/").pop());
+}
+
 // ── ids= fan-out ──────────────────────────────────────────────────────────────
 
 describe("openemis_get ids= fan-out", () => {
   it("all succeed: returns data array with requested/returned counts, no failed_ids", async () => {
-    const client = makeClient((_path: unknown, opts: unknown) => {
-      const id = (opts as Record<string, unknown>).id as number;
+    const client = makeClient((path: unknown) => {
+      const id = idFromPath(path);
       return Promise.resolve({ data: { id, name: `User ${id}` } });
     });
     const handler = createOpenemisGetHandler(client);
@@ -45,8 +53,8 @@ describe("openemis_get ids= fan-out", () => {
 
   it("partial failure: failed_ids lists only the failing IDs", async () => {
     const FAIL_ID = 20;
-    const client = makeClient((_path: unknown, opts: unknown) => {
-      const id = (opts as Record<string, unknown>).id as number;
+    const client = makeClient((path: unknown) => {
+      const id = idFromPath(path);
       if (id === FAIL_ID) return Promise.reject(new Error("404 not found"));
       return Promise.resolve({ data: { id, name: `User ${id}` } });
     });
@@ -84,29 +92,31 @@ describe("openemis_get ids= fan-out", () => {
     expect(result.failed_ids).toEqual([1, 2, 3]);
   });
 
-  it("non-integer IDs are filtered out before the fan-out", async () => {
-    const client = makeClient((_path: unknown, opts: unknown) => {
-      const id = (opts as Record<string, unknown>).id as number;
+  it("non-integer and non-positive IDs filtered out (floats, zero, negative, strings)", async () => {
+    const client = makeClient((path: unknown) => {
+      const id = idFromPath(path);
       return Promise.resolve({ data: { id } });
     });
     const handler = createOpenemisGetHandler(client);
 
+    // "abc" → NaN; "1.5" → float, not integer; "0" → not > 0; "-3" → negative
+    // only 5 and 7 are valid positive integers
     const result = parseResult(
       await handler({
         resource: "security-users",
-        params: { ids: "abc,5,1.5,7,0,-3" }, // only 5 and 7 are valid positive integers
+        params: { ids: "abc,5,1.5,7,0,-3" },
       })
     );
 
-    expect(result.requested).toBe(2);   // only 5 and 7 passed the filter
+    expect(result.requested).toBe(2);
     expect(result.returned).toBe(2);
   });
 
   it("caps fan-out at 100 IDs even if more are supplied", async () => {
     let callCount = 0;
-    const client = makeClient((_path: unknown, opts: unknown) => {
+    const client = makeClient((path: unknown) => {
       callCount++;
-      const id = (opts as Record<string, unknown>).id as number;
+      const id = idFromPath(path);
       return Promise.resolve({ data: { id } });
     });
     const handler = createOpenemisGetHandler(client);
@@ -126,21 +136,36 @@ describe("openemis_get ids= fan-out", () => {
     const client = makeClient(() => Promise.resolve(listResponse));
     const handler = createOpenemisGetHandler(client);
 
-    // ids= empty/whitespace string — should NOT use fan-out
+    // ids= whitespace string — should NOT use fan-out
     const result = parseResult(
       await handler({ resource: "security-users", params: { ids: "   " } })
     );
 
-    // Normal list response passes through normalizeResponse; no requested/returned keys
+    // Normal list response: no requested/returned keys
     expect(result).not.toHaveProperty("requested");
     expect((client.get as ReturnType<typeof vi.fn>).mock.calls[0][0]).toBe(
       "/api/v5/security-users"
     );
   });
 
+  it("fan-out uses path-based GET /resource/{id} not query-param ?id=", async () => {
+    const calledPaths: string[] = [];
+    const client = makeClient((path: unknown) => {
+      calledPaths.push(String(path));
+      const id = idFromPath(path);
+      return Promise.resolve({ data: { id } });
+    });
+    const handler = createOpenemisGetHandler(client);
+
+    await handler({ resource: "security-users", params: { ids: "11,22" } });
+
+    expect(calledPaths).toContain("/api/v5/security-users/11");
+    expect(calledPaths).toContain("/api/v5/security-users/22");
+  });
+
   it("unwraps { data: {...} } envelope for each ID in the result array", async () => {
-    const client = makeClient((_path: unknown, opts: unknown) => {
-      const id = (opts as Record<string, unknown>).id as number;
+    const client = makeClient((path: unknown) => {
+      const id = idFromPath(path);
       return Promise.resolve({ message: "ok", data: { id, first_name: `Student${id}` } });
     });
     const handler = createOpenemisGetHandler(client);
