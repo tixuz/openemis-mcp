@@ -257,15 +257,6 @@ export class OpenemisClientImpl implements OpenemisClient {
     return this.request("GET", path, query);
   }
 
-  async post(path: string, body: unknown): Promise<unknown> {
-    return this.request("POST", path, undefined, body);
-  }
-
-  async put(path: string, body: unknown): Promise<unknown> {
-    return this.request("PUT", path, undefined, body);
-  }
-
-  async delete(path: string): Promise<unknown> {
-    return this.request("DELETE", path);
-  }
+  // post / put / delete are not available in the free version.
+  // Use openemis-mcp-pro for write access.
 }

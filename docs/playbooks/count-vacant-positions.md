@@ -1,5 +1,7 @@
 # Count Vacant Positions (by institution or system-wide, optionally filtered by role)
 
+> 📖 **Read-only server.** Playbooks that create or update records require **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
+
 **Domain:** Staff · **Audience:** admin, hr
 
 A position is vacant when either (a) no staff member has been assigned to it, or (b) the total FTE (full-time equivalent) across all staff on that position is less than 1.00 (100%). This captures both "nobody assigned" and "under-staffed" cases. The query can be scoped to a single institution or run across the entire system. Filter to a specific role — such as teacher — by matching against position title names.

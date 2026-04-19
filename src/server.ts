@@ -30,7 +30,7 @@ const client = new OpenemisClientImpl(config);
 
 const server = new McpServer({
   name: "openemis-mcp",
-  version: "0.1.0",
+  version: "0.2.0",
 });
 
 // ─── Health ────────────────────────────────────────────────────────────────

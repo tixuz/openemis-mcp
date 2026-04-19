@@ -1,5 +1,7 @@
 # Look Up a Student's Marks and Assessment Results for a Subject or Period
 
+> 📖 **Read-only server.** Playbooks that create or update records require **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
+
 **Domain:** Assessment · **Audience:** teacher, admin, parent
 
 Retrieve a student's scored results from assessment-item-results for one or more assessments in a given academic period. This playbook first locates the relevant assessment definitions and period identifiers, then fetches the raw mark rows, and finally enriches them with subject names from education-subjects. Results include the numeric mark plus a grading_option_id which can be resolved against the assessment's grading table for a letter grade or pass/fail label.

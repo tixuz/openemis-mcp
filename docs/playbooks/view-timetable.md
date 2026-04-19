@@ -1,5 +1,7 @@
 # View Timetable for a Class or Teacher
 
+> 📖 **Read-only server.** Playbooks that create or update records require **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
+
 **Domain:** Schedule · **Audience:** teacher, admin, student
 
 Retrieve the weekly schedule for a specific institution class — including day, period slot, subject, and assigned teacher — for the current or specified academic period. The timetable is stored in institution-schedule-timetables; class-grade mapping from institution-class-grades is used to enrich the response with education grade context. For a student's personal timetable view (parent or student-facing), use the view-student-timetable playbook instead.

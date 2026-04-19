@@ -1,5 +1,7 @@
 # Generate a Student's Report Card (PDF)
 
+> 📖 **Read-only server.** Playbooks that create or update records require **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
+
 **Domain:** Report · **Audience:** teacher, admin
 
 Triggers the asynchronous report card generator for one student. Returns a process id that the caller polls until the PDF is ready for download. This is a two-phase workflow: kick off generation, then wait for the status to reach "completed" before fetching the download link.

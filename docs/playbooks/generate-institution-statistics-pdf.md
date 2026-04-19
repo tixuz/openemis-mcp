@@ -1,5 +1,7 @@
 # Generate Institution Statistics PDF Report
 
+> 📖 **Read-only server.** Playbooks that create or update records require **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
+
 **Domain:** Report · **Audience:** admin
 
 Admin requests a summary PDF for one institution covering enrolment, staff, and attendance statistics. This playbook describes the data lookup steps; the actual PDF is generated inside the OpenEMIS application.

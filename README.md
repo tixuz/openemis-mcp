@@ -23,15 +23,19 @@ No code. No JSON. Just ask.
 | `openemis_health` | Ping the configured instance — real login round-trip |
 | `openemis_list_domains` | List the 9 curated domains (Attendance, Assessment, Staff, Student…) |
 | `openemis_discover` | Topic → up to 30 scoped endpoints. Keeps conversations small |
-| `openemis_list_playbooks` | List all 22 curated workflow guides |
+| `openemis_list_playbooks` | List all 24 curated workflow guides |
 | `openemis_get_playbook` | Load a playbook by id — full steps, resources, gotcha notes |
 | `openemis_get` | Unified read: list or singleton, any resource, any filter |
 
-**22 curated playbooks** covering attendance, assessment, student profiles, staff profiles, infrastructure, meals, class reports, timetables, and more — each verified against the v5 manifest at 100% resource coverage.
+**24 curated playbooks** covering attendance, assessment, student profiles, staff profiles, infrastructure, meals, risk dashboards, class reports, timetables, and more — each verified against the v5 manifest at 100% resource coverage.
+
+**Translations available:** Russian (11 of 24 playbooks). Spanish, Arabic, and Hindi in progress.
+
+> ✏️ **Write operations** (creating/updating records in OpenEMIS) require **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**. This free server is intentionally read-only — `post`, `put`, and `delete` are not available.
 
 ## What's in Pro
 
-`openemis-mcp-pro` adds write tools (`openemis_create`, `openemis_update`, `openemis_delete`), workflow playbook execution, audit logging, browser auth, and priority support.  
+`openemis-mcp-pro` adds write tools (`openemis_create`, `openemis_update`, `openemis_delete`), workflow playbook execution, audit logging, browser auth (auto-captures credentials and base URL from active browser session), and priority support.  
 → **Commercial licence:** khindol.madraimov@gmail.com
 
 ---
@@ -82,7 +86,7 @@ Works with any MCP-compatible client: Claude Code, Cursor, Cline, Codex (via [ge
 
 ## Playbooks
 
-22 curated workflow guides — see [docs/playbooks/](docs/playbooks/):
+24 curated workflow guides — see [docs/playbooks/](docs/playbooks/):
 
 | # | Playbook | Domain |
 |---|---|---|
@@ -108,6 +112,8 @@ Works with any MCP-compatible client: Claude Code, Cursor, Cline, Codex (via [ge
 | 20 | [Enhance Student Profile](docs/playbooks/enhance-student-profile.md) | Student |
 | 21 | [View Institution Infrastructure](docs/playbooks/view-institution-infrastructure.md) | Institution |
 | 22 | [View Institution Meals](docs/playbooks/view-institution-meals.md) | Institution |
+| 23 | [View Student Risk Profile and Welfare Cases](docs/playbooks/view-student-risks.md) | Student |
+| 24 | [View Institution Risk Summary and Alert Rules](docs/playbooks/view-institution-risks.md) | Institution |
 
 ---
 
@@ -116,7 +122,7 @@ Works with any MCP-compatible client: Claude Code, Cursor, Cline, Codex (via [ge
 ```
 Agent (Claude / Cursor / Codex / …)
         │ MCP stdio
-openemis-mcp  ←  6 read tools + 22 playbooks
+openemis-mcp  ←  6 read tools + 24 playbooks
         │ HTTPS + Bearer JWT
 OpenEMIS Core API  /api/v5/{resource}
 ```
@@ -128,7 +134,7 @@ Domain-scoped discovery keeps conversations small — `openemis_discover("attend
 ## Docs
 
 - [Resource Reference](docs/resources.md) — all 645 resources with method availability
-- [Playbooks](docs/playbooks/) — 22 workflow guides
+- [Playbooks](docs/playbooks/) — 24 workflow guides (Russian translations available for 11)
 - [ACKNOWLEDGEMENTS.md](ACKNOWLEDGEMENTS.md) — the AI team that built this
 
 ---

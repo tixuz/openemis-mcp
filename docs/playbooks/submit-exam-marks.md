@@ -1,5 +1,7 @@
 # Submit Subject Exam Marks for an Assessment Period
 
+> 📖 **Read-only server.** Playbooks that create or update records require **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
+
 **Domain:** Assessment · **Audience:** teacher
 
 Bulk-enter per-student marks for one assessment item, commit, then verify the weighted result was calculated. This playbook locates the correct assessment and class roster, then posts one mark row per student.

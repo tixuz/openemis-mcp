@@ -1,5 +1,7 @@
 # Record a Student Behaviour Incident
 
+> 📖 **Read-only server.** Playbooks that create or update records require **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
+
 **Domain:** Student · **Audience:** teacher, admin
 
 Log a behaviour incident against a student: look up categories and severity classifications, then write the incident record with a description and follow-up action. Available in v0.3.0 write tools.

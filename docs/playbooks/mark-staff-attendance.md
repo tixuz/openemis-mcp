@@ -1,5 +1,7 @@
 # Mark Staff Attendance (Present) OR Request Leave (Absent)
 
+> 📖 **Read-only server.** Playbooks that create or update records require **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
+
 **Domain:** Staff · **Audience:** admin, hr, teacher
 
 Two distinct flows — do not mix them. **PRESENT** is a quick check-in with optional time-in/time-out recorded via `institution-staff-attendances` (simple id primary key, no approval required). **ABSENT** means a leave request with a leave type, recorded via `institution-staff-leave`, which is workflow-controlled and requires supervisor approval before taking effect. These write to different tables and follow completely different processes.

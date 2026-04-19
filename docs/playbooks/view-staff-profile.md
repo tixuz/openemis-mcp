@@ -1,5 +1,7 @@
 # View a Staff Member's Full Profile
 
+> 📖 **Read-only server.** Playbooks that create or update records require **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
+
 **Domain:** Staff  
 **Audience:** admin, hr  
 **Playbook ID:** `view-staff-profile`

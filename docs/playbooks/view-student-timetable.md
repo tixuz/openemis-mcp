@@ -1,5 +1,7 @@
 # See a Student's Timetable (Parent / Student View)
 
+> 📖 **Read-only server.** Playbooks that create or update records require **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
+
 **Domain:** Schedule · **Audience:** parent, student
 
 Given a student id, return the class timetable — subjects, teachers, rooms, and time slots for the current academic period. This is the personal view a student or parent would see, showing the specific class the student is enrolled in.

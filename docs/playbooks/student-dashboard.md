@@ -1,5 +1,7 @@
 # Parent/Student Dashboard — Latest Attendance, Behavior, Marks
 
+> 📖 **Read-only server.** Playbooks that create or update records require **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
+
 **Domain:** Student · **Audience:** parent, student
 
 Aggregate the three things parents ask about most: how often has my child been absent lately, any behavior incidents, and recent test or assessment marks. This playbook pulls all three data sets in a compact sequence and returns a single summary view.

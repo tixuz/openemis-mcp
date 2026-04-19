@@ -1,5 +1,7 @@
 # View Institution Meal Programmes and Student Participation
 
+> 📖 **Read-only server.** Playbooks that create or update records require **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
+
 **Domain:** Institution  
 **Audience:** admin, nutritionist, parent  
 **Playbook ID:** `view-institution-meals`

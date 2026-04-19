@@ -1,5 +1,7 @@
 # Institution Basic Info — Counts of Students, Staff, Vacant Positions
 
+> 📖 **Read-only server.** Playbooks that create or update records require **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
+
 **Domain:** Institution · **Audience:** admin, parent
 
 The classic "tell me about this school" query. A single institution lookup followed by three count calls using pagination metadata to get totals without downloading every record.

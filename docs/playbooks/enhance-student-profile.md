@@ -1,5 +1,7 @@
 # Enhance Student Profile with Contacts, Nationality, and Special Needs
 
+> 📖 **Read-only server.** Playbooks that create or update records require **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
+
 **Domain:** Student  
 **Audience:** teacher, admin, counsellor  
 **Playbook ID:** `enhance-student-profile`

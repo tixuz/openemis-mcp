@@ -1,5 +1,7 @@
 # Enrol a New Student at an Institution
 
+> 📖 **Read-only server.** Playbooks that create or update records require **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
+
 **Domain:** Student · **Audience:** admin, registrar
 
 BYPASS MODE ONLY: direct enrolment works only when the system configuration has "bypass enrolment workflow" enabled. If the admission → enrolment workflow is active, use the OpenEMIS application — the workflow requires supervisor approval at each stage and cannot be driven via API alone.

@@ -1,5 +1,7 @@
 # View Full Class Profile
 
+> 📖 **Read-only server.** Playbooks that create or update records require **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
+
 **Domain:** Student  
 **Audience:** teacher, admin  
 **Playbook ID:** `view-class-profile`

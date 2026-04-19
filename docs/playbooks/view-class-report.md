@@ -1,5 +1,7 @@
 # View Class-Level Report Card Overview for a Grade
 
+> 📖 **Read-only server.** Playbooks that create or update records require **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
+
 **Domain:** Report · **Audience:** teacher, admin
 
 Retrieve the report card configuration for a class, list the subjects included in it, and pull the assessment item results for all students in that grade and period. This gives a class-level overview equivalent to what a teacher sees on the report card summary screen. Note that this is a read workflow — PDF generation requires a separate async process (see the generate-student-report-card-pdf playbook).

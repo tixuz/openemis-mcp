@@ -2,37 +2,14 @@
  * OpenemisClient interface for HTTP communication with OpenEMIS v5 API.
  * All methods handle automatic API versioning and authentication.
  */
+/**
+ * Read-only HTTP client for OpenEMIS v5 API.
+ * Only GET is exposed — write methods (post/put/delete) are not available
+ * in the free version. Use openemis-mcp-pro for write access.
+ */
 export interface OpenemisClient {
-  /**
-   * GET request to OpenEMIS API.
-   * @param path - API endpoint path (with or without /api/ prefix)
-   * @param query - Optional query parameters (array values joined by comma, objects JSON-stringified)
-   * @returns Promise resolving to the response data object
-   */
   get(path: string, query?: Record<string, unknown>): Promise<unknown>;
-
-  /**
-   * POST request to create a resource.
-   * @param path - API endpoint path
-   * @param body - Request body
-   * @returns Promise resolving to the response data object
-   */
-  post(path: string, body: unknown): Promise<unknown>;
-
-  /**
-   * PUT request to update a resource.
-   * @param path - API endpoint path
-   * @param body - Request body
-   * @returns Promise resolving to the response data object
-   */
-  put(path: string, body: unknown): Promise<unknown>;
-
-  /**
-   * DELETE request to remove a resource.
-   * @param path - API endpoint path
-   * @returns Promise resolving to the response data object
-   */
-  delete(path: string): Promise<unknown>;
+  getToken(): Promise<string>;
 }
 
 /**

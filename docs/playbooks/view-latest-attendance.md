@@ -1,5 +1,7 @@
 # Read Attendance Stats for a Class — Today / Week / Chronic Absentees
 
+> 📖 **Read-only server.** Playbooks that create or update records require **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
+
 **Domain:** Attendance · **Audience:** teacher, admin, parent
 
 Quick snapshot: who was absent today, week-to-date totals, and chronic absentees. OpenEMIS does NOT store a row per present student — presence is inferred by absence-by-omission once a day is marked. Reading attendance correctly requires three layers: (1) which days were actually taken as rolls; (2) which days had no_scheduled_class=99 (holiday/cancelled — skip for stats); (3) for the remaining MARKED days, pull absence events — every rostered student without a row that day is PRESENT.

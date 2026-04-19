@@ -1,5 +1,7 @@
 # View Institution Infrastructure (Land, Buildings, Utilities, WASH)
 
+> 📖 **Read-only server.** Playbooks that create or update records require **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
+
 **Domain:** Institution  
 **Audience:** admin, facilities  
 **Playbook ID:** `view-institution-infrastructure`

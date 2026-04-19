@@ -1,5 +1,7 @@
 # View Full Institution Profile
 
+> 📖 **Read-only server.** Playbooks that create or update records require **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
+
 **Domain:** Institution  
 **Audience:** admin, parent, public  
 **Playbook ID:** `view-institution-profile`
