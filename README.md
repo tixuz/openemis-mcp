@@ -35,8 +35,22 @@ No code. No JSON. Just ask.
 
 ## What's in Pro
 
-`openemis-mcp-pro` adds write tools (`openemis_create`, `openemis_update`, `openemis_delete`), workflow playbook execution, audit logging, browser auth (auto-captures credentials and base URL from active browser session), and priority support.  
-→ **Commercial licence:** khindol.madraimov@gmail.com
+`openemis-mcp-pro` comes in three tiers:
+
+| | **Individual Pro** | **Institution Pro** | **Country Pro** |
+|---|---|---|---|
+| Direct write — single record | ✅ | ✅ | ✅ |
+| Institution audit trail | — | ✅ | ✅ |
+| Workflow route execution | — | ✅ | ✅ |
+| Institution-admin approval gate | — | ✅ | ✅ |
+| Batch ops within one institution | — | ✅ | ✅ |
+| Multi-institution batch ops | — | — | ✅ |
+| Ministry approval gates | — | — | ✅ |
+| Cross-institution oversight | — | — | ✅ |
+
+All Pro tiers also include browser auth (auto-captures credentials and base URL from an active browser session) and priority support.
+
+→ **Pricing:** khindol.madraimov@gmail.com
 
 ---
 
