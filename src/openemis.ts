@@ -1,5 +1,6 @@
 import type { AppConfig } from "./config.js";
 import type { OpenemisClient, OpenemisErrorPayload } from "./types.js";
+import { scrubSecrets } from "./safety/redact.js";
 
 /**
  * Join a base URL (which may itself contain a path, e.g. ".../core") with
@@ -67,8 +68,10 @@ export class OpenemisClientImpl implements OpenemisClient {
         } catch {
           // Non-JSON error
         }
+        // Scrub any bearer/JWT echoed in the upstream error body — see
+        // src/safety/redact.ts for the mask patterns. Same guard pro uses.
         throw new Error(
-          `OpenEMIS login failed [${response.status}]: ${errorMsg}`
+          `OpenEMIS login failed [${response.status}]: ${scrubSecrets(errorMsg)}`
         );
       }
 
@@ -82,9 +85,10 @@ export class OpenemisClientImpl implements OpenemisClient {
       }
 
       this.cachedToken = token;
-      console.error(
-        `[OpenEMIS] Login successful; cached JWT (${token.length} chars)`
-      );
+      // Avoid logging the token length — that's a small but real fingerprint
+      // signal for anyone reading stderr (e.g. in shared logs). Pro does the
+      // same.
+      console.error(`[OpenEMIS] Login successful; JWT cached in memory`);
       return token;
     } catch (err) {
       clearTimeout(timeoutId);
@@ -230,8 +234,10 @@ export class OpenemisClientImpl implements OpenemisClient {
           errorPayload.description ||
           `HTTP ${response.status}`;
 
+        // Scrub upstream error body — may echo the Authorization header
+        // we sent. See src/safety/redact.ts.
         throw new Error(
-          `OpenEMIS API error [${errorPayload.status}]: ${errorMessage}`
+          `OpenEMIS API error [${errorPayload.status}]: ${scrubSecrets(errorMessage)}`
         );
       }
 
