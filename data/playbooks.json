@@ -827,12 +827,16 @@
         "admin"
       ],
       "domain": "Student",
-      "description": "View a class profile: grade level assignment, enrolled student roster, active subjects, and monthly attendance summary. The attendance resource uses a composite primary key \u2014 there is no integer id field; always use list-style filters to fetch it.",
+      "description": "View a class profile: grade level assignment, enrolled student roster, active subjects, monthly attendance summary, and full teacher roster (homeroom + secondary + subject teachers). The attendance resource uses a composite primary key \u2014 there is no integer id field; always use list-style filters to fetch it.",
       "resources": [
+        "institution-classes",
         "institution-class-grades",
         "institution-class-students",
         "institution-class-subjects",
-        "institution-class-attendance-records"
+        "institution-subjects",
+        "institution-class-attendance-records",
+        "institution-classes-secondary-staff",
+        "institution-subject-staff"
       ],
       "steps": [
         {
@@ -866,12 +870,23 @@
           "resource": "institution-class-attendance-records",
           "purpose": "Retrieve the monthly attendance summary for the class showing daily present-student counts.",
           "guidance": "CRITICAL: institution-class-attendance-records has NO integer id field. Its primary key is composite: (institution_class_id, academic_period_id, year, month). NEVER pass an id= param \u2014 it will return empty or error. Use list filters only: ?institution_class_id={id}&academic_period_id={period}&year={year}&month={month}. Alternatively use the composite-key path: GET /institution-class-attendance-records/institution_class_id/{X}/academic_period_id/{Y}/year/{Z}/month/{M}. day_1 through day_31 fields hold the daily present count; null means attendance was not yet submitted for that day."
+        },
+        {
+          "step": 5,
+          "title": "Fetch Teacher Roster",
+          "action": "openemis_get",
+          "resource": "institution-classes",
+          "purpose": "Assemble the full list of teachers assigned to the class \u2014 homeroom, secondary/co-teachers, and subject teachers \u2014 by combining three separate tables. No single endpoint returns this union today; fan out and dedupe by staff_id.",
+          "guidance": "Fan out 3 sub-queries and union by staff_id:\n(a) HOMEROOM: openemis_get('institution-classes', id: {institution_class_id}) \u2014 the row's staff_id column is the single homeroom teacher (FK to security_users). May be null if the class has no assigned homeroom teacher.\n(b) SECONDARY/CO-TEACHERS: openemis_get('institution-classes-secondary-staff', params: {institution_class_id: {id}}) \u2014 0..N rows with secondary_staff_id FK. Composite PK (institution_class_id, secondary_staff_id) \u2014 do not pass a numeric id=.\n(c) SUBJECT TEACHERS: for each institution_subject_id from step 3, openemis_get('institution-subject-staff', params: {institution_subject_id: {id}}) \u2014 0..N rows per subject with staff_id FK. This resource has a single integer PK, but is NOT filterable by institution_class_id directly; you must fan out across the class's subject IDs.\nDEDUPE: the same person can appear as homeroom AND subject teacher \u2014 merge by staff_id. Resolve names via openemis_get('security-users', ids: '<comma-separated staff_id list>') in ONE call."
         }
       ],
       "notes": [
         "institution-class-attendance-records composite PK: (institution_class_id, academic_period_id, year, month). There is NO integer id column. Any call using a bare numeric id= filter will fail silently or return wrong data.",
         "This resource holds monthly aggregates (present-count per day). It is NOT the per-student absence log \u2014 for individual absences use student-attendance-marked-records.",
-        "day_X fields return null for days attendance was not submitted \u2014 treat as 'Pending', not as 0 absent."
+        "day_X fields return null for days attendance was not submitted \u2014 treat as 'Pending', not as 0 absent.",
+        "Teacher roster is spread across 3 tables (homeroom on institution-classes.staff_id, co-teachers on institution-classes-secondary-staff, subject teachers on institution-subject-staff). No single endpoint unions them today \u2014 fan out and dedupe by staff_id. A single person may appear in multiple lists.",
+        "institution-classes-secondary-staff has a COMPOSITE PK (institution_class_id, secondary_staff_id). Use list filters \u2014 do not pass id=.",
+        "institution-subject-staff is NOT filterable by institution_class_id. Get institution_subject_id list from step 3 first, then fan out across subjects."
       ]
     },
     {
