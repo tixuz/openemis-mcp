@@ -40,6 +40,14 @@ export interface AppConfig {
 
   /** Path to grouped-manifest.json with pre-computed hierarchical index (default data/grouped-manifest.json) */
   groupedPath: string;
+
+  /** Log every tool call + result to JSONL. OFF by default. Set OPENEMIS_LOG_VERBOSE=1 to enable.
+   *  Contains tenant PII in results — enable only on instances you own, or with user consent. */
+  logVerbose: boolean;
+
+  /** Path to write JSONL log entries. If empty and logVerbose is on, logs go to stderr.
+   *  Set via OPENEMIS_LOG_FILE. */
+  logFile: string;
 }
 
 /**
@@ -85,6 +93,11 @@ export function loadConfig(): AppConfig {
     process.env.OPENEMIS_GROUPED_PATH ??
     resolve(PKG_ROOT, "data/grouped-manifest.json");
 
+  const logVerbose = /^(1|true|yes|on)$/i.test(
+    process.env.OPENEMIS_LOG_VERBOSE ?? ""
+  );
+  const logFile = process.env.OPENEMIS_LOG_FILE ?? "";
+
   return {
     baseUrl,
     username,
@@ -94,6 +107,8 @@ export function loadConfig(): AppConfig {
     vaultPath,
     manifestPath,
     groupedPath,
+    logVerbose,
+    logFile,
   };
 }
 

@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/logo.png" alt="openemis-mcp logo" width="320">
+</p>
+
 # openemis-mcp
 
 **Free, read-only MCP bridge between AI agents and any OpenEMIS instance.**
@@ -10,7 +14,7 @@ Ask in plain English:
 
 The agent plans the calls, this MCP delivers the data:
 
-> *"Avory Primary School (code P1002) has 553 currently enrolled students."*
+> *"Avory Primary School has 97 currently enrolled students across 6 classes."*
 
 No code. No JSON. Just ask.
 
@@ -40,7 +44,8 @@ No code. No JSON. Just ask.
 | | **Free** | **Individual Pro** | **Institution Pro** | **Country Pro** |
 |---|---|---|---|---|
 | Read tools (all 645 resources) | ✅ | ✅ | ✅ | ✅ |
-| 27 curated playbooks + translations | ✅ | ✅ | ✅ | ✅ |
+| 24 read playbooks × 5 languages | ✅ | ✅ | ✅ | ✅ |
+| 3 write playbooks (v0.2+) | — | ✅ | ✅ | ✅ |
 | stdio mode (Claude Code, Cursor, Cline) | ✅ | ✅ | ✅ | ✅ |
 | **HTTP server mode** (Oracle / VPS — install once, connect by URL) | — | ✅ | ✅ | ✅ |
 | **OpenAPI adapter** (ChatGPT Custom GPT, any REST client) | — | ✅ | ✅ | ✅ |
@@ -100,6 +105,22 @@ claude mcp add openemis \
 ```
 
 Works with any MCP-compatible client: Claude Code, Cursor, Cline, Codex (via [gemmy-and-qwenny](https://github.com/tixuz/gemmy-and-qwenny)), or any stdio MCP client.
+
+### Verbose logging (optional)
+
+Capture every tool call and its response as JSONL — useful for debugging, tuning playbooks, or sharing a bug report.
+
+```bash
+# stderr (visible in your MCP client's log panel)
+OPENEMIS_LOG_VERBOSE=1 node dist/server.js
+
+# write to a file
+OPENEMIS_LOG_VERBOSE=1 OPENEMIS_LOG_FILE=/tmp/openemis.jsonl node dist/server.js
+```
+
+Each line is a JSON object: `{ts, type:"tool_call"|"tool_result"|"tool_error", tool, args?, result?, latency_ms, ...}`. Credential-shaped keys (`password`, `authorization`, `api_key`, `token`, `secret`) are redacted automatically.
+
+> ⚠️ **Privacy:** `tool_result` entries contain the actual OpenEMIS data returned to the agent — student names, staff IDs, enrollment details. Enable only on instances you own, or with explicit consent. Default is OFF.
 
 > 🌐 **Remote / server install:** [openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro) adds an HTTP server mode — install once on Oracle Always Free and every AI assistant (Claude Code, Cursor, **ChatGPT**) connects by URL with no per-machine setup. See the [ChatGPT Teacher Guide](https://github.com/tixuz/openemis-mcp-pro/blob/main/docs/CHATGPT-TEACHER-GUIDE.md) for how to let teachers mark attendance via ChatGPT.
 

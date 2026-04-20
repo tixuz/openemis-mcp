@@ -6,12 +6,12 @@
     "url": "https://github.com/tixuz/openemis-mcp",
     "source": "github"
   },
-  "version": "0.3.1",
+  "version": "0.3.2",
   "packages": [
     {
       "registryType": "npm",
       "identifier": "openemis-mcp",
-      "version": "0.3.1",
+      "version": "0.3.2",
       "transport": {
         "type": "stdio"
       },
@@ -45,6 +45,18 @@
         {
           "name": "OPENEMIS_TIMEOUT_MS",
           "description": "Request timeout in milliseconds (default 30000)",
+          "isRequired": false,
+          "format": "string"
+        },
+        {
+          "name": "OPENEMIS_LOG_VERBOSE",
+          "description": "Set to 1 to log every tool call and result as JSONL. OFF by default. Results contain tenant PII — enable only on instances you own.",
+          "isRequired": false,
+          "format": "string"
+        },
+        {
+          "name": "OPENEMIS_LOG_FILE",
+          "description": "Path to write verbose JSONL log. If empty and OPENEMIS_LOG_VERBOSE=1, logs go to stderr.",
           "isRequired": false,
           "format": "string"
         }

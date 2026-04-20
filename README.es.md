@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/logo.png" alt="openemis-mcp logo" width="320">
+</p>
+
 # openemis-mcp
 
 **Puente MCP gratuito y de solo lectura entre agentes de IA y cualquier instancia de OpenEMIS.**
@@ -10,7 +14,7 @@ Pregunte en español sencillo:
 
 El agente planifica las llamadas, este MCP entrega los datos:
 
-> *"La Escuela Primaria Avory (código P1002) tiene 553 estudiantes matriculados actualmente."*
+> *"La Escuela Primaria Avory tiene 97 estudiantes matriculados actualmente en 6 clases."*
 
 Sin código. Sin JSON. Solo pregunte.
 
@@ -40,7 +44,8 @@ Sin código. Sin JSON. Solo pregunte.
 | | **Gratuito** | **Pro Individual** | **Pro Institución** | **Pro País** |
 |---|---|---|---|---|
 | Herramientas de lectura (todos los 645 recursos) | ✅ | ✅ | ✅ | ✅ |
-| 27 playbooks curados + traducciones | ✅ | ✅ | ✅ | ✅ |
+| 24 playbooks de lectura × 5 idiomas | ✅ | ✅ | ✅ | ✅ |
+| 3 playbooks de escritura (v0.2+) | — | ✅ | ✅ | ✅ |
 | Modo stdio (Claude Code, Cursor, Cline) | ✅ | ✅ | ✅ | ✅ |
 | **Modo servidor HTTP** (Oracle / VPS — instalar una vez, conectar por URL) | — | ✅ | ✅ | ✅ |
 | **Adaptador OpenAPI** (ChatGPT Custom GPT, cualquier cliente REST) | — | ✅ | ✅ | ✅ |

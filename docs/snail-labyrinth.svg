@@ -1,0 +1,156 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 380" width="640" height="380" font-family="Georgia, serif">
+
+  <!-- Background -->
+  <rect width="640" height="380" fill="#1a1a2e"/>
+
+  <!-- Title -->
+  <text x="320" y="32" text-anchor="middle" fill="#e0c97f" font-size="14" font-style="italic" opacity="0.85">
+    OpenEMIS without AI — navigating 645 resources, one wrong turn at a time
+  </text>
+
+  <!-- ═══ MAZE WALLS ═══ -->
+  <g stroke="#4a6fa5" stroke-width="3" fill="none" opacity="0.9">
+
+    <!-- Outer border -->
+    <rect x="60" y="50" width="280" height="280" rx="4"/>
+
+    <!-- Horizontal maze walls -->
+    <line x1="60"  y1="90"  x2="120" y2="90"/>
+    <line x1="150" y1="90"  x2="220" y2="90"/>
+    <line x1="260" y1="90"  x2="340" y2="90"/>
+
+    <line x1="60"  y1="130" x2="100" y2="130"/>
+    <line x1="140" y1="130" x2="200" y2="130"/>
+    <line x1="240" y1="130" x2="300" y2="130"/>
+    <line x1="300" y1="130" x2="340" y2="130"/>
+
+    <line x1="60"  y1="170" x2="140" y2="170"/>
+    <line x1="180" y1="170" x2="260" y2="170"/>
+    <line x1="300" y1="170" x2="340" y2="170"/>
+
+    <line x1="60"  y1="210" x2="120" y2="210"/>
+    <line x1="160" y1="210" x2="220" y2="210"/>
+    <line x1="260" y1="210" x2="340" y2="210"/>
+
+    <line x1="60"  y1="250" x2="100" y2="250"/>
+    <line x1="140" y1="250" x2="200" y2="250"/>
+    <line x1="240" y1="250" x2="280" y2="250"/>
+    <line x1="300" y1="250" x2="340" y2="250"/>
+
+    <line x1="60"  y1="290" x2="160" y2="290"/>
+    <line x1="200" y1="290" x2="260" y2="290"/>
+    <line x1="300" y1="290" x2="340" y2="290"/>
+
+    <!-- Vertical maze walls -->
+    <line x1="100" y1="50"  x2="100" y2="90"/>
+    <line x1="100" y1="130" x2="100" y2="170"/>
+    <line x1="100" y1="210" x2="100" y2="250"/>
+    <line x1="100" y1="290" x2="100" y2="330"/>
+
+    <line x1="140" y1="90"  x2="140" y2="130"/>
+    <line x1="140" y1="170" x2="140" y2="210"/>
+    <line x1="140" y1="250" x2="140" y2="290"/>
+
+    <line x1="180" y1="50"  x2="180" y2="90"/>
+    <line x1="180" y1="130" x2="180" y2="170"/>
+    <line x1="180" y1="210" x2="180" y2="250"/>
+    <line x1="180" y1="290" x2="180" y2="330"/>
+
+    <line x1="220" y1="90"  x2="220" y2="130"/>
+    <line x1="220" y1="170" x2="220" y2="210"/>
+    <line x1="220" y1="250" x2="220" y2="290"/>
+
+    <line x1="260" y1="50"  x2="260" y2="90"/>
+    <line x1="260" y1="130" x2="260" y2="170"/>
+    <line x1="260" y1="210" x2="260" y2="250"/>
+    <line x1="260" y1="290" x2="260" y2="330"/>
+
+    <line x1="300" y1="90"  x2="300" y2="130"/>
+    <line x1="300" y1="170" x2="300" y2="210"/>
+    <line x1="300" y1="250" x2="300" y2="290"/>
+
+  </g>
+
+  <!-- ═══ EXIT sign (top-right of maze) ═══ -->
+  <text x="330" y="47" text-anchor="middle" fill="#c0392b" font-size="11" font-weight="bold">EXIT?</text>
+  <line x1="320" y1="50" x2="340" y2="50" stroke="#c0392b" stroke-width="2" stroke-dasharray="4,2"/>
+
+  <!-- ═══ SNAIL (centre of maze, ~200,190) ═══ -->
+  <g transform="translate(193,183)">
+    <!-- Shell spiral -->
+    <circle cx="0" cy="0" r="18" fill="#c8a45a" stroke="#8b6914" stroke-width="2"/>
+    <circle cx="0" cy="0" r="12" fill="none" stroke="#8b6914" stroke-width="1.5" opacity="0.7"/>
+    <circle cx="0" cy="0" r="6"  fill="none" stroke="#8b6914" stroke-width="1" opacity="0.5"/>
+    <circle cx="2" cy="2" r="2"  fill="#8b6914" opacity="0.6"/>
+    <!-- Body -->
+    <ellipse cx="-18" cy="10" rx="14" ry="7" fill="#b8860b" stroke="#8b6914" stroke-width="1.5"/>
+    <!-- Head -->
+    <circle cx="-30" cy="8" r="6" fill="#c8a45a" stroke="#8b6914" stroke-width="1.5"/>
+    <!-- Antennae -->
+    <line x1="-32" y1="4" x2="-36" y2="-4" stroke="#8b6914" stroke-width="1.5"/>
+    <line x1="-28" y1="3" x2="-31" y2="-5" stroke="#8b6914" stroke-width="1.5"/>
+    <circle cx="-36" cy="-4" r="2" fill="#4a6fa5"/>
+    <circle cx="-31" cy="-5" r="2" fill="#4a6fa5"/>
+    <!-- Eye dot -->
+    <circle cx="-31" cy="9" r="1.5" fill="#1a1a2e"/>
+    <!-- Tiny sweat drop -->
+    <ellipse cx="-26" cy="2" rx="2" ry="3" fill="#4a9fd4" opacity="0.7"/>
+  </g>
+
+  <!-- ═══ Question marks floating around snail ═══ -->
+  <text x="155" y="165" fill="#e0c97f" font-size="16" opacity="0.5">?</text>
+  <text x="240" y="155" fill="#e0c97f" font-size="12" opacity="0.4">?</text>
+  <text x="165" y="230" fill="#e0c97f" font-size="14" opacity="0.45">?</text>
+  <text x="230" y="225" fill="#e0c97f" font-size="11" opacity="0.35">?</text>
+
+  <!-- ═══ Dead-end labels ═══ -->
+  <text x="80"  y="115" fill="#c0392b" font-size="9" opacity="0.6">dead end</text>
+  <text x="270" y="155" fill="#c0392b" font-size="9" opacity="0.6">dead end</text>
+  <text x="90"  y="272" fill="#c0392b" font-size="9" opacity="0.6">dead end</text>
+
+  <!-- ═══ DIVIDER ═══ -->
+  <line x1="380" y1="50" x2="380" y2="330" stroke="#2a2a4a" stroke-width="2" stroke-dasharray="8,4"/>
+  <text x="380" y="200" fill="#2a2a4a" font-size="28" text-anchor="middle" transform="rotate(-90,380,200)" opacity="0.4">VS</text>
+
+  <!-- ═══ RIGHT SIDE — OpenEMIS-MCP ═══ -->
+  <!-- Clean path arrow -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#27ae60"/>
+    </marker>
+  </defs>
+
+  <!-- Teacher / user icon -->
+  <circle cx="430" cy="130" r="18" fill="#2c3e50" stroke="#4a6fa5" stroke-width="2"/>
+  <circle cx="430" cy="122" r="8"  fill="#e0c97f"/>
+  <path d="M415 148 Q430 138 445 148" fill="#4a6fa5" stroke="none"/>
+  <!-- Speech bubble -->
+  <rect x="452" y="105" width="140" height="36" rx="8" fill="#2c3e50" stroke="#4a6fa5" stroke-width="1.5"/>
+  <polygon points="452,123 442,128 452,133" fill="#2c3e50" stroke="#4a6fa5" stroke-width="1"/>
+  <text x="522" y="121" text-anchor="middle" fill="#e0c97f" font-size="10">"How many students</text>
+  <text x="522" y="134" text-anchor="middle" fill="#e0c97f" font-size="10">at Avory Primary?"</text>
+
+  <!-- Arrow down: question → MCP server -->
+  <line x1="430" y1="152" x2="430" y2="188" stroke="#27ae60" stroke-width="2.5" marker-end="url(#arrowhead)"/>
+
+  <!-- MCP Server box -->
+  <rect x="390" y="190" width="160" height="44" rx="6" fill="#1e3a2f" stroke="#27ae60" stroke-width="2"/>
+  <text x="470" y="208" text-anchor="middle" fill="#27ae60" font-size="11" font-weight="bold">openemis-mcp</text>
+  <text x="470" y="224" text-anchor="middle" fill="#7fb3a0" font-size="9">645 resources · 24 playbooks</text>
+
+  <!-- Arrow down: MCP → answer -->
+  <line x1="430" y1="236" x2="430" y2="268" stroke="#27ae60" stroke-width="2.5" marker-end="url(#arrowhead)"/>
+
+  <!-- Answer bubble -->
+  <rect x="390" y="270" width="160" height="40" rx="6" fill="#1e3a2f" stroke="#27ae60" stroke-width="1.5"/>
+  <text x="470" y="286" text-anchor="middle" fill="#a8d5c2" font-size="10">"Avory Primary has</text>
+  <text x="470" y="300" text-anchor="middle" fill="#a8d5c2" font-size="10">97 enrolled students."</text>
+
+  <!-- Time label -->
+  <text x="560" y="215" fill="#27ae60" font-size="10" opacity="0.8">~2 sec</text>
+
+  <!-- ═══ BOTTOM LABELS ═══ -->
+  <text x="200" y="356" text-anchor="middle" fill="#4a6fa5" font-size="13" font-style="italic">OpenEMIS (before)</text>
+  <text x="470" y="356" text-anchor="middle" fill="#27ae60" font-size="13" font-style="italic">OpenEMIS-MCP (now)</text>
+
+</svg>
