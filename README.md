@@ -158,6 +158,20 @@ Each line is a JSON object: `{ts, type:"tool_call"|"tool_result"|"tool_error", t
 | 24 | [View Institution Risk Summary and Alert Rules](docs/playbooks/view-institution-risks.md) | Institution | [RU](docs/playbooks/view-institution-risks.ru.md) · [ES](docs/playbooks/view-institution-risks.es.md) · [HI](docs/playbooks/view-institution-risks.hi.md) · [AR](docs/playbooks/view-institution-risks.ar.md) |
 ---
 
+## Core compatibility
+
+Tested against **OpenEMIS Core 5.9** (master, May 2026). 5.7 and 5.8 deployments are also supported — the public REST surface is unchanged.
+
+### Optional capability flag — POCOR-9660 multi-id GET
+
+`openemis_get` accepts `params.ids = "1,2,3"` for batch lookups. By default the handler fans out N parallel single-record GETs (Core ≤ 5.9 master has no native multi-id filter). Once a deployment carries POCOR-9660 (`?id=1,2,3` support in `CrudApiController`), set:
+
+```bash
+OPENEMIS_CORE_IN_OPERATOR=1
+```
+
+The handler then collapses the batch into a single round-trip. Default off — flip on after upstream merge.
+
 ## Architecture
 
 ```
