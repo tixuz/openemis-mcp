@@ -33,7 +33,7 @@ No code. No JSON. Just ask.
 
 **24 curated playbooks** covering attendance, assessment, student profiles, staff profiles, infrastructure, meals, risk dashboards, class reports, timetables, and more — each verified against the v5 manifest at 100% resource coverage.
 
-**Translations available:** Russian · Spanish · Hindi · Arabic — all 24 playbooks in all four languages.
+**Translations:** [Русский](docs/translations/README.ru.md) · [Español](docs/translations/README.es.md) · [हिन्दी](docs/translations/README.hi.md) · [العربية](docs/translations/README.ar.md) — all 24 playbooks also in all four languages.
 
 > ✏️ **Write operations** (creating/updating records in OpenEMIS) require **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**. This free server is intentionally read-only — `post`, `put`, and `delete` are not available.
 
