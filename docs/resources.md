@@ -1,6 +1,8 @@
 # OpenEMIS MCP — Resource Reference
 
-> **645 resources** · **2,564 endpoints** · v0.3.0
+> **675 resources** · **3355 endpoints** · v1.1.0 · OpenEMIS Core 5.10.0
+>
+> This is the FREE distribution — read-only. Writes (POST/PUT/DELETE) live in [openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro).
 >
 > The MCP does **not** load this table into AI context. It uses a compact
 > `grouped-manifest.json` (~210 KB) with domain buckets + playbooks.
@@ -11,674 +13,744 @@
 | Symbol | Meaning |
 |---|---|
 | ✅ | Available |
-| 🔒 | Workflow-only — use playbook, not direct API call |
+| 🔒 | Workflow-only — use the appropriate playbook, not a direct write |
 | — | Not available for this resource |
 
 ## Resources
-
 | Resource | Domain | GET | POST | PUT | DELETE | Write Status |
 |---|---|:---:|:---:|:---:|:---:|---|
-| **── Alert* ──** | | | | | | |
-| `alert-logs` | Alert* | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `alert-rules` | Alert* | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| **── Api* ──** | | | | | | |
-| `api-authorizations` | Api* | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `api-credentials` | Api* | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `api-credentials-scopes` | Api* | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `api-scopes` | Api* | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `api-securities` | Api* | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `api-securities-scopes` | Api* | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| **── Area* ──** | | | | | | |
-| `area-administrative-levels` | Area* | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `area-administratives` | Area* | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `area-levels` | Area* | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| **── Assessment ──** | | | | | | |
-| `academic-period-levels` | Assessment | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `academic-periods` | Assessment | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `appraisal-dropdown-options` | Assessment | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `assessment-grading-options` | Assessment | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `assessment-grading-types` | Assessment | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `assessment-item-results` | Assessment | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `assessment-item-results-archived` | Assessment | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `assessment-item-student-exemptions` | Assessment | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `assessment-items` | Assessment | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `assessment-items-grading-types` | Assessment | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `assessment-period-excluded-security-roles` | Assessment | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `assessment-periods` | Assessment | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `assessments` | Assessment | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `competency-grading-options` | Assessment | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `competency-grading-types` | Assessment | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `config-item-options` | Assessment | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `contact-options` | Assessment | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `deleted-records` | Assessment | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `education-certifications` | Assessment | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `education-cycles` | Assessment | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `education-grades` | Assessment | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `education-grades-cumulative-gpa` | Assessment | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `education-grades-subjects` | Assessment | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `education-level-isced` | Assessment | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `education-levels` | Assessment | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `education-programme-orientations` | Assessment | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `education-programmes` | Assessment | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `education-programmes-next-programmes` | Assessment | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `education-systems` | Assessment | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `field-options` | Assessment | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `gpa-grading-options` | Assessment | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `gpa-grading-types` | Assessment | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `inserted-records` | Assessment | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `outcome-grading-options` | Assessment | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `outcome-grading-types` | Assessment | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `outcome-periods` | Assessment | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `rubric-criteria-options` | Assessment | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `rubric-template-options` | Assessment | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `shift-options` | Assessment | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `summary-area-provider-grade-subject-results` | Assessment | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `summary-assessment-item-results` | Assessment | ✅ | ✅ | — | — | ✅ v0.3.0 live |
-| `summary-grade-gender-ages` | Assessment | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `summary-grade-status-genders` | Assessment | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `system-processes` | Assessment | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `training-session-results` | Assessment | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `training-session-trainee-results` | Assessment | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| **── Attendance ──** | | | | | | |
-| `absence-types` | Attendance | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `appraisal-periods-types` | Attendance | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `appraisal-types` | Attendance | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `authentication-types` | Attendance | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `budget-types` | Attendance | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `building-types` | Attendance | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `bus-types` | Attendance | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `calendar-event-dates` | Attendance | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `calendar-events` | Attendance | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `calendar-types` | Attendance | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `case-types` | Attendance | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `class-profiles` | Attendance | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `comment-types` | Attendance | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `contact-types` | Attendance | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `demographic-types` | Attendance | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `expenditure-types` | Attendance | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `extracurricular-types` | Attendance | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `fee-types` | Attendance | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `floor-types` | Attendance | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `food-types` | Attendance | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `guidance-types` | Attendance | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `identity-types` | Attendance | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `income-types` | Attendance | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `infrastructure-attachment-types` | Attendance | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `infrastructure-need-types` | Attendance | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `infrastructure-wash-hygiene-types` | Attendance | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `infrastructure-wash-sanitation-types` | Attendance | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `infrastructure-wash-sewage-types` | Attendance | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `infrastructure-wash-waste-types` | Attendance | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `infrastructure-wash-water-types` | Attendance | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-class-attendance-records` | Attendance | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-staff-attendances` | Attendance | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `insurance-types` | Attendance | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `land-types` | Attendance | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `license-types` | Attendance | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `meal-programme-types` | Attendance | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `meal-target-types` | Attendance | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `quality-visit-types` | Attendance | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `room-types` | Attendance | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `salary-addition-types` | Attendance | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `scholarship-attachment-types` | Attendance | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `scholarship-financial-assistance-types` | Attendance | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `scholarships-scholarship-attachment-types` | Attendance | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `special-need-types` | Attendance | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `special-needs-device-types` | Attendance | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `special-needs-diagnostics-types` | Attendance | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `special-needs-plan-types` | Attendance | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `special-needs-referrer-types` | Attendance | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `special-needs-service-types` | Attendance | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `student-absence-reasons` | Attendance | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `student-attendance-mark-types` | Attendance | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `student-attendance-marked-records` | Attendance | ✅ | ✅ | ✅ | ✅ | 🔒 Workflow-only |
-| `student-attendance-per-day-periods` | Attendance | ✅ | ✅ | ✅ | ✅ | 🔒 Workflow-only |
-| `student-attendance-types` | Attendance | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `student-mark-type-status-grades` | Attendance | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `summary-area-institution-grade-attendances` | Attendance | ✅ | ✅ | — | — | ✅ v0.3.0 live |
-| `summary-isced-sectors` | Attendance | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `summary-programme-sector-genders` | Attendance | ✅ | ✅ | — | — | ✅ v0.3.0 live |
-| `summary-programme-sector-qualification-genders` | Attendance | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `summary-programme-sector-specialization-genders` | Attendance | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `summary-student-attendances` | Attendance | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `utility-electricity-types` | Attendance | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `utility-internet-types` | Attendance | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| **── Examination ──** | | | | | | |
-| `config-attachments` | Examination | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `config-items` | Examination | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `config-product-lists` | Examination | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `data-dictionary` | Examination | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `data-management-connections` | Examination | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `data-management-copy` | Examination | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `data-management-logs` | Examination | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `education-subjects` | Examination | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `examination-centre-rooms` | Examination | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `examination-centre-rooms-examinations` | Examination | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `examination-centre-rooms-examinations-invigilators` | Examination | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `examination-centre-rooms-examinations-students` | Examination | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `examination-centre-special-needs` | Examination | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `examination-centres` | Examination | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `examination-centres-examinations-institutions` | Examination | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `examination-centres-examinations-invigilators` | Examination | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `examination-centres-examinations-students` | Examination | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `examination-centres-examinations-subjects` | Examination | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `examination-centres-examinations-subjects-students` | Examination | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `examination-grading-options` | Examination | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `examination-grading-types` | Examination | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `examination-student-subject-results` | Examination | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `examination-subjects` | Examination | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `examinations` | Examination | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `external-data-source-attributes` | Examination | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `moodle-api-created-users` | Examination | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `security-group-areas` | Examination | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| **── Institution ──** | | | | | | |
-| `asset-conditions` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `asset-makes` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `asset-models` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `asset-types` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `building-custom-field-values` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `curricular-positions` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `curricular-types` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `custom-field-types` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `custom-field-values` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `custom-forms` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `custom-forms-fields` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `custom-forms-filters` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `custom-modules` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `custom-records` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `custom-table-cells` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `custom-table-columns` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `custom-table-rows` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `education-field-of-studies` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `education-subjects-field-of-studies` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `feeders-institutions` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `field-types` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `floor-custom-field-values` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `infrastructure-conditions` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `infrastructure-custom-field-options` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `infrastructure-custom-fields` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `infrastructure-custom-forms` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `infrastructure-custom-forms-fields` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `infrastructure-custom-forms-filters` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `infrastructure-levels` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `infrastructure-needs` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `infrastructure-ownerships` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `infrastructure-project-funding-sources` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `infrastructure-projects` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `infrastructure-projects-needs` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `infrastructure-statuses` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `infrastructure-utility-electricities` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `infrastructure-utility-internets` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `infrastructure-utility-telephones` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `infrastructure-wash-hygiene-educations` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `infrastructure-wash-hygiene-quantities` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `infrastructure-wash-hygiene-soapash-availabilities` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `infrastructure-wash-hygienes` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `infrastructure-wash-sanitation-accessibilities` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `infrastructure-wash-sanitation-qualities` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `infrastructure-wash-sanitation-quantities` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `infrastructure-wash-sanitation-uses` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `infrastructure-wash-sanitations` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `infrastructure-wash-sewage-functionalities` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `infrastructure-wash-sewages` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `infrastructure-wash-waste-functionalities` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `infrastructure-wash-wastes` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `infrastructure-wash-water-accessibilities` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `infrastructure-wash-water-functionalities` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `infrastructure-wash-water-proximities` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `infrastructure-wash-water-qualities` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `infrastructure-wash-water-quantities` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `infrastructure-wash-waters` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-activities` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-assets` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-association-staff` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-association-student` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-associations` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-attachment-types` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-attachments` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-bank-accounts` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-buildings` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-buses` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-buses-transport-features` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-case-comments` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-case-links` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-case-records` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-cases` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-class-grades` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-class-students` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-class-subjects` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-classes-custom-field-values` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-committee-attachments` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-committee-meeting` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-committees` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-competency-item-comments` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-competency-period-comments` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-contact-persons` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-courses` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-curricular-students` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-curriculars` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-custom-field-options` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-custom-field-values` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-custom-fields` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-custom-forms` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-custom-forms-fields` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-custom-forms-filters` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-custom-table-cells` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-custom-table-columns` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-custom-table-rows` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-departments` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-expenditures` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-fee-types` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-fees` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-genders` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-grades` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-incomes` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-infrastructure-attachments` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-lands` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-localities` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-meal-programmes` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-outcome-results` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-outcome-subject-comments` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-ownerships` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-program-grade-subjects` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-providers` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-quality-rubric-answers` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-quality-rubrics` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-quality-visits` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-repeater-survey-answers` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-repeater-survey-table-cells` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-report-card-processes` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-risks` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-rooms` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-scanned` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-sectors` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-statistics` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-statuses` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-student-admission` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-student-enrolment` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-student-risks` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-student-survey-answers` | Institution | ✅ | — | — | — | — read-only |
-| `institution-student-survey-table-cells` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-student-surveys` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-student-transfers` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-student-visit-requests` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-student-visits` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-students-report-cards` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-students-tmp` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-subject-students` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-subjects` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-subjects-rooms` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-survey-answers` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-survey-table-cells` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-textbooks` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-transport-providers` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-trip-days` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-trip-passengers` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-trips` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-types` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-units` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-visit-requests` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institutions` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `land-custom-field-values` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `locale-content-translations` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `risks` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `scholarship-application-institution-choices` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `scholarship-institution-choice-statuses` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `scholarship-institution-choice-types` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `security-group-institutions` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `summary-institution-grade-nationalities` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `summary-institution-grades` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `summary-institution-nationalities` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `summary-institution-room-types` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `summary-institution-student-absences` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `summary-institution-student-subject-results` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `summary-institutions` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `survey-filter-institution-providers` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `survey-filter-institution-types` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `transport-statuses` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `trip-types` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `workflow-rule-events` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `workflow-rules` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `workflow-steps` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `workflow-steps-params` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `workflow-transitions` | Institution | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| **── Qualification* ──** | | | | | | |
-| `qualification-levels` | Qualification* | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `qualification-specialisations` | Qualification* | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| **── Report ──** | | | | | | |
-| `areas` | Report | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `class-profile-processes` | Report | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `class-profile-templates` | Report | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `education-grades-gpa` | Report | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `email-process-attachments` | Report | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `email-processes` | Report | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `email-templates` | Report | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-classes-secondary-staff` | Report | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-repeater-surveys` | Report | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-report-cards` | Report | ✅ | ✅ | ✅ | — | ✅ v0.3.0 live |
-| `institution-students-gpa` | Report | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-surveys` | Report | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `outcome-templates` | Report | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `profile-templates` | Report | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `report-card-comment-codes` | Report | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `report-card-email-processes` | Report | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `report-card-excluded-security-roles` | Report | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `report-card-processes` | Report | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `report-card-subjects` | Report | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `report-cards` | Report | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `report-progress` | Report | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `rubric-templates` | Report | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `survey-filter-areas` | Report | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `survey-forms` | Report | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `survey-forms-questions` | Report | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| **── Schedule ──** | | | | | | |
-| `institution-schedule-curriculum-lessons` | Schedule | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-schedule-intervals` | Schedule | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-schedule-lesson-details` | Schedule | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-schedule-lesson-rooms` | Schedule | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-schedule-lessons` | Schedule | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-schedule-non-curriculum-lessons` | Schedule | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-schedule-terms` | Schedule | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-schedule-timeslots` | Schedule | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-schedule-timetable-customizes` | Schedule | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-schedule-timetables` | Schedule | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-shifts` | Schedule | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `scholarship-recipient-academic-standings` | Schedule | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
+| **── Institution* ──** | | | | | | |
+| `institution-accreditations` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-activities` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-assets` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-associations` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-association-staff` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-association-student` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-attachments` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-attachment-types` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-bank-accounts` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-budgets` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-buildings` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-buses` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-buses-transport-features` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-case-comments` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-case-links` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-case-records` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-cases` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-class-attendance-records` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-classes` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-classes-custom-field-values` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-classes-secondary-staff` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-class-grades` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-class-students` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-class-subjects` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-committee-attachments` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-committee-meeting` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-committees` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-committee-types` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-competency-item-comments` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-competency-period-comments` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-competency-results` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-contact-persons` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-courses` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-curriculars` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-curricular-staff` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-curricular-students` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-custom-field-options` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-custom-fields` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-custom-field-values` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-custom-forms` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-custom-forms-fields` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-custom-forms-filters` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-custom-table-cells` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-custom-table-columns` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-custom-table-rows` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-departments` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-expenditures` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-fees` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-fee-types` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-floors` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-genders` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-grades` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-incomes` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-infrastructure-attachments` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-lands` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-localities` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-meal-programmes` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-meal-students` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-outcome-results` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-outcome-subject-comments` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-ownerships` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-positions` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-program-grade-subjects` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-providers` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-quality-rubric-answers` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-quality-rubrics` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-quality-visits` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-registrations` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-repeater-survey-answers` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-repeater-surveys` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-repeater-survey-table-cells` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-report-card-processes` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-report-cards` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-risks` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-rooms` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-scanned` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-schedule-curriculum-lessons` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-schedule-intervals` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-schedule-lesson-details` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-schedule-lesson-rooms` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-schedule-lessons` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-schedule-non-curriculum-lessons` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-schedule-terms` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-schedule-timeslots` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-schedule-timetable-customizes` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-schedule-timetables` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-sectors` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-shift-periods` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-shifts` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-staff` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-staff-appraisals` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-staff-attendance-activities` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-staff-attendances` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-staff-duties` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-staff-leave` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-staff-leave-archived` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-staff-position-profiles` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-staff-releases` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-staff-shifts` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-staff-survey-answers` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-staff-surveys` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-staff-survey-table-cells` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-staff-transfers` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-statistics` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-statuses` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-student-absence-days` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-student-absence-details` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-student-absences` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-student-admission` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-student-enrolment` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-student-risks` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-students` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-students-gpa` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-students-report-cards` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-students-report-cards-comments` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-students-tmp` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-student-survey-answers` | Institution* | ✅ | — | — | — | — |
+| `institution-student-surveys` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-student-survey-table-cells` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-student-transfers` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-student-visit-requests` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-student-visits` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-student-withdraw` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-subjects` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-subjects-rooms` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-subject-staff` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-subject-students` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-survey-answers` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-surveys` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-survey-table-cells` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-textbooks` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-transport-providers` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-trip-days` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-trip-passengers` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-trips` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-types` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-units` | Institution* | ✅ | — | — | — | — (pro) |
+| `institution-visit-requests` | Institution* | ✅ | — | — | — | — (pro) |
+| **── Staff* ──** | | | | | | |
+| `staff-attachment-types` | Staff* | ✅ | — | — | — | — (pro) |
+| `staff-behaviour-attachments` | Staff* | ✅ | — | — | — | — (pro) |
+| `staff-behaviour-categories` | Staff* | ✅ | — | — | — | — (pro) |
+| `staff-behaviours` | Staff* | ✅ | — | — | — | — (pro) |
+| `staff-change-types` | Staff* | ✅ | — | — | — | — (pro) |
+| `staff-custom-field-options` | Staff* | ✅ | — | — | — | — (pro) |
+| `staff-custom-fields` | Staff* | ✅ | — | — | — | — (pro) |
+| `staff-custom-field-values` | Staff* | ✅ | — | — | — | — (pro) |
+| `staff-custom-forms` | Staff* | ✅ | — | — | — | — (pro) |
+| `staff-custom-forms-fields` | Staff* | ✅ | — | — | — | — (pro) |
+| `staff-custom-table-cells` | Staff* | ✅ | — | — | — | — (pro) |
+| `staff-custom-table-columns` | Staff* | ✅ | — | — | — | — (pro) |
+| `staff-custom-table-rows` | Staff* | ✅ | — | — | — | — (pro) |
+| `staff-duties` | Staff* | ✅ | — | — | — | — (pro) |
+| `staff-employment-statuses` | Staff* | ✅ | — | — | — | — (pro) |
+| `staff-extracurriculars` | Staff* | ✅ | — | — | — | — (pro) |
+| `staff-leave-entitlements` | Staff* | ✅ | — | — | — | — (pro) |
+| `staff-leave-policies` | Staff* | ✅ | — | — | — | — (pro) |
+| `staff-leave-policy-types` | Staff* | ✅ | — | — | — | — (pro) |
+| `staff-leave-types` | Staff* | ✅ | — | — | — | — (pro) |
+| `staff-licenses` | Staff* | ✅ | — | — | — | — (pro) |
+| `staff-licenses-classifications` | Staff* | ✅ | — | — | — | — (pro) |
+| `staff-memberships` | Staff* | ✅ | — | — | — | — (pro) |
+| `staff-payslips` | Staff* | ✅ | — | — | — | — (pro) |
+| `staff-position-categories` | Staff* | ✅ | — | — | — | — (pro) |
+| `staff-position-grades` | Staff* | ✅ | — | — | — | — (pro) |
+| `staff-position-titles` | Staff* | ✅ | — | — | — | — (pro) |
+| `staff-position-titles-grades` | Staff* | ✅ | — | — | — | — (pro) |
+| `staff-profile-templates` | Staff* | ✅ | — | — | — | — (pro) |
+| `staff-qualifications` | Staff* | ✅ | — | — | — | — (pro) |
+| `staff-qualifications-specialisations` | Staff* | ✅ | — | — | — | — (pro) |
+| `staff-qualifications-subjects` | Staff* | ✅ | — | — | — | — (pro) |
+| `staff-report-card-email-processes` | Staff* | ✅ | — | — | — | — (pro) |
+| `staff-report-card-processes` | Staff* | ✅ | — | — | — | — (pro) |
+| `staff-report-cards` | Staff* | ✅ | — | — | — | — (pro) |
+| `staff-salaries` | Staff* | ✅ | — | — | — | — (pro) |
+| `staff-salary-transactions` | Staff* | ✅ | — | — | — | — (pro) |
+| `staff-statuses` | Staff* | ✅ | — | — | — | — (pro) |
+| `staff-training-applications` | Staff* | ✅ | — | — | — | — (pro) |
+| `staff-training-categories` | Staff* | ✅ | — | — | — | — (pro) |
+| `staff-training-needs` | Staff* | ✅ | — | — | — | — (pro) |
+| `staff-trainings` | Staff* | ✅ | — | — | — | — (pro) |
+| `staff-training-self-studies` | Staff* | ✅ | — | — | — | — (pro) |
+| `staff-training-self-study-attachments` | Staff* | ✅ | — | — | — | — (pro) |
+| `staff-training-self-study-results` | Staff* | ✅ | — | — | — | — (pro) |
+| `staff-types` | Staff* | ✅ | — | — | — | — (pro) |
+| **── Infrastructure* ──** | | | | | | |
+| `infrastructure-attachment-types` | Infrastructure* | ✅ | — | — | — | — (pro) |
+| `infrastructure-conditions` | Infrastructure* | ✅ | — | — | — | — (pro) |
+| `infrastructure-custom-field-options` | Infrastructure* | ✅ | — | — | — | — (pro) |
+| `infrastructure-custom-fields` | Infrastructure* | ✅ | — | — | — | — (pro) |
+| `infrastructure-custom-forms` | Infrastructure* | ✅ | — | — | — | — (pro) |
+| `infrastructure-custom-forms-fields` | Infrastructure* | ✅ | — | — | — | — (pro) |
+| `infrastructure-custom-forms-filters` | Infrastructure* | ✅ | — | — | — | — (pro) |
+| `infrastructure-levels` | Infrastructure* | ✅ | — | — | — | — (pro) |
+| `infrastructure-needs` | Infrastructure* | ✅ | — | — | — | — (pro) |
+| `infrastructure-need-types` | Infrastructure* | ✅ | — | — | — | — (pro) |
+| `infrastructure-ownerships` | Infrastructure* | ✅ | — | — | — | — (pro) |
+| `infrastructure-project-funding-sources` | Infrastructure* | ✅ | — | — | — | — (pro) |
+| `infrastructure-projects` | Infrastructure* | ✅ | — | — | — | — (pro) |
+| `infrastructure-projects-needs` | Infrastructure* | ✅ | — | — | — | — (pro) |
+| `infrastructure-statuses` | Infrastructure* | ✅ | — | — | — | — (pro) |
+| `infrastructure-utility-electricities` | Infrastructure* | ✅ | — | — | — | — (pro) |
+| `infrastructure-utility-internets` | Infrastructure* | ✅ | — | — | — | — (pro) |
+| `infrastructure-utility-telephones` | Infrastructure* | ✅ | — | — | — | — (pro) |
+| `infrastructure-wash-hygiene-educations` | Infrastructure* | ✅ | — | — | — | — (pro) |
+| `infrastructure-wash-hygiene-quantities` | Infrastructure* | ✅ | — | — | — | — (pro) |
+| `infrastructure-wash-hygienes` | Infrastructure* | ✅ | — | — | — | — (pro) |
+| `infrastructure-wash-hygiene-soapash-availabilities` | Infrastructure* | ✅ | — | — | — | — (pro) |
+| `infrastructure-wash-hygiene-types` | Infrastructure* | ✅ | — | — | — | — (pro) |
+| `infrastructure-wash-sanitation-accessibilities` | Infrastructure* | ✅ | — | — | — | — (pro) |
+| `infrastructure-wash-sanitation-qualities` | Infrastructure* | ✅ | — | — | — | — (pro) |
+| `infrastructure-wash-sanitation-quantities` | Infrastructure* | ✅ | — | — | — | — (pro) |
+| `infrastructure-wash-sanitations` | Infrastructure* | ✅ | — | — | — | — (pro) |
+| `infrastructure-wash-sanitation-types` | Infrastructure* | ✅ | — | — | — | — (pro) |
+| `infrastructure-wash-sanitation-uses` | Infrastructure* | ✅ | — | — | — | — (pro) |
+| `infrastructure-wash-sewage-functionalities` | Infrastructure* | ✅ | — | — | — | — (pro) |
+| `infrastructure-wash-sewages` | Infrastructure* | ✅ | — | — | — | — (pro) |
+| `infrastructure-wash-sewage-types` | Infrastructure* | ✅ | — | — | — | — (pro) |
+| `infrastructure-wash-waste-functionalities` | Infrastructure* | ✅ | — | — | — | — (pro) |
+| `infrastructure-wash-wastes` | Infrastructure* | ✅ | — | — | — | — (pro) |
+| `infrastructure-wash-waste-types` | Infrastructure* | ✅ | — | — | — | — (pro) |
+| `infrastructure-wash-water-accessibilities` | Infrastructure* | ✅ | — | — | — | — (pro) |
+| `infrastructure-wash-water-functionalities` | Infrastructure* | ✅ | — | — | — | — (pro) |
+| `infrastructure-wash-water-proximities` | Infrastructure* | ✅ | — | — | — | — (pro) |
+| `infrastructure-wash-water-qualities` | Infrastructure* | ✅ | — | — | — | — (pro) |
+| `infrastructure-wash-water-quantities` | Infrastructure* | ✅ | — | — | — | — (pro) |
+| `infrastructure-wash-waters` | Infrastructure* | ✅ | — | — | — | — (pro) |
+| `infrastructure-wash-water-types` | Infrastructure* | ✅ | — | — | — | — (pro) |
+| **── Student* ──** | | | | | | |
+| `student-absence-reasons` | Student* | ✅ | — | — | — | — (pro) |
+| `student-admission-custom-field-values` | Student* | ✅ | — | — | — | — (pro) |
+| `student-attachment-types` | Student* | ✅ | — | — | — | — (pro) |
+| `student-attendance-marked-records` | Student* | ✅ | — | — | — | — (pro) |
+| `student-attendance-mark-types` | Student* | ✅ | — | — | — | — (pro) |
+| `student-attendance-per-day-periods` | Student* | ✅ | — | — | — | — (pro) |
+| `student-attendance-types` | Student* | ✅ | — | — | — | — (pro) |
+| `student-behaviour-attachments` | Student* | ✅ | — | — | — | — (pro) |
+| `student-behaviour-categories` | Student* | ✅ | — | — | — | — (pro) |
+| `student-behaviour-classifications` | Student* | ✅ | — | — | — | — (pro) |
+| `student-behaviours` | Student* | ✅ | — | — | — | — (pro) |
+| `student-custom-field-options` | Student* | ✅ | — | — | — | — (pro) |
+| `student-custom-fields` | Student* | ✅ | — | — | — | — (pro) |
+| `student-custom-field-values` | Student* | ✅ | — | — | — | — (pro) |
+| `student-custom-filters` | Student* | ✅ | — | — | — | — (pro) |
+| `student-custom-forms` | Student* | ✅ | — | — | — | — (pro) |
+| `student-custom-forms-fields` | Student* | ✅ | — | — | — | — (pro) |
+| `student-custom-table-cells` | Student* | ✅ | — | — | — | — (pro) |
+| `student-custom-table-columns` | Student* | ✅ | — | — | — | — (pro) |
+| `student-custom-table-rows` | Student* | ✅ | — | — | — | — (pro) |
+| `student-extracurriculars` | Student* | ✅ | — | — | — | — (pro) |
+| `student-fees` | Student* | ✅ | — | — | — | — (pro) |
+| `student-guardians` | Student* | ✅ | — | — | — | — (pro) |
+| `student-mark-type-statuses` | Student* | ✅ | — | — | — | — (pro) |
+| `student-mark-type-status-grades` | Student* | ✅ | — | — | — | — (pro) |
+| `student-meal-marked-records` | Student* | ✅ | — | — | — | — (pro) |
+| `student-profile-security-roles` | Student* | ✅ | — | — | — | — (pro) |
+| `student-profile-templates` | Student* | ✅ | — | — | — | — (pro) |
+| `student-report-card-email-processes` | Student* | ✅ | — | — | — | — (pro) |
+| `student-report-card-processes` | Student* | ✅ | — | — | — | — (pro) |
+| `student-report-cards` | Student* | ✅ | — | — | — | — (pro) |
+| `student-risks-criterias` | Student* | ✅ | — | — | — | — (pro) |
+| `student-statuses` | Student* | ✅ | — | — | — | — (pro) |
+| `student-status-updates` | Student* | ✅ | — | — | — | — (pro) |
+| `student-transfer-reasons` | Student* | ✅ | — | — | — | — (pro) |
+| `student-visit-purpose-types` | Student* | ✅ | — | — | — | — (pro) |
+| `student-visit-types` | Student* | ✅ | — | — | — | — (pro) |
+| `student-withdraw-reasons` | Student* | ✅ | — | — | — | — (pro) |
+| **── User* ──** | | | | | | |
+| `user-activities` | User* | ✅ | — | — | — | — (pro) |
+| `user-attachments` | User* | ✅ | — | — | — | — (pro) |
+| `user-attachments-roles` | User* | ✅ | — | — | — | — (pro) |
+| `user-awards` | User* | ✅ | — | — | — | — (pro) |
+| `user-bank-accounts` | User* | ✅ | — | — | — | — (pro) |
+| `user-body-masses` | User* | ✅ | — | — | — | — (pro) |
+| `user-comments` | User* | ✅ | — | — | — | — (pro) |
+| `user-contacts` | User* | ✅ | — | — | — | — (pro) |
+| `user-demographics` | User* | ✅ | — | — | — | — (pro) |
+| `user-employments` | User* | ✅ | — | — | — | — (pro) |
+| `user-health-allergies` | User* | ✅ | — | — | — | — (pro) |
+| `user-health-consultations` | User* | ✅ | — | — | — | — (pro) |
+| `user-health-families` | User* | ✅ | — | — | — | — (pro) |
+| `user-health-histories` | User* | ✅ | — | — | — | — (pro) |
+| `user-health-immunizations` | User* | ✅ | — | — | — | — (pro) |
+| `user-health-medications` | User* | ✅ | — | — | — | — (pro) |
+| `user-healths` | User* | ✅ | — | — | — | — (pro) |
+| `user-health-tests` | User* | ✅ | — | — | — | — (pro) |
+| `user-identities` | User* | ✅ | — | — | — | — (pro) |
+| `user-insurances` | User* | ✅ | — | — | — | — (pro) |
+| `user-languages` | User* | ✅ | — | — | — | — (pro) |
+| `user-nationalities` | User* | ✅ | — | — | — | — (pro) |
+| `user-special-needs-assessments` | User* | ✅ | — | — | — | — (pro) |
+| `user-special-needs-devices` | User* | ✅ | — | — | — | — (pro) |
+| `user-special-needs-diagnostics` | User* | ✅ | — | — | — | — (pro) |
+| `user-special-needs-plans` | User* | ✅ | — | — | — | — (pro) |
+| `user-special-needs-referrals` | User* | ✅ | — | — | — | — (pro) |
+| `user-special-needs-services` | User* | ✅ | — | — | — | — (pro) |
+| **── Training* ──** | | | | | | |
+| `training-course-categories` | Training* | ✅ | — | — | — | — (pro) |
+| `training-courses` | Training* | ✅ | — | — | — | — (pro) |
+| `training-courses-prerequisites` | Training* | ✅ | — | — | — | — (pro) |
+| `training-courses-providers` | Training* | ✅ | — | — | — | — (pro) |
+| `training-courses-result-types` | Training* | ✅ | — | — | — | — (pro) |
+| `training-courses-specialisations` | Training* | ✅ | — | — | — | — (pro) |
+| `training-courses-target-populations` | Training* | ✅ | — | — | — | — (pro) |
+| `training-course-types` | Training* | ✅ | — | — | — | — (pro) |
+| `training-field-of-studies` | Training* | ✅ | — | — | — | — (pro) |
+| `training-levels` | Training* | ✅ | — | — | — | — (pro) |
+| `training-mode-deliveries` | Training* | ✅ | — | — | — | — (pro) |
+| `training-need-categories` | Training* | ✅ | — | — | — | — (pro) |
+| `training-need-competencies` | Training* | ✅ | — | — | — | — (pro) |
+| `training-need-standards` | Training* | ✅ | — | — | — | — (pro) |
+| `training-need-sub-standards` | Training* | ✅ | — | — | — | — (pro) |
+| `training-priorities` | Training* | ✅ | — | — | — | — (pro) |
+| `training-providers` | Training* | ✅ | — | — | — | — (pro) |
+| `training-requirements` | Training* | ✅ | — | — | — | — (pro) |
+| `training-result-types` | Training* | ✅ | — | — | — | — (pro) |
+| `training-session-evaluators` | Training* | ✅ | — | — | — | — (pro) |
+| `training-session-results` | Training* | ✅ | — | — | — | — (pro) |
+| `training-sessions` | Training* | ✅ | — | — | — | — (pro) |
+| `training-sessions-trainees` | Training* | ✅ | — | — | — | — (pro) |
+| `training-session-trainee-results` | Training* | ✅ | — | — | — | — (pro) |
+| `training-session-trainers` | Training* | ✅ | — | — | — | — (pro) |
+| `training-specialisations` | Training* | ✅ | — | — | — | — (pro) |
 | **── Scholarship* ──** | | | | | | |
-| `scholarship-application-attachments` | Scholarship* | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `scholarship-applications` | Scholarship* | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `scholarship-financial-assistances` | Scholarship* | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `scholarship-funding-sources` | Scholarship* | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `scholarship-loans` | Scholarship* | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `scholarship-payment-frequencies` | Scholarship* | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `scholarship-recipient-activities` | Scholarship* | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `scholarship-recipient-collections` | Scholarship* | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `scholarship-recipient-disbursements` | Scholarship* | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `scholarship-recipient-payment-structure-estimates` | Scholarship* | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `scholarship-recipient-payment-structures` | Scholarship* | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `scholarship-recipients` | Scholarship* | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `scholarship-semesters` | Scholarship* | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| **── Staff ──** | | | | | | |
-| `appraisal-criterias` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `appraisal-dropdown-answers` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `appraisal-forms` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `appraisal-forms-criterias` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `appraisal-forms-criterias-scores` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `appraisal-forms-criterias-scores-links` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `appraisal-number-answers` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `appraisal-numbers` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `appraisal-periods` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `appraisal-score-answers` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `appraisal-slider-answers` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `appraisal-sliders` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `appraisal-text-answers` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `behaviour-classifications` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `department-staff` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `historical-staff-leave` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `historical-staff-positions` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-curricular-staff` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-positions` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-shift-periods` | Staff | ✅ | ✅ | — | — | ✅ v0.3.0 live |
-| `institution-staff-appraisals` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-staff-duties` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-staff-leave` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-staff-leave-archived` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-staff-position-profiles` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-staff-releases` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-staff-shifts` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-staff-survey-answers` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-staff-survey-table-cells` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-staff-surveys` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-staff-transfers` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-subject-staff` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `qualification-titles` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `rubric-statuses` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `scholarship-disbursement-categories` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `scholarship-recipient-activity-statuses` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `scholarships-field-of-studies` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `special-needs-service-classification` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `staff-attachment-types` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `staff-behaviour-attachments` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `staff-behaviour-categories` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `staff-behaviours` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `staff-change-types` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `staff-custom-field-options` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `staff-custom-field-values` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `staff-custom-fields` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `staff-custom-forms` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `staff-custom-forms-fields` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `staff-custom-table-cells` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `staff-custom-table-columns` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `staff-custom-table-rows` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `staff-duties` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `staff-employment-statuses` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `staff-leave-entitlements` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `staff-leave-policies` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `staff-leave-policy-types` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `staff-leave-types` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `staff-licenses` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `staff-licenses-classifications` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `staff-memberships` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `staff-payslips` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `staff-position-categories` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `staff-position-grades` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `staff-position-titles` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `staff-position-titles-grades` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `staff-profile-templates` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `staff-qualifications` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `staff-qualifications-specialisations` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `staff-qualifications-subjects` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `staff-report-card-email-processes` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `staff-report-card-processes` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `staff-report-cards` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `staff-salaries` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `staff-salary-transactions` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `staff-statuses` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `staff-training-applications` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `staff-training-categories` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `staff-training-needs` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `staff-training-self-studies` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `staff-training-self-study-attachments` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `staff-training-self-study-results` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `staff-trainings` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `staff-types` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `survey-forms-filters` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `survey-question-choices` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `survey-questions` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `survey-responses` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `survey-status-periods` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `survey-statuses` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `survey-table-columns` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `survey-table-rows` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `textbook-statuses` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `training-course-categories` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `training-course-types` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `training-courses` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `training-courses-result-types` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `training-courses-specialisations` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `training-courses-target-populations` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `training-field-of-studies` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `training-levels` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `training-mode-deliveries` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `training-need-categories` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `training-need-competencies` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `training-need-standards` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `training-need-sub-standards` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `training-priorities` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `training-providers` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `training-requirements` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `training-result-types` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `training-session-evaluators` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `training-session-trainers` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `training-sessions` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `training-sessions-trainees` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `training-specialisations` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `workflow-actions` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `workflow-comments` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `workflow-models` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `workflow-statuses` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `workflow-statuses-steps` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `workflow-steps-roles` | Staff | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| **── Student ──** | | | | | | |
-| `competency-criterias` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `competency-items` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `competency-items-periods` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `competency-periods` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `custom-fields` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `employment-status-types` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `examination-student-subjects` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `health-allergy-types` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `health-conditions` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `health-consultation-types` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `health-immunization-types` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `health-relationships` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `health-test-types` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-competency-results` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-meal-students` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-student-absence-details` | Student | ✅ | ✅ | ✅ | ✅ | 🔒 Workflow-only |
-| `institution-student-withdraw` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-students` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `institution-students-report-cards-comments` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `meal-benefits` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `meal-food-records` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `meal-implementers` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `meal-nutritional-records` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `meal-nutritions` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `meal-programmes` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `meal-ratings` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `meal-received` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `meal-status-types` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `risk-criterias` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `rubric-criterias` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `rubric-status-periods` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `rubric-status-programmes` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `rubric-status-roles` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `special-need-difficulties` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `special-needs-diagnostics-degree` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `student-admission-custom-field-values` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `student-attachment-types` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `student-behaviour-attachments` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `student-behaviour-categories` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `student-behaviour-classifications` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `student-behaviours` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `student-custom-field-options` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `student-custom-field-values` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `student-custom-fields` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `student-custom-filters` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `student-custom-forms` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `student-custom-forms-fields` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `student-custom-table-cells` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `student-custom-table-columns` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `student-custom-table-rows` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `student-extracurriculars` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `student-fees` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `student-guardians` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `student-mark-type-statuses` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `student-profile-security-roles` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `student-profile-templates` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `student-report-card-email-processes` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `student-report-card-processes` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `student-report-cards` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `student-risks-criterias` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `student-status-updates` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `student-statuses` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `student-transfer-reasons` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `student-visit-purpose-types` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `student-visit-types` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `student-withdraw-reasons` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `summary-student-assessments` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `user-activities` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `user-awards` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `user-bank-accounts` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `user-body-masses` | Student | ✅ | ✅ | — | — | ✅ v0.3.0 live |
-| `user-comments` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `user-demographics` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `user-employments` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `user-health-allergies` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `user-health-consultations` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `user-health-families` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `user-health-histories` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `user-health-immunizations` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `user-health-medications` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `user-health-tests` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `user-healths` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `user-insurances` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `user-languages` | Student | ✅ | ✅ | — | — | ✅ v0.3.0 live |
-| `user-special-needs-assessments` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `user-special-needs-devices` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `user-special-needs-plans` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `user-special-needs-referrals` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `user-special-needs-services` | Student | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| **── System* ──** | | | | | | |
-| `system-errors` | System* | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `system-patches` | System* | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `system-updates` | System* | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| **── Textbook* ──** | | | | | | |
-| `textbook-conditions` | Textbook* | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `textbook-dimensions` | Textbook* | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| **── User ──** | | | | | | |
-| `alerts-roles` | User | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `idp-oauth` | User | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `insurance-providers` | User | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `messaging-security-roles` | User | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `openemis-temps` | User | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `security-functions` | User | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `security-group-users` | User | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `security-groups` | User | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `security-rest-sessions` | User | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `security-role-functions` | User | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `security-roles` | User | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `security-user-codes` | User | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `security-user-logins` | User | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `security-user-password-requests` | User | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `security-user-sessions` | User | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `security-users` | User | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `system-authentications` | User | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `user-attachments` | User | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `user-attachments-roles` | User | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `user-contacts` | User | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `user-identities` | User | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `user-nationalities` | User | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
+| `scholarship-application-attachments` | Scholarship* | ✅ | — | — | — | — (pro) |
+| `scholarship-application-institution-choices` | Scholarship* | ✅ | — | — | — | — (pro) |
+| `scholarship-applications` | Scholarship* | ✅ | — | — | — | — (pro) |
+| `scholarship-attachment-types` | Scholarship* | ✅ | — | — | — | — (pro) |
+| `scholarship-disbursement-categories` | Scholarship* | ✅ | — | — | — | — (pro) |
+| `scholarship-financial-assistances` | Scholarship* | ✅ | — | — | — | — (pro) |
+| `scholarship-financial-assistance-types` | Scholarship* | ✅ | — | — | — | — (pro) |
+| `scholarship-funding-sources` | Scholarship* | ✅ | — | — | — | — (pro) |
+| `scholarship-institution-choice-statuses` | Scholarship* | ✅ | — | — | — | — (pro) |
+| `scholarship-institution-choice-types` | Scholarship* | ✅ | — | — | — | — (pro) |
+| `scholarship-loans` | Scholarship* | ✅ | — | — | — | — (pro) |
+| `scholarship-payment-frequencies` | Scholarship* | ✅ | — | — | — | — (pro) |
+| `scholarship-recipient-academic-standings` | Scholarship* | ✅ | — | — | — | — (pro) |
+| `scholarship-recipient-activities` | Scholarship* | ✅ | — | — | — | — (pro) |
+| `scholarship-recipient-activity-statuses` | Scholarship* | ✅ | — | — | — | — (pro) |
+| `scholarship-recipient-collections` | Scholarship* | ✅ | — | — | — | — (pro) |
+| `scholarship-recipient-disbursements` | Scholarship* | ✅ | — | — | — | — (pro) |
+| `scholarship-recipient-payment-structure-estimates` | Scholarship* | ✅ | — | — | — | — (pro) |
+| `scholarship-recipient-payment-structures` | Scholarship* | ✅ | — | — | — | — (pro) |
+| `scholarship-recipients` | Scholarship* | ✅ | — | — | — | — (pro) |
+| `scholarship-semesters` | Scholarship* | ✅ | — | — | — | — (pro) |
+| **── Summary* ──** | | | | | | |
+| `summary-area-institution-grade-attendances` | Summary* | ✅ | — | — | — | — (pro) |
+| `summary-area-provider-grade-subject-results` | Summary* | ✅ | — | — | — | — (pro) |
+| `summary-assessment-item-results` | Summary* | ✅ | — | — | — | — (pro) |
+| `summary-grade-gender-ages` | Summary* | ✅ | — | — | — | — (pro) |
+| `summary-grade-status-genders` | Summary* | ✅ | — | — | — | — (pro) |
+| `summary-institution-grade-nationalities` | Summary* | ✅ | — | — | — | — (pro) |
+| `summary-institution-grades` | Summary* | ✅ | — | — | — | — (pro) |
+| `summary-institution-nationalities` | Summary* | ✅ | — | — | — | — (pro) |
+| `summary-institution-room-types` | Summary* | ✅ | — | — | — | — (pro) |
+| `summary-institutions` | Summary* | ✅ | — | — | — | — (pro) |
+| `summary-institution-student-absences` | Summary* | ✅ | — | — | — | — (pro) |
+| `summary-institution-student-subject-results` | Summary* | ✅ | — | — | — | — (pro) |
+| `summary-isced-sectors` | Summary* | ✅ | — | — | — | — (pro) |
+| `summary-programme-sector-genders` | Summary* | ✅ | — | — | — | — (pro) |
+| `summary-programme-sector-qualification-genders` | Summary* | ✅ | — | — | — | — (pro) |
+| `summary-programme-sector-specialization-genders` | Summary* | ✅ | — | — | — | — (pro) |
+| `summary-student-assessments` | Summary* | ✅ | — | — | — | — (pro) |
+| `summary-student-attendances` | Summary* | ✅ | — | — | — | — (pro) |
+| **── Examination* ──** | | | | | | |
+| `examination-centre-rooms` | Examination* | ✅ | — | — | — | — (pro) |
+| `examination-centre-rooms-examinations` | Examination* | ✅ | — | — | — | — (pro) |
+| `examination-centre-rooms-examinations-invigilators` | Examination* | ✅ | — | — | — | — (pro) |
+| `examination-centre-rooms-examinations-students` | Examination* | ✅ | — | — | — | — (pro) |
+| `examination-centres` | Examination* | ✅ | — | — | — | — (pro) |
+| `examination-centres-examinations` | Examination* | ✅ | — | — | — | — (pro) |
+| `examination-centres-examinations-institutions` | Examination* | ✅ | — | — | — | — (pro) |
+| `examination-centres-examinations-invigilators` | Examination* | ✅ | — | — | — | — (pro) |
+| `examination-centres-examinations-students` | Examination* | ✅ | — | — | — | — (pro) |
+| `examination-centres-examinations-subjects` | Examination* | ✅ | — | — | — | — (pro) |
+| `examination-centres-examinations-subjects-students` | Examination* | ✅ | — | — | — | — (pro) |
+| `examination-centre-special-needs` | Examination* | ✅ | — | — | — | — (pro) |
+| `examination-grading-options` | Examination* | ✅ | — | — | — | — (pro) |
+| `examination-grading-types` | Examination* | ✅ | — | — | — | — (pro) |
+| `examination-student-subject-results` | Examination* | ✅ | — | — | — | — (pro) |
+| `examination-student-subjects` | Examination* | ✅ | — | — | — | — (pro) |
+| `examination-subjects` | Examination* | ✅ | — | — | — | — (pro) |
+| **── Appraisal* ──** | | | | | | |
+| `appraisal-criterias` | Appraisal* | ✅ | — | — | — | — (pro) |
+| `appraisal-dropdown-answers` | Appraisal* | ✅ | — | — | — | — (pro) |
+| `appraisal-dropdown-options` | Appraisal* | ✅ | — | — | — | — (pro) |
+| `appraisal-forms` | Appraisal* | ✅ | — | — | — | — (pro) |
+| `appraisal-forms-criterias` | Appraisal* | ✅ | — | — | — | — (pro) |
+| `appraisal-forms-criterias-scores` | Appraisal* | ✅ | — | — | — | — (pro) |
+| `appraisal-forms-criterias-scores-links` | Appraisal* | ✅ | — | — | — | — (pro) |
+| `appraisal-number-answers` | Appraisal* | ✅ | — | — | — | — (pro) |
+| `appraisal-numbers` | Appraisal* | ✅ | — | — | — | — (pro) |
+| `appraisal-periods` | Appraisal* | ✅ | — | — | — | — (pro) |
+| `appraisal-periods-types` | Appraisal* | ✅ | — | — | — | — (pro) |
+| `appraisal-score-answers` | Appraisal* | ✅ | — | — | — | — (pro) |
+| `appraisal-slider-answers` | Appraisal* | ✅ | — | — | — | — (pro) |
+| `appraisal-sliders` | Appraisal* | ✅ | — | — | — | — (pro) |
+| `appraisal-text-answers` | Appraisal* | ✅ | — | — | — | — (pro) |
+| `appraisal-types` | Appraisal* | ✅ | — | — | — | — (pro) |
+| **── Education* ──** | | | | | | |
+| `education-certifications` | Education* | ✅ | — | — | — | — (pro) |
+| `education-cycles` | Education* | ✅ | — | — | — | — (pro) |
+| `education-field-of-studies` | Education* | ✅ | — | — | — | — (pro) |
+| `education-grades` | Education* | ✅ | — | — | — | — (pro) |
+| `education-grades-cumulative-gpa` | Education* | ✅ | — | — | — | — (pro) |
+| `education-grades-gpa` | Education* | ✅ | — | — | — | — (pro) |
+| `education-grades-subjects` | Education* | ✅ | — | — | — | — (pro) |
+| `education-level-isced` | Education* | ✅ | — | — | — | — (pro) |
+| `education-levels` | Education* | ✅ | — | — | — | — (pro) |
+| `education-programme-orientations` | Education* | ✅ | — | — | — | — (pro) |
+| `education-programmes` | Education* | ✅ | — | — | — | — (pro) |
+| `education-programmes-next-programmes` | Education* | ✅ | — | — | — | — (pro) |
+| `education-stages` | Education* | ✅ | — | — | — | — (pro) |
+| `education-subjects` | Education* | ✅ | — | — | — | — (pro) |
+| `education-subjects-field-of-studies` | Education* | ✅ | — | — | — | — (pro) |
+| `education-systems` | Education* | ✅ | — | — | — | — (pro) |
+| **── Survey* ──** | | | | | | |
+| `survey-filter-areas` | Survey* | ✅ | — | — | — | — (pro) |
+| `survey-filter-institution-providers` | Survey* | ✅ | — | — | — | — (pro) |
+| `survey-filter-institution-types` | Survey* | ✅ | — | — | — | — (pro) |
+| `survey-forms` | Survey* | ✅ | — | — | — | — (pro) |
+| `survey-forms-filters` | Survey* | ✅ | — | — | — | — (pro) |
+| `survey-forms-questions` | Survey* | ✅ | — | — | — | — (pro) |
+| `survey-question-choices` | Survey* | ✅ | — | — | — | — (pro) |
+| `survey-questions` | Survey* | ✅ | — | — | — | — (pro) |
+| `survey-responses` | Survey* | ✅ | — | — | — | — (pro) |
+| `survey-rules` | Survey* | ✅ | — | — | — | — (pro) |
+| `survey-statuses` | Survey* | ✅ | — | — | — | — (pro) |
+| `survey-status-periods` | Survey* | ✅ | — | — | — | — (pro) |
+| `survey-table-columns` | Survey* | ✅ | — | — | — | — (pro) |
+| `survey-table-rows` | Survey* | ✅ | — | — | — | — (pro) |
+| **── Security* ──** | | | | | | |
+| `security-functions` | Security* | ✅ | — | — | — | — (pro) |
+| `security-group-areas` | Security* | ✅ | — | — | — | — (pro) |
+| `security-group-institutions` | Security* | ✅ | — | — | — | — (pro) |
+| `security-groups` | Security* | ✅ | — | — | — | — (pro) |
+| `security-group-users` | Security* | ✅ | — | — | — | — (pro) |
+| `security-rest-sessions` | Security* | ✅ | — | — | — | — (pro) |
+| `security-role-functions` | Security* | ✅ | — | — | — | — (pro) |
+| `security-roles` | Security* | ✅ | — | — | — | — (pro) |
+| `security-user-codes` | Security* | ✅ | — | — | — | — (pro) |
+| `security-user-logins` | Security* | ✅ | — | — | — | — (pro) |
+| `security-user-password-requests` | Security* | ✅ | — | — | — | — (pro) |
+| `security-users` | Security* | ✅ | — | — | — | — (pro) |
+| `security-user-sessions` | Security* | ✅ | — | — | — | — (pro) |
+| **── Custom* ──** | | | | | | |
+| `custom-field-options` | Custom* | ✅ | — | — | — | — (pro) |
+| `custom-fields` | Custom* | ✅ | — | — | — | — (pro) |
+| `custom-field-types` | Custom* | ✅ | — | — | — | — (pro) |
+| `custom-field-values` | Custom* | ✅ | — | — | — | — (pro) |
+| `custom-forms` | Custom* | ✅ | — | — | — | — (pro) |
+| `custom-forms-fields` | Custom* | ✅ | — | — | — | — (pro) |
+| `custom-forms-filters` | Custom* | ✅ | — | — | — | — (pro) |
+| `custom-modules` | Custom* | ✅ | — | — | — | — (pro) |
+| `custom-records` | Custom* | ✅ | — | — | — | — (pro) |
+| `custom-table-cells` | Custom* | ✅ | — | — | — | — (pro) |
+| `custom-table-columns` | Custom* | ✅ | — | — | — | — (pro) |
+| `custom-table-rows` | Custom* | ✅ | — | — | — | — (pro) |
+| **── Meal* ──** | | | | | | |
+| `meal-benefits` | Meal* | ✅ | — | — | — | — (pro) |
+| `meal-food-records` | Meal* | ✅ | — | — | — | — (pro) |
+| `meal-implementers` | Meal* | ✅ | — | — | — | — (pro) |
+| `meal-institution-programmes` | Meal* | ✅ | — | — | — | — (pro) |
+| `meal-nutritional-records` | Meal* | ✅ | — | — | — | — (pro) |
+| `meal-nutritions` | Meal* | ✅ | — | — | — | — (pro) |
+| `meal-programmes` | Meal* | ✅ | — | — | — | — (pro) |
+| `meal-programme-types` | Meal* | ✅ | — | — | — | — (pro) |
+| `meal-ratings` | Meal* | ✅ | — | — | — | — (pro) |
+| `meal-received` | Meal* | ✅ | — | — | — | — (pro) |
+| `meal-status-types` | Meal* | ✅ | — | — | — | — (pro) |
+| `meal-target-types` | Meal* | ✅ | — | — | — | — (pro) |
+| **── Workflow* ──** | | | | | | |
+| `workflow-actions` | Workflow* | ✅ | — | — | — | — (pro) |
+| `workflow-comments` | Workflow* | ✅ | — | — | — | — (pro) |
+| `workflow-models` | Workflow* | ✅ | — | — | — | — (pro) |
+| `workflow-rule-events` | Workflow* | ✅ | — | — | — | — (pro) |
+| `workflow-rules` | Workflow* | ✅ | — | — | — | — (pro) |
+| `workflow-statuses` | Workflow* | ✅ | — | — | — | — (pro) |
+| `workflow-statuses-steps` | Workflow* | ✅ | — | — | — | — (pro) |
+| `workflow-steps` | Workflow* | ✅ | — | — | — | — (pro) |
+| `workflow-steps-params` | Workflow* | ✅ | — | — | — | — (pro) |
+| `workflow-steps-roles` | Workflow* | ✅ | — | — | — | — (pro) |
+| `workflow-transitions` | Workflow* | ✅ | — | — | — | — (pro) |
+| **── Assessment* ──** | | | | | | |
+| `assessment-grading-options` | Assessment* | ✅ | — | — | — | — (pro) |
+| `assessment-grading-types` | Assessment* | ✅ | — | — | — | — (pro) |
+| `assessment-item-results` | Assessment* | ✅ | — | — | — | — (pro) |
+| `assessment-item-results-archived` | Assessment* | ✅ | — | — | — | — (pro) |
+| `assessment-items` | Assessment* | ✅ | — | — | — | — (pro) |
+| `assessment-items-grading-types` | Assessment* | ✅ | — | — | — | — (pro) |
+| `assessment-item-student-exemptions` | Assessment* | ✅ | — | — | — | — (pro) |
+| `assessment-period-excluded-security-roles` | Assessment* | ✅ | — | — | — | — (pro) |
+| `assessment-periods` | Assessment* | ✅ | — | — | — | — (pro) |
+| **── Rubric* ──** | | | | | | |
+| `rubric-criteria-options` | Rubric* | ✅ | — | — | — | — (pro) |
+| `rubric-criterias` | Rubric* | ✅ | — | — | — | — (pro) |
+| `rubric-sections` | Rubric* | ✅ | — | — | — | — (pro) |
+| `rubric-statuses` | Rubric* | ✅ | — | — | — | — (pro) |
+| `rubric-status-periods` | Rubric* | ✅ | — | — | — | — (pro) |
+| `rubric-status-programmes` | Rubric* | ✅ | — | — | — | — (pro) |
+| `rubric-status-roles` | Rubric* | ✅ | — | — | — | — (pro) |
+| `rubric-template-options` | Rubric* | ✅ | — | — | — | — (pro) |
+| `rubric-templates` | Rubric* | ✅ | — | — | — | — (pro) |
+| **── Special* ──** | | | | | | |
+| `special-need-difficulties` | Special* | ✅ | — | — | — | — (pro) |
+| `special-needs-device-types` | Special* | ✅ | — | — | — | — (pro) |
+| `special-needs-diagnostics-degree` | Special* | ✅ | — | — | — | — (pro) |
+| `special-needs-diagnostics-types` | Special* | ✅ | — | — | — | — (pro) |
+| `special-needs-plan-types` | Special* | ✅ | — | — | — | — (pro) |
+| `special-needs-referrer-types` | Special* | ✅ | — | — | — | — (pro) |
+| `special-needs-service-classification` | Special* | ✅ | — | — | — | — (pro) |
+| `special-needs-service-types` | Special* | ✅ | — | — | — | — (pro) |
+| `special-need-types` | Special* | ✅ | — | — | — | — (pro) |
+| **── Report* ──** | | | | | | |
+| `report-card-comment-codes` | Report* | ✅ | — | — | — | — (pro) |
+| `report-card-email-processes` | Report* | ✅ | — | — | — | — (pro) |
+| `report-card-excluded-security-roles` | Report* | ✅ | — | — | — | — (pro) |
+| `report-card-processes` | Report* | ✅ | — | — | — | — (pro) |
+| `report-cards` | Report* | ✅ | — | — | — | — (pro) |
+| `report-card-subjects` | Report* | ✅ | — | — | — | — (pro) |
+| `report-progress` | Report* | ✅ | — | — | — | — (pro) |
+| `report-queries` | Report* | ✅ | — | — | — | — (pro) |
+| **── Competency* ──** | | | | | | |
+| `competency-criterias` | Competency* | ✅ | — | — | — | — (pro) |
+| `competency-grading-options` | Competency* | ✅ | — | — | — | — (pro) |
+| `competency-grading-types` | Competency* | ✅ | — | — | — | — (pro) |
+| `competency-items` | Competency* | ✅ | — | — | — | — (pro) |
+| `competency-items-periods` | Competency* | ✅ | — | — | — | — (pro) |
+| `competency-periods` | Competency* | ✅ | — | — | — | — (pro) |
+| `competency-templates` | Competency* | ✅ | — | — | — | — (pro) |
 | **── Utility* ──** | | | | | | |
-| `utility-electricity-conditions` | Utility* | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `utility-internet-bandwidths` | Utility* | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `utility-internet-conditions` | Utility* | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `utility-telephone-conditions` | Utility* | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
+| `utility-electricity-conditions` | Utility* | ✅ | — | — | — | — (pro) |
+| `utility-electricity-types` | Utility* | ✅ | — | — | — | — (pro) |
+| `utility-internet-bandwidths` | Utility* | ✅ | — | — | — | — (pro) |
+| `utility-internet-conditions` | Utility* | ✅ | — | — | — | — (pro) |
+| `utility-internet-types` | Utility* | ✅ | — | — | — | — (pro) |
+| `utility-telephone-conditions` | Utility* | ✅ | — | — | — | — (pro) |
+| `utility-telephone-types` | Utility* | ✅ | — | — | — | — (pro) |
+| **── Api* ──** | | | | | | |
+| `api-authorizations` | Api* | ✅ | — | — | — | — (pro) |
+| `api-credentials` | Api* | ✅ | — | — | — | — (pro) |
+| `api-credentials-scopes` | Api* | ✅ | — | — | — | — (pro) |
+| `api-scopes` | Api* | ✅ | — | — | — | — (pro) |
+| `api-securities` | Api* | ✅ | — | — | — | — (pro) |
+| `api-securities-scopes` | Api* | ✅ | — | — | — | — (pro) |
+| **── Health* ──** | | | | | | |
+| `health-allergy-types` | Health* | ✅ | — | — | — | — (pro) |
+| `health-conditions` | Health* | ✅ | — | — | — | — (pro) |
+| `health-consultation-types` | Health* | ✅ | — | — | — | — (pro) |
+| `health-immunization-types` | Health* | ✅ | — | — | — | — (pro) |
+| `health-relationships` | Health* | ✅ | — | — | — | — (pro) |
+| `health-test-types` | Health* | ✅ | — | — | — | — (pro) |
+| **── Asset* ──** | | | | | | |
+| `asset-conditions` | Asset* | ✅ | — | — | — | — (pro) |
+| `asset-makes` | Asset* | ✅ | — | — | — | — (pro) |
+| `asset-models` | Asset* | ✅ | — | — | — | — (pro) |
+| `asset-statuses` | Asset* | ✅ | — | — | — | — (pro) |
+| `asset-types` | Asset* | ✅ | — | — | — | — (pro) |
+| **── Outcome* ──** | | | | | | |
+| `outcome-criterias` | Outcome* | ✅ | — | — | — | — (pro) |
+| `outcome-grading-options` | Outcome* | ✅ | — | — | — | — (pro) |
+| `outcome-grading-types` | Outcome* | ✅ | — | — | — | — (pro) |
+| `outcome-periods` | Outcome* | ✅ | — | — | — | — (pro) |
+| `outcome-templates` | Outcome* | ✅ | — | — | — | — (pro) |
+| **── System* ──** | | | | | | |
+| `system-authentications` | System* | ✅ | — | — | — | — (pro) |
+| `system-errors` | System* | ✅ | — | — | — | — (pro) |
+| `system-patches` | System* | ✅ | — | — | — | — (pro) |
+| `system-processes` | System* | ✅ | — | — | — | — (pro) |
+| `system-updates` | System* | ✅ | — | — | — | — (pro) |
+| **── Config* ──** | | | | | | |
+| `config-attachments` | Config* | ✅ | — | — | — | — (pro) |
+| `config-item-options` | Config* | ✅ | — | — | — | — (pro) |
+| `config-items` | Config* | ✅ | — | — | — | — (pro) |
+| `config-product-lists` | Config* | ✅ | — | — | — | — (pro) |
+| **── Data* ──** | | | | | | |
+| `data-dictionary` | Data* | ✅ | — | — | — | — (pro) |
+| `data-management-connections` | Data* | ✅ | — | — | — | — (pro) |
+| `data-management-copy` | Data* | ✅ | — | — | — | — (pro) |
+| `data-management-logs` | Data* | ✅ | — | — | — | — (pro) |
+| **── Area* ──** | | | | | | |
+| `area-administrative-levels` | Area* | ✅ | — | — | — | — (pro) |
+| `area-administratives` | Area* | ✅ | — | — | — | — (pro) |
+| `area-levels` | Area* | ✅ | — | — | — | — (pro) |
+| **── Calendar* ──** | | | | | | |
+| `calendar-event-dates` | Calendar* | ✅ | — | — | — | — (pro) |
+| `calendar-events` | Calendar* | ✅ | — | — | — | — (pro) |
+| `calendar-types` | Calendar* | ✅ | — | — | — | — (pro) |
+| **── Class* ──** | | | | | | |
+| `class-profile-processes` | Class* | ✅ | — | — | — | — (pro) |
+| `class-profiles` | Class* | ✅ | — | — | — | — (pro) |
+| `class-profile-templates` | Class* | ✅ | — | — | — | — (pro) |
+| **── Email* ──** | | | | | | |
+| `email-process-attachments` | Email* | ✅ | — | — | — | — (pro) |
+| `email-processes` | Email* | ✅ | — | — | — | — (pro) |
+| `email-templates` | Email* | ✅ | — | — | — | — (pro) |
+| **── Idp* ──** | | | | | | |
+| `idp-google` | Idp* | ✅ | — | — | — | — (pro) |
+| `idp-oauth` | Idp* | ✅ | — | — | — | — (pro) |
+| `idp-saml` | Idp* | ✅ | — | — | — | — (pro) |
+| **── Qualification* ──** | | | | | | |
+| `qualification-levels` | Qualification* | ✅ | — | — | — | — (pro) |
+| `qualification-specialisations` | Qualification* | ✅ | — | — | — | — (pro) |
+| `qualification-titles` | Qualification* | ✅ | — | — | — | — (pro) |
+| **── Scholarships* ──** | | | | | | |
+| `scholarships` | Scholarships* | ✅ | — | — | — | — (pro) |
+| `scholarships-field-of-studies` | Scholarships* | ✅ | — | — | — | — (pro) |
+| `scholarships-scholarship-attachment-types` | Scholarships* | ✅ | — | — | — | — (pro) |
+| **── Textbook* ──** | | | | | | |
+| `textbook-conditions` | Textbook* | ✅ | — | — | — | — (pro) |
+| `textbook-dimensions` | Textbook* | ✅ | — | — | — | — (pro) |
+| `textbook-statuses` | Textbook* | ✅ | — | — | — | — (pro) |
+| **── Academic* ──** | | | | | | |
+| `academic-period-levels` | Academic* | ✅ | — | — | — | — (pro) |
+| `academic-periods` | Academic* | ✅ | — | — | — | — (pro) |
+| **── Alert* ──** | | | | | | |
+| `alert-logs` | Alert* | ✅ | — | — | — | — (pro) |
+| `alert-rules` | Alert* | ✅ | — | — | — | — (pro) |
+| **── Alerts* ──** | | | | | | |
+| `alerts` | Alerts* | ✅ | — | — | — | — (pro) |
+| `alerts-roles` | Alerts* | ✅ | — | — | — | — (pro) |
+| **── Building* ──** | | | | | | |
+| `building-custom-field-values` | Building* | ✅ | — | — | — | — (pro) |
+| `building-types` | Building* | ✅ | — | — | — | — (pro) |
+| **── Case* ──** | | | | | | |
+| `case-priorities` | Case* | ✅ | — | — | — | — (pro) |
+| `case-types` | Case* | ✅ | — | — | — | — (pro) |
+| **── Contact* ──** | | | | | | |
+| `contact-options` | Contact* | ✅ | — | — | — | — (pro) |
+| `contact-types` | Contact* | ✅ | — | — | — | — (pro) |
+| **── Curricular* ──** | | | | | | |
+| `curricular-positions` | Curricular* | ✅ | — | — | — | — (pro) |
+| `curricular-types` | Curricular* | ✅ | — | — | — | — (pro) |
+| **── Field* ──** | | | | | | |
+| `field-options` | Field* | ✅ | — | — | — | — (pro) |
+| `field-types` | Field* | ✅ | — | — | — | — (pro) |
+| **── Floor* ──** | | | | | | |
+| `floor-custom-field-values` | Floor* | ✅ | — | — | — | — (pro) |
+| `floor-types` | Floor* | ✅ | — | — | — | — (pro) |
+| **── Gpa* ──** | | | | | | |
+| `gpa-grading-options` | Gpa* | ✅ | — | — | — | — (pro) |
+| `gpa-grading-types` | Gpa* | ✅ | — | — | — | — (pro) |
+| **── Historical* ──** | | | | | | |
+| `historical-staff-leave` | Historical* | ✅ | — | — | — | — (pro) |
+| `historical-staff-positions` | Historical* | ✅ | — | — | — | — (pro) |
+| **── Income* ──** | | | | | | |
+| `income-sources` | Income* | ✅ | — | — | — | — (pro) |
+| `income-types` | Income* | ✅ | — | — | — | — (pro) |
+| **── Insurance* ──** | | | | | | |
+| `insurance-providers` | Insurance* | ✅ | — | — | — | — (pro) |
+| `insurance-types` | Insurance* | ✅ | — | — | — | — (pro) |
+| **── Land* ──** | | | | | | |
+| `land-custom-field-values` | Land* | ✅ | — | — | — | — (pro) |
+| `land-types` | Land* | ✅ | — | — | — | — (pro) |
+| **── License* ──** | | | | | | |
+| `license-classifications` | License* | ✅ | — | — | — | — (pro) |
+| `license-types` | License* | ✅ | — | — | — | — (pro) |
+| **── Locale* ──** | | | | | | |
+| `locale-contents` | Locale* | ✅ | — | — | — | — (pro) |
+| `locale-content-translations` | Locale* | ✅ | — | — | — | — (pro) |
+| **── Messaging* ──** | | | | | | |
+| `messaging` | Messaging* | ✅ | — | — | — | — (pro) |
+| `messaging-security-roles` | Messaging* | ✅ | — | — | — | — (pro) |
+| **── Moodle* ──** | | | | | | |
+| `moodle-api-created-users` | Moodle* | ✅ | — | — | — | — (pro) |
+| `moodle-api-log` | Moodle* | ✅ | — | — | — | — (pro) |
+| **── Room* ──** | | | | | | |
+| `room-custom-field-values` | Room* | ✅ | — | — | — | — (pro) |
+| `room-types` | Room* | ✅ | — | — | — | — (pro) |
+| **── Salary* ──** | | | | | | |
+| `salary-addition-types` | Salary* | ✅ | — | — | — | — (pro) |
+| `salary-deduction-types` | Salary* | ✅ | — | — | — | — (pro) |
+| **── Transport* ──** | | | | | | |
+| `transport-features` | Transport* | ✅ | — | — | — | — (pro) |
+| `transport-statuses` | Transport* | ✅ | — | — | — | — (pro) |
 | **── Workflows* ──** | | | | | | |
-| `workflows` | Workflows* | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `workflows-filters` | Workflows* | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| **── — ──** | | | | | | |
-| `alerts` | — | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `backup-logs` | — | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `bank-branches` | — | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `banks` | — | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `case-priorities` | — | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `counsellings` | — | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `countries` | — | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `genders` | — | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `guardian-relations` | — | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `idp-google` | — | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `income-sources` | — | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `industries` | — | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `labels` | — | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `language-proficiencies` | — | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `languages` | — | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `license-classifications` | — | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `locale-contents` | — | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `locales` | — | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `manuals` | — | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `message-recipients` | — | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `messaging` | — | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `moodle-api-log` | — | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `notices` | — | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `phinxlog` | — | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `reports` | — | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `rubric-sections` | — | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `scholarships` | — | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `single-logout` | — | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `textbooks` | — | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `themes` | — | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `transfer-logs` | — | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `transport-features` | — | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `webhook-events` | — | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
-| `webhooks` | — | ✅ | ✅ | ✅ | ✅ | ✅ v0.3.0 live |
+| `workflows` | Workflows* | ✅ | — | — | — | — (pro) |
+| `workflows-filters` | Workflows* | ✅ | — | — | — | — (pro) |
+| **── singletons ──** | | | | | | |
+| `absence-types` | — | ✅ | — | — | — | — (pro) |
+| `areas` | — | ✅ | — | — | — | — (pro) |
+| `assessments` | — | ✅ | — | — | — | — (pro) |
+| `authentication-types` | — | ✅ | — | — | — | — (pro) |
+| `backup-logs` | — | ✅ | — | — | — | — (pro) |
+| `bank-branches` | — | ✅ | — | — | — | — (pro) |
+| `banks` | — | ✅ | — | — | — | — (pro) |
+| `behaviour-classifications` | — | ✅ | — | — | — | — (pro) |
+| `budget-types` | — | ✅ | — | — | — | — (pro) |
+| `bus-types` | — | ✅ | — | — | — | — (pro) |
+| `comment-types` | — | ✅ | — | — | — | — (pro) |
+| `counsellings` | — | ✅ | — | — | — | — (pro) |
+| `countries` | — | ✅ | — | — | — | — (pro) |
+| `deleted-records` | — | ✅ | — | — | — | — (pro) |
+| `demographic-types` | — | ✅ | — | — | — | — (pro) |
+| `department-staff` | — | ✅ | — | — | — | — (pro) |
+| `employment-status-types` | — | ✅ | — | — | — | — (pro) |
+| `examinations` | — | ✅ | — | — | — | — (pro) |
+| `expenditure-types` | — | ✅ | — | — | — | — (pro) |
+| `external-data-source-attributes` | — | ✅ | — | — | — | — (pro) |
+| `extracurricular-types` | — | ✅ | — | — | — | — (pro) |
+| `feeders-institutions` | — | ✅ | — | — | — | — (pro) |
+| `fee-types` | — | ✅ | — | — | — | — (pro) |
+| `food-types` | — | ✅ | — | — | — | — (pro) |
+| `genders` | — | ✅ | — | — | — | — (pro) |
+| `guardian-relations` | — | ✅ | — | — | — | — (pro) |
+| `guidance-types` | — | ✅ | — | — | — | — (pro) |
+| `identity-types` | — | ✅ | — | — | — | — (pro) |
+| `import-mapping` | — | ✅ | — | — | — | — (pro) |
+| `industries` | — | ✅ | — | — | — | — (pro) |
+| `inserted-records` | — | ✅ | — | — | — | — (pro) |
+| `institutions` | — | ✅ | — | — | — | — (pro) |
+| `labels` | — | ✅ | — | — | — | — (pro) |
+| `language-proficiencies` | — | ✅ | — | — | — | — (pro) |
+| `languages` | — | ✅ | — | — | — | — (pro) |
+| `locales` | — | ✅ | — | — | — | — (pro) |
+| `manuals` | — | ✅ | — | — | — | — (pro) |
+| `message-recipients` | — | ✅ | — | — | — | — (pro) |
+| `nationalities` | — | ✅ | — | — | — | — (pro) |
+| `notices` | — | ✅ | — | — | — | — (pro) |
+| `openemis-temps` | — | ✅ | — | — | — | — (pro) |
+| `phinxlog` | — | ✅ | — | — | — | — (pro) |
+| `profile-templates` | — | ✅ | — | — | — | — (pro) |
+| `quality-visit-types` | — | ✅ | — | — | — | — (pro) |
+| `reports` | — | ✅ | — | — | — | — (pro) |
+| `risk-criterias` | — | ✅ | — | — | — | — (pro) |
+| `risks` | — | ✅ | — | — | — | — (pro) |
+| `shift-options` | — | ✅ | — | — | — | — (pro) |
+| `single-logout` | — | ✅ | — | — | — | — (pro) |
+| `textbooks` | — | ✅ | — | — | — | — (pro) |
+| `themes` | — | ✅ | — | — | — | — (pro) |
+| `transfer-logs` | — | ✅ | — | — | — | — (pro) |
+| `trip-types` | — | ✅ | — | — | — | — (pro) |
+| `webhook-events` | — | ✅ | — | — | — | — (pro) |
+| `webhooks` | — | ✅ | — | — | — | — (pro) |
