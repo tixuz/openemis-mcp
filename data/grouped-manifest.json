@@ -7843,7 +7843,7 @@
     "domain_endpoint_total": 30,
     "family_endpoint_total": 3080,
     "orphan_endpoint_total": 275,
-    "playbook_count": 38
+    "playbook_count": 40
   },
   "playbooks": [
     {
@@ -7880,13 +7880,15 @@
     },
     {
       "id": "mark-student-attendance",
-      "title": "Mark student attendance for a class (period roll call)",
+      "title": "Mark student attendance for a class (period roll call) (pro)",
       "audience": [
         "teacher",
         "admin"
       ],
       "domain": "Attendance",
-      "description": "Daily/period roll call. Teacher speaks naturally ('mark Sherman excused, Divya unexcused, Ehteram late, all others present') — agent resolves the roster, fuzzy-matches names, maps phrases to absence_type_ids, and POSTs ONLY the exception students. Everyone without a row is PRESENT by omission (absence-by-omission invariant). Supports three modes: DAY (subject_id=0), SUBJECT (period=1), DAY_AND_SUBJECT. Always POST /api/v5/student-attendance-marked-records. Month aggregate updates automatically — do NOT write institution-class-attendance-records yourself. Composite PK supports upsert.",
+      "description": "Available only in the openemis-mcp-pro distribution. This playbook performs writes (or triggers an async write-side job) and the FREE openemis-mcp ships read-only tools. Install: openemis-mcp-pro (https://github.com/tixuz/openemis-mcp-pro).",
+      "available_in_distribution": "openemis-mcp-pro",
+      "pro_github": "https://github.com/tixuz/openemis-mcp-pro",
       "resources": [
         "institution-class-grades",
         "institution-students",
@@ -7900,138 +7902,22 @@
         "student-absence-reasons",
         "institution-class-attendance-records"
       ],
-      "attendance_modes": {
-        "source": "student-attendance-mark-types (education_grade_id + academic_period_id) → student_attendance_type_id code",
-        "modes": {
-          "DAY": {
-            "code": 1,
-            "subject_id": "always 0 (sentinel, not a real FK)",
-            "period": "1..N from student-attendance-per-day-periods",
-            "validated_at": "StudentAttendanceMarkedRecordsTable.php:136-138 (subject_id!=0 rejected)"
-          },
-          "SUBJECT": {
-            "code": 2,
-            "subject_id": "real institution_subject_id from institution-class-subjects",
-            "period": "always 1",
-            "validated_at": "StudentAttendanceMarkedRecordsTable.php:143-148 (period>1 rejected)"
-          },
-          "DAY_AND_SUBJECT": {
-            "code": "string DAY_AND_SUBJECT",
-            "subject_id": "real institution_subject_id",
-            "period": "1..N from student-attendance-per-day-periods",
-            "validated_at": "StudentAttendanceMarkedRecordsTable.php:136-148 (passes both guards)"
-          }
-        },
-        "get_subjects_for_class": "openemis_get('institution-class-subjects', params: {institution_class_id}) → institution_subject_id list, then openemis_get('institution-subjects', params: {institution_id, academic_period_id}) for names"
-      },
-      "natural_language_roll_call": {
-        "pattern": "Teacher names exceptions only. Everyone not named is PRESENT by omission — do NOT create rows for them.",
-        "absence_type_map": {
-          "1": {
-            "code": "EXCUSED",
-            "phrases": [
-              "excused",
-              "excused absent",
-              "has a note",
-              "doctor note",
-              "official reason",
-              "permission"
-            ]
-          },
-          "2": {
-            "code": "UNEXCUSED",
-            "phrases": [
-              "absent",
-              "unexcused",
-              "unexcused absent",
-              "no show",
-              "missing",
-              "not here",
-              "didn't come"
-            ]
-          },
-          "3": {
-            "code": "LATE",
-            "phrases": [
-              "late",
-              "tardy",
-              "arrived late",
-              "came in late",
-              "present after class",
-              "present after classes",
-              "showed up late"
-            ]
-          }
-        },
-        "name_resolution": "GET institution-students for the class → build a list of {id, first_name, last_name}. For each name the teacher mentions, fuzzy-match case-insensitively against first_name OR last_name. If ambiguous (two students named 'John'), ask the teacher to clarify before posting.",
-        "reason_wiring": {
-          "step_1_main_row": "POST to student-attendance-marked-records with absence_type_id set. This is the canonical absence record.",
-          "step_2_details_row": "If teacher gives a reason or comment, POST a second row to institution-student-absence-details using the SAME composite key fields (student_id, institution_id, academic_period_id, institution_class_id, education_grade_id, date, period, subject_id) PLUS: comment (free text string) and/or student_absence_reason_id (structured reason FK).",
-          "absence_reasons_lookup": "GET student-absence-reasons to map natural language to student_absence_reason_id. Known codes: 1=Illness, 2=Family emergency, 3=Emergency, 4=Weather, 5=Family Matter, 7=Personal Reasons, 8=Transportation, 9=Death, 10=Medical Appointment.",
-          "reason_phrase_map": {
-            "sick / ill / unwell / mother is ill / fever / cold": "student_absence_reason_id=1 (Illness)",
-            "doctor / dentist / hospital / medical / appointment": "student_absence_reason_id=10 (Medical Appointment)",
-            "family emergency / family problem": "student_absence_reason_id=2 (Family emergency)",
-            "emergency": "student_absence_reason_id=3 (Emergency)",
-            "weather / storm / flood / road blocked": "student_absence_reason_id=4 (Weather)",
-            "funeral / death / passed away / bereavement": "student_absence_reason_id=9 (Death)",
-            "transport / bus / no ride": "student_absence_reason_id=8 (Transportation)",
-            "personal / private": "student_absence_reason_id=7 (Personal Reasons)"
-          }
-        },
-        "examples": [
-          "\"mark everyone present except Sherman who is excused\" → POST 1 main row: Sherman absence_type_id=1. No details row needed.",
-          "\"Divya unexcused, Ehteram late, all others present\" → POST 2 main rows. No reason given → no details rows.",
-          "\"Sherman excused absent because his mother is ill\" → POST main row: absence_type_id=1. POST details row: comment='mother is ill', student_absence_reason_id=1 (Illness).",
-          "\"Khindol excused absent — dentist appointment\" → POST main row: absence_type_id=1. POST details row: comment='dentist appointment', student_absence_reason_id=10 (Medical Appointment).",
-          "\"Divya unexcused absent, Ehteram late, everyone else present\" → POST 2 main rows. No reasons given → no details rows."
-        ],
-        "edge_case_all_present": "If the teacher says 'everyone present' or 'all present', the day will remain NOT_MARKED (no rows exist). To mark the day as taken, POST one row for any student with absence_type_id=null/0 OR confirm with the teacher whether any student was absent."
-      },
-      "composite_key": {
-        "table": "student-attendance-marked-records",
-        "fields": [
-          "institution_id",
-          "academic_period_id",
-          "institution_class_id",
-          "education_grade_id",
-          "date",
-          "period",
-          "subject_id"
-        ],
-        "upsert": true,
-        "verified_at": "api/app/Models/Api5/StudentAttendanceMarkedRecords.php:20-23, :366-377"
-      },
       "steps": [
-        "STRICT-V5-ONLY: the write target is POST /api/v5/student-attendance-marked-records. DO NOT POST to /institutions/{id}/students/{id}/absences (frontend wrapper). DO NOT POST to /api/v4/anything. If login is needed, the endpoint is POST /api/v5/login with body {username, password, api_key} — v4 login is forbidden.",
-        "Resolve the class: openemis_get('institution-classes', params: {institution_id, academic_period_id})",
-        "List enrolled students in the class: openemis_get('institution-students', params: {institution_id, institution_class_id, academic_period_id, student_status_id: 1})",
-        "Detect attendance mode — ALWAYS do this before building rows: openemis_get('student-attendance-mark-types', params: {education_grade_id, academic_period_id}) → check student_attendance_type_id code: DAY=1 (period varies, subject_id=0), SUBJECT=2 (period always 1, subject_id=real subject), DAY_AND_SUBJECT (both vary). DO NOT use institution-shift-periods — that is shift scheduling only with no attendance fields.",
-        "For DAY or DAY_AND_SUBJECT mode — resolve periods: openemis_get('student-attendance-per-day-periods', params: {student_attendance_mark_type_id}) → each row's 'period' integer is the ordinal to use in the attendance record. Period is a plain integer (no FK), enforced by beforeSave in StudentAttendanceMarkedRecordsTable.php:143.",
-        "For SUBJECT or DAY_AND_SUBJECT mode — resolve subjects for the class: (a) openemis_get('institution-class-subjects', params: {institution_class_id}) → get institution_subject_id list; (b) openemis_get('institution-subjects', params: {institution_id, academic_period_id}) → get subject names. Build one attendance row per student per subject (period=1 for SUBJECT mode).",
-        "Load absence types and absence reasons in parallel: openemis_get('absence-types') → {1:EXCUSED, 2:UNEXCUSED, 3:LATE}; openemis_get('student-absence-reasons') → {1:Illness, 2:Family emergency, 3:Emergency, 4:Weather, 5:Family Matter, 7:Personal Reasons, 8:Transportation, 9:Death, 10:Medical Appointment}. Use these to map natural language phrases to IDs (see natural_language_roll_call.reason_phrase_map).",
-        "Build the exception list: from the teacher's instruction, identify ONLY the non-present students. Fuzzy-match each name case-insensitively against the roster (first_name OR last_name). If a name is ambiguous, ask the teacher before posting. Everyone NOT mentioned = PRESENT by omission — do NOT create rows for them.",
-        "POST the exception rows as a batch: openemis_create('student-attendance-marked-records', body: [{institution_id, academic_period_id, institution_class_id, education_grade_id, date, period, subject_id, student_id, absence_type_id, no_scheduled_class:0}, ...]) — one row per exception student per period.",
-        "For each student where a reason or comment was given, POST a details row: openemis_create('institution-student-absence-details', body: {student_id, institution_id, academic_period_id, institution_class_id, education_grade_id, date, period, subject_id, absence_type_id, comment: '<teacher free text>', student_absence_reason_id: <matched reason id>}). Example: 'excused because his mother is ill' → comment='mother is ill', student_absence_reason_id=1."
-      ],
-      "notes": [
-        "Frontend (Angular) uses a legacy v4-style nested path /institutions/{institution_id}/students/{student_id}/absences (see frontend/src/app/student-attendance/student-attendance.component.ts). Agents should prefer the v5 routes above — they're the stable contract.",
-        "UI maps present/late/absent/excused onto absence_type_id; 'no_scheduled_class' uses sentinels 99 (no class) and 0 (scheduled). See frontend/src/app/student-attendance/student_attendance.config.ts:501-623 for the full remap.",
-        "Do NOT POST to institution-class-attendance-records directly for marking — it is a month-level aggregate that the backend updates via afterSaveCommit hook in plugins/Attendance/src/Model/Table/StudentAttendanceMarkedRecordsTable.php.",
-        "ABSENCE-BY-OMISSION: once a day/period/subject has been marked (institution-class-attendance-records shows MARKED or PARTIAL_MARKED), students WITHOUT a row in student-attendance-marked-records for that day/period are treated as PRESENT. You do NOT need to POST a row for every present student — only for the ones who are late/absent/excused. That is why POSTing even one absence row 'flips' the day to marked via the afterSaveCommit hook.",
-        "NO-SCHEDULED-CLASS for holidays / force-majeure / teacher-absent / class-cancelled: POST one row with no_scheduled_class set to 99 and no per-student rows — this records that no roll is taken that day. Sentinel 0 means class WAS scheduled and happened. The reading side (view-latest-attendance) must skip days where no_scheduled_class=99 when computing attendance rates, otherwise every student looks 'absent' for a holiday."
+        "Install openemis-mcp-pro from https://github.com/tixuz/openemis-mcp-pro (or 'npm install -g openemis-mcp-pro') and re-run this playbook against the pro server."
       ]
     },
     {
       "id": "mark-staff-attendance",
-      "title": "Mark staff attendance (present) OR request leave (absent)",
+      "title": "Mark staff attendance (present) OR request leave (absent) (pro)",
       "audience": [
         "admin",
         "hr",
         "teacher"
       ],
       "domain": "Staff",
-      "description": "Two DISTINCT flows — do not mix. PRESENT = quick check-in with optional time_in/time_out via institution-staff-attendances (simple id PK, no workflow). ABSENT = leave request with staff_leave_type_id via institution-staff-leave, which is workflow-controlled (status_id -> WorkflowSteps). They write different tables.",
+      "description": "Available only in the openemis-mcp-pro distribution. This playbook performs writes (or triggers an async write-side job) and the FREE openemis-mcp ships read-only tools. Install: openemis-mcp-pro (https://github.com/tixuz/openemis-mcp-pro).",
+      "available_in_distribution": "openemis-mcp-pro",
+      "pro_github": "https://github.com/tixuz/openemis-mcp-pro",
       "resources": [
         "institution-staff-position-profiles",
         "institution-staff-attendances",
@@ -8039,55 +7925,8 @@
         "staff-leave-types",
         "absence-types"
       ],
-      "flows": {
-        "present": {
-          "endpoint": "institution-staff-attendances",
-          "body": {
-            "staff_id": "<id>",
-            "institution_id": "<id>",
-            "academic_period_id": "<id>",
-            "date": "YYYY-MM-DD",
-            "time_in": "HH:MM:SS",
-            "time_out": "HH:MM:SS (optional)",
-            "comment": "optional",
-            "absence_type_id": "optional"
-          },
-          "workflow": false,
-          "verified_at": "api/app/Models/Api5/InstitutionStaffAttendances.php:18-21"
-        },
-        "absent": {
-          "endpoint": "institution-staff-leave",
-          "body": {
-            "staff_id": "<id>",
-            "institution_id": "<id>",
-            "academic_period_id": "<id>",
-            "date_from": "YYYY-MM-DD",
-            "date_to": "YYYY-MM-DD",
-            "full_day": "bool",
-            "staff_leave_type_id": "<id>",
-            "status_id": "<workflow_step_id>",
-            "comments": "optional",
-            "number_of_days": "float (optional)"
-          },
-          "workflow": true,
-          "verified_at": "api/app/Models/Api5/InstitutionStaffLeave.php:295-297 (status_id -> WorkflowSteps)"
-        }
-      },
       "steps": [
-        "STRICT-V5-ONLY: present → POST /api/v5/institution-staff-attendances. absent/leave → POST /api/v5/institution-staff-leave (but leave is workflow-controlled — see warning below). DO NOT POST to /institutions/{id}/staff/{id}/attendances (frontend wrapper). DO NOT POST to /api/v4/anything. Login endpoint if needed: POST /api/v5/login.",
-        "List active staff at institution: openemis_get('institution-staff', params: {institution_id, status_id: 1})",
-        "For a present check-in: openemis_create('institution-staff-attendances', body: {staff_id, institution_id, academic_period_id, date, time_in, ...}) — resolves to POST /api/v5/institution-staff-attendances. In v0.2.x the MCP has no openemis_create yet; tell the user to mark this in the official app and cite the v5 endpoint.",
-        "For an absence/leave request: DO NOT CREATE VIA MCP — institution-staff-leave is workflow-controlled (needs approval chain). Respond: 'This process involves workflow and assignment for approval. Please use the official OpenEMIS application or website to submit and approve leave.' Reading leave via openemis_get('institution-staff-leave', ...) is safe. For context you can show the user: openemis_get('staff-leave-types') lists the leave type catalog."
-      ],
-      "notes": [
-        "WARNING: there is no v5 alias 'staff-leaves' — use 'institution-staff-leave' (singular, institution-prefixed). Earlier playbook guess was wrong.",
-        "For historical/migrated leave records, see 'historical-staff-leave' and 'institution-staff-leave-archived' — these are read-heavy and shouldn't be your write target.",
-        "Frontend posts staff check-in to the v4-style path /institutions/{institution_id}/staff/{staff_id}/attendances (frontend/src/app/staff-attendance/staff-attendance.component.ts:514-526). No frontend POST to institution-staff-leave was found — it may go through a different admin-only UI. Agents should use the v5 routes.",
-        "Leave requests go through an approval chain (status_id FKs WorkflowSteps). A fresh POST lands in the configured initial workflow state; approvals are subsequent state transitions.",
-        "LEAVE ↔ ATTENDANCE ARE FULLY DECOUPLED: creating an institution-staff-leave row does NOT auto-insert an 'absent' row into institution-staff-attendances, and posting to institution-staff-attendances does NOT check for overlapping leave (the overlap validation in plugins/Staff/src/Model/Table/InstitutionStaffAttendancesTable.php:36 is commented out). Verified by reading InstitutionStaffLeave.php (no afterSave/afterCommit hooks) and InstitutionStaffAttendances.php (no leave cross-check).",
-        "IMPLICATION for marking: before POSTing a staff attendance for a given date, the caller should GET institution-staff-leave for that staff_id+date to avoid double-booking a staff member who's on approved leave. Before POSTing a leave, no corresponding attendance action is needed — but know that the leave will NOT appear in institution-staff-attendances readouts.",
-        "IMPLICATION for reading a staff member's attendance rate: union institution-staff-attendances + institution-staff-leave yourself on the client side — the backend does not join them. The official UI report (plugins/Institution/src/Model/Table/StaffAttendancesTable.php:155,247) reads both separately.",
-        "WORKFLOW WRITE WARNING: institution-staff-leave is workflow-controlled. For now, the MCP should NOT offer to CREATE/UPDATE/DELETE leave requests via the API — the approval chain needs a human-in-the-loop. When asked to mark someone absent-on-leave, respond with: 'This process involves workflow and assignment for approval. Please use the official OpenEMIS application or website to submit/approve leave.' Reading leave (GET) is safe and encouraged."
+        "Install openemis-mcp-pro from https://github.com/tixuz/openemis-mcp-pro (or 'npm install -g openemis-mcp-pro') and re-run this playbook against the pro server."
       ]
     },
     {
@@ -8138,13 +7977,15 @@
     },
     {
       "id": "generate-student-report-card-pdf",
-      "title": "Generate a student's report card (PDF)",
+      "title": "Generate a student's report card (PDF) (pro)",
       "audience": [
         "teacher",
         "admin"
       ],
       "domain": "Report",
-      "description": "Triggers the async report card generator for one student. Returns a process id that the caller polls until PDF is ready for download.",
+      "description": "Available only in the openemis-mcp-pro distribution. This playbook performs writes (or triggers an async write-side job) and the FREE openemis-mcp ships read-only tools. Install: openemis-mcp-pro (https://github.com/tixuz/openemis-mcp-pro).",
+      "available_in_distribution": "openemis-mcp-pro",
+      "pro_github": "https://github.com/tixuz/openemis-mcp-pro",
       "resources": [
         "institution-students-report-cards",
         "institution-report-cards",
@@ -8156,25 +7997,20 @@
         "institution-students-report-cards-comments"
       ],
       "steps": [
-        "Identify the configured report card: openemis_get('institution-report-cards', params: {institution_id, academic_period_id})",
-        "Kick off generation: openemis_create('institution-report-card-processes', body: {institution_id, student_id, report_card_id}) — (write tool arrives in v0.2)",
-        "Poll status: openemis_get('institution-report-card-processes', id: <process_id>)",
-        "Once 'completed', fetch the PDF URL: openemis_get('institution-students-report-cards', params: {student_id, report_card_id})"
+        "Install openemis-mcp-pro from https://github.com/tixuz/openemis-mcp-pro (or 'npm install -g openemis-mcp-pro') and re-run this playbook against the pro server."
       ]
     },
     {
       "id": "enroll-new-student",
-      "title": "Enrol a new student at an institution",
+      "title": "Enrol a new student at an institution (pro)",
       "audience": [
         "admin",
         "registrar"
       ],
       "domain": "Student",
-      "description": "BYPASS MODE ONLY: direct enrolment works only when the system configuration has 'bypass enrolment workflow' enabled. If the admission → enrolment workflow is active, use the OpenEMIS application — the workflow requires supervisor approval at each stage and cannot be driven via API alone.",
-      "workflow_gate": {
-        "config_check": "Administration → System Configuration → Student → Bypass Enrolment Workflow",
-        "if_disabled": "Use the official application Admission and Enrolment forms instead."
-      },
+      "description": "Available only in the openemis-mcp-pro distribution. This playbook performs writes (or triggers an async write-side job) and the FREE openemis-mcp ships read-only tools. Install: openemis-mcp-pro (https://github.com/tixuz/openemis-mcp-pro).",
+      "available_in_distribution": "openemis-mcp-pro",
+      "pro_github": "https://github.com/tixuz/openemis-mcp-pro",
       "resources": [
         "security-users",
         "user-identities",
@@ -8184,105 +8020,39 @@
         "institution-students"
       ],
       "steps": [
-        {
-          "step": 1,
-          "title": "Confirm bypass mode is active",
-          "action": "openemis_get",
-          "resource": "academic-periods",
-          "purpose": "Fetch current academic period id — also confirms the API is reachable before any writes.",
-          "guidance": "Verify with the admin that bypass enrolment workflow is enabled before proceeding. Filter by _conditions=current:1 or pick the active period by date."
-        },
-        {
-          "step": 2,
-          "title": "Look up target education grade",
-          "action": "openemis_get",
-          "resource": "education-grades",
-          "purpose": "Resolve the education_grade_id for the grade the student is joining.",
-          "guidance": "Filter by _conditions=name:Grade 5 or similar. Note the id."
-        },
-        {
-          "step": 3,
-          "title": "Create the student user account",
-          "action": "openemis_create",
-          "resource": "security-users",
-          "purpose": "Create the base user record (OpenEMIS users are shared across roles).",
-          "guidance": "Required: first_name, last_name, date_of_birth, gender_id. The response returns the new user id — save it as student_id for step 5."
-        },
-        {
-          "step": 4,
-          "title": "Attach identity document (optional)",
-          "action": "openemis_create",
-          "resource": "user-identities",
-          "purpose": "Link a national ID or passport number to the student.",
-          "guidance": "Required: user_id (from step 3), identity_type_id, number. Skip if not applicable."
-        },
-        {
-          "step": 5,
-          "title": "Enrol student into the institution",
-          "action": "openemis_create",
-          "resource": "institution-students",
-          "purpose": "Create the enrolment record linking the student to the institution, grade, and period.",
-          "guidance": "Required: student_id (from step 3), institution_id, education_grade_id (from step 2), academic_period_id (from step 1), student_status_id: 1 (Current). start_date defaults to today."
-        },
-        {
-          "step": 6,
-          "title": "Link guardian contact (optional)",
-          "action": "openemis_create",
-          "resource": "student-guardians",
-          "purpose": "Associate a guardian/parent record with the student.",
-          "guidance": "Required: student_id, guardian_id (pre-existing user id), guardian_relation_id."
-        }
+        "Install openemis-mcp-pro from https://github.com/tixuz/openemis-mcp-pro (or 'npm install -g openemis-mcp-pro') and re-run this playbook against the pro server."
       ]
     },
     {
       "id": "record-behavior-incident",
-      "title": "Record a student behaviour incident",
+      "title": "Record a student behaviour incident (pro)",
       "audience": [
         "teacher",
         "admin"
       ],
       "domain": "Student",
-      "description": "Log a behaviour incident against a student: look up categories and severity classifications, then write the incident record with description and follow-up action. Available in v0.3.0 write tools.",
+      "description": "Available only in the openemis-mcp-pro distribution. This playbook performs writes (or triggers an async write-side job) and the FREE openemis-mcp ships read-only tools. Install: openemis-mcp-pro (https://github.com/tixuz/openemis-mcp-pro).",
+      "available_in_distribution": "openemis-mcp-pro",
+      "pro_github": "https://github.com/tixuz/openemis-mcp-pro",
       "resources": [
         "student-behaviour-categories",
         "student-behaviour-classifications",
         "student-behaviours"
       ],
       "steps": [
-        {
-          "step": 1,
-          "title": "List behaviour categories",
-          "action": "openemis_get",
-          "resource": "student-behaviour-categories",
-          "purpose": "Get the id for the category that matches the incident (e.g. Bullying, Tardiness).",
-          "guidance": "Note the category_id to use in step 3."
-        },
-        {
-          "step": 2,
-          "title": "List severity classifications",
-          "action": "openemis_get",
-          "resource": "student-behaviour-classifications",
-          "purpose": "Get the id for the severity level (Minor, Major, Critical).",
-          "guidance": "Note the classification_id to use in step 3."
-        },
-        {
-          "step": 3,
-          "title": "Write the incident record",
-          "action": "openemis_create",
-          "resource": "student-behaviours",
-          "purpose": "Create the behaviour record linked to the student, institution, and academic period.",
-          "guidance": "Required fields: student_id, institution_id, academic_period_id, date_of_behaviour, description, student_behaviour_category_id, student_behaviour_classification_id. Optional: action_taken, follow_up_date."
-        }
+        "Install openemis-mcp-pro from https://github.com/tixuz/openemis-mcp-pro (or 'npm install -g openemis-mcp-pro') and re-run this playbook against the pro server."
       ]
     },
     {
       "id": "submit-exam-marks",
-      "title": "Submit subject exam marks for an assessment period",
+      "title": "Submit subject exam marks for an assessment period (pro)",
       "audience": [
         "teacher"
       ],
       "domain": "Assessment",
-      "description": "Bulk-enter per-student marks for one assessment item, commit, then verify the weighted result was calculated.",
+      "description": "Available only in the openemis-mcp-pro distribution. This playbook performs writes (or triggers an async write-side job) and the FREE openemis-mcp ships read-only tools. Install: openemis-mcp-pro (https://github.com/tixuz/openemis-mcp-pro).",
+      "available_in_distribution": "openemis-mcp-pro",
+      "pro_github": "https://github.com/tixuz/openemis-mcp-pro",
       "resources": [
         "assessments",
         "assessment-periods",
@@ -8292,9 +8062,7 @@
         "institution-class-students"
       ],
       "steps": [
-        "Get the assessment + period: openemis_get('assessments', params: {academic_period_id, education_grade_id})",
-        "Fetch class roster: openemis_get('institution-class-students', params: {institution_class_id, academic_period_id, student_status_id: 1})",
-        "Submit a mark per student: openemis_create('assessment-item-results', body: {assessment_id, assessment_period_id, student_id, marks, ...})"
+        "Install openemis-mcp-pro from https://github.com/tixuz/openemis-mcp-pro (or 'npm install -g openemis-mcp-pro') and re-run this playbook against the pro server."
       ]
     },
     {
@@ -8321,23 +8089,22 @@
     },
     {
       "id": "generate-institution-statistics-pdf",
-      "title": "Generate institution statistics PDF report",
+      "title": "Generate institution statistics PDF report (pro)",
       "audience": [
         "admin"
       ],
       "domain": "Report",
-      "description": "Admin requests a summary PDF for one institution covering enrolment, staff, attendance stats.",
+      "description": "Available only in the openemis-mcp-pro distribution. This playbook performs writes (or triggers an async write-side job) and the FREE openemis-mcp ships read-only tools. Install: openemis-mcp-pro (https://github.com/tixuz/openemis-mcp-pro).",
+      "available_in_distribution": "openemis-mcp-pro",
+      "pro_github": "https://github.com/tixuz/openemis-mcp-pro",
       "resources": [
         "institutions",
         "report-card-processes",
         "institution-report-card-processes"
       ],
       "steps": [
-        "Identify the report template: openemis_get('custom-reports', params: {type: 'institution-statistics'})",
-        "Start generation: openemis_create('report-card-processes', body: {...template_id, institution_id, ...})",
-        "Poll and download once 'completed'"
-      ],
-      "notes": "NOTE: 'custom-reports' is not available via the v5 REST API. Statistics PDF generation uses the report engine inside the application. This playbook covers data lookup only — trigger the PDF from the application UI."
+        "Install openemis-mcp-pro from https://github.com/tixuz/openemis-mcp-pro (or 'npm install -g openemis-mcp-pro') and re-run this playbook against the pro server."
+      ]
     },
     {
       "id": "view-latest-attendance",
@@ -9548,7 +9315,197 @@
       "steps": [
         "Install openemis-mcp-pro from https://github.com/tixuz/openemis-mcp-pro (or 'npm install -g openemis-mcp-pro') and re-run this playbook against the pro server."
       ]
+    },
+    {
+      "id": "view-admission-and-enrolment-queue-state",
+      "title": "View a future student's admission / enrolment queue state",
+      "audience": [
+        "admin",
+        "registrar",
+        "parent",
+        "principal"
+      ],
+      "domain": "Workflow",
+      "description": "Answer 'where is this child in the admission process?' and 'have they been enrolled yet?'. OpenEMIS routes new students through TWO sequential workflows: first the admission application (institution-student-admission), then enrolment (institution-student-enrolment). Each record carries a status_id that points at a workflow_step (e.g., 'Pending Verification', 'Approved', 'Closed'), an assignee_id (the staff member currently responsible), and a full audit trail in workflow-transitions / workflow-comments. This playbook reads — never writes — those records to surface the queue state in plain language.",
+      "why_workflows": "OpenEMIS treats admission and enrolment as multi-step approval processes because schools across countries have very different sign-off chains. A village school may need only the principal's tick; a national education ministry may require district verification, headmaster review, and registrar approval. The workflow plugin lets each tenant configure the steps, the role-based assignees, and the rules (e.g., 'auto-reject if days_unmarked > 5') without code changes. State machine enforcement is what stops an applicant from being marked Enrolled before the Admission row has been Approved.",
+      "resources": [
+        "institution-student-admission",
+        "institution-student-enrolment",
+        "workflows",
+        "workflow-steps",
+        "workflow-statuses",
+        "workflow-statuses-steps",
+        "workflow-transitions",
+        "workflow-comments",
+        "workflow-models",
+        "security-users",
+        "education-grades",
+        "institutions",
+        "academic-periods"
+      ],
+      "schema_invariants": [
+        "institution-student-admission columns: id, start_date, end_date, student_id, status_id, assignee_id, institution_id, academic_period_id, education_grade_id, institution_class_id, test_score, interview_score, comment.",
+        "institution-student-enrolment columns: id, start_date, end_date, student_id, status_id, assignee_id, institution_id, academic_period_id, education_grade_id, institution_class_id, comment.",
+        "status_id is a FK into workflow_statuses (the legacy compatibility layer). The actual workflow position lives in workflow_steps via the workflow_statuses_steps join table. workflow_steps.category maps 1=TO_DO, 2=IN_PROGRESS, 3=DONE — this tells you whether the record is 'queued', 'being worked on', or 'finished'.",
+        "assignee_id is a FK to security_users — the person currently responsible. If null, the record is unassigned and waiting for triage.",
+        "Every transition (status_id change, assignee change, comment) is logged in workflow-transitions with prev_workflow_step_name + workflow_step_name + workflow_action_name (typically APPROVE or REJECT). Joined to the originating row by (workflow_model_id, model_reference).",
+        "workflow-comments stores free-text comments left during transitions, joined to the model row the same way.",
+        "Admission MUST close before enrolment opens. A student can only have one Admission record per (institution_id, academic_period_id, education_grade_id) tuple in IN_PROGRESS state at a time."
+      ],
+      "steps": [
+        {
+          "step": 1,
+          "title": "Resolve the student",
+          "action": "openemis_get",
+          "resource": "security-users",
+          "purpose": "Find the security_users.id given a name or openemis_no. Required to scope the admission/enrolment lookup.",
+          "guidance": "Filter by openemis_no:<no> if you have it, else first_name + last_name. Capture the resolved id as student_id (NOTE: institution-students.student_id is the FK to security_users.id, not a separate 'student' table id)."
+        },
+        {
+          "step": 2,
+          "title": "Find the latest admission record",
+          "action": "openemis_get",
+          "resource": "institution-student-admission",
+          "purpose": "Pull the admission application(s) for this student.",
+          "guidance": "Filter student_id:<id>. If multiple rows (re-applications), order by created DESC and take the most recent. Note the status_id, assignee_id, education_grade_id, and institution_id values for the next steps."
+        },
+        {
+          "step": 3,
+          "title": "Resolve the admission's workflow step name",
+          "action": "openemis_get",
+          "resource": "workflow-models",
+          "purpose": "Find which workflow_model represents InstitutionStudentAdmission so we can fetch the right workflow definition.",
+          "guidance": "Filter by model:'Institution.InstitutionStudentAdmissions' (or grep for 'StudentAdmission' in the name field). Note the returned id — call it admission_workflow_model_id."
+        },
+        {
+          "step": 4,
+          "title": "Map status_id → workflow_step → human label",
+          "action": "openemis_get",
+          "resource": "workflow-statuses-steps",
+          "purpose": "Join the admission's status_id to its underlying workflow_step.",
+          "guidance": "Filter workflow_status_id:<admission.status_id>. The row gives you the workflow_step_id. Then GET workflow-steps/{workflow_step_id} to read name (e.g., 'Pending Verification') and category (1/2/3 → TO_DO / IN_PROGRESS / DONE)."
+        },
+        {
+          "step": 5,
+          "title": "Resolve the current assignee",
+          "action": "openemis_get",
+          "resource": "security-users",
+          "purpose": "If assignee_id is not null, fetch the staff member's name so the answer reads naturally.",
+          "guidance": "Single-record GET on security-users/{assignee_id} with _fields:['first_name','last_name','openemis_no']. Skip if assignee_id is null (admission row is unassigned)."
+        },
+        {
+          "step": 6,
+          "title": "Read the transition history",
+          "action": "openemis_get",
+          "resource": "workflow-transitions",
+          "purpose": "Build a timeline of how the admission moved through steps.",
+          "guidance": "Filter workflow_model_id:<admission_workflow_model_id> AND model_reference:<admission.id>. Order by created DESC. Each row records prev_workflow_step_name → workflow_step_name with the action (APPROVE/REJECT) and the actor (created_user_id). This is the audit trail to surface to the user."
+        },
+        {
+          "step": 7,
+          "title": "If admission is DONE (category=3), check enrolment",
+          "action": "openemis_get",
+          "resource": "institution-student-enrolment",
+          "purpose": "Once admission is approved (Closed), enrolment becomes the next workflow. Fetch the enrolment row.",
+          "guidance": "Filter student_id:<id>, institution_id:<id>, academic_period_id:<id>. Repeat steps 3-6 against the enrolment workflow_model (typically model:'Institution.StudentUser' or similar — find via workflow-models). If enrolment is also category=3, the student is fully enrolled."
+        },
+        {
+          "step": 8,
+          "title": "Render in plain language",
+          "action": "format",
+          "purpose": "Produce a paragraph the user can understand.",
+          "guidance": "Example output: 'Anna Hassan applied to Avory Primary on 2026-04-12. Her admission is currently at step \"Pending Verification\" (TO_DO), assigned to Mr Ravi Kumar. The application has moved through 2 transitions: Submitted → Under Review (Apr 13, by Ms Aaisha) → Pending Verification (Apr 15, by Ms Aaisha). She has NOT been enrolled yet — enrolment opens only after admission is approved.'"
+        }
+      ],
+      "notes": [
+        "Workflow-controlled writes (approving admission, rejecting, reassigning) cannot be driven via this MCP — they require human approval and use the Workflow plugin's processWorkflow component. The free MCP is read-only by design; the pro MCP defers workflow writes to the OpenEMIS application per the workflow_writes_deferred_to_app global policy. Do not attempt to POST to /api/v5/institution-student-admission to 'approve' a record.",
+        "If status_id matches a workflow_step with category=3 (DONE) but workflow_step.name is 'Closed - Rejected' (not 'Closed - Approved'), the applicant was rejected — they will NOT proceed to enrolment. Surface that clearly.",
+        "The legacy status_id values like 'submitted' / 'under_review' you may see in older test data are kept for backward compatibility via workflow_statuses. Modern installations use numeric workflow_step_ids — both shapes appear in the wild.",
+        "Atlas reference (vault, if you have it): /Users/khindol/Documents/Vaults/openemis/Products/Core/plugins/workflow.md and /Atlas/concepts/Core-API-v5-Workflow-Index.md."
+      ]
+    },
+    {
+      "id": "explain-workflow-system",
+      "title": "Explain the OpenEMIS workflow system (admissions, enrolment, leave, transfer)",
+      "audience": [
+        "admin",
+        "principal",
+        "developer",
+        "consultant"
+      ],
+      "domain": "Workflow",
+      "description": "Educational playbook — answer 'why does this approval take 4 steps?', 'what is a workflow step vs. a workflow status?', 'who can approve this?'. OpenEMIS uses the Workflow plugin to model every multi-step approval (student admission, student enrolment, staff leave, staff/student transfer, training applications). This playbook explains the concepts so a user can read the database and figure out why a record is stuck.",
+      "why_workflows": "Schools differ wildly in how they approve things. A small private kindergarten may approve a student's admission with one principal's tick; a country's national education ministry may need: registrar verification → school principal review → district inspection → MOE final stamp. Hard-coding that chain in PHP would require a code release every time a country changes its process. The Workflow plugin makes the chain DATA, not CODE — admins configure steps, role-based assignees, transitions, and rules through the UI, and the same engine powers every domain that needs approvals.",
+      "resources": [
+        "workflows",
+        "workflow-models",
+        "workflow-steps",
+        "workflow-actions",
+        "workflow-statuses",
+        "workflow-statuses-steps",
+        "workflow-steps-roles",
+        "workflow-transitions",
+        "workflow-comments",
+        "workflow-rules",
+        "security-roles"
+      ],
+      "concepts": [
+        {
+          "name": "workflow_models",
+          "meaning": "The registry of domain models that the workflow engine can govern (e.g., 'Institution.InstitutionStudentAdmissions', 'Institution.StaffLeave'). Adding a new domain to workflow means writing a row here and attaching WorkflowBehavior to that model."
+        },
+        {
+          "name": "workflows",
+          "meaning": "A named approval template bound to a workflow_model. One workflow_model can have many workflows (e.g., 'Standard Admission' vs. 'Boarding-school Admission'). Each tenant configures their own."
+        },
+        {
+          "name": "workflow_steps",
+          "meaning": "Discrete stages within a workflow. Each step has a category — 1=TO_DO (queued), 2=IN_PROGRESS (being worked on), 3=DONE (closed). Saving a workflow auto-creates the three system steps Open / Pending / Closed; admins add more (e.g., 'Pending Verification', 'Pending Principal Approval')."
+        },
+        {
+          "name": "workflow_actions",
+          "meaning": "Transitions between steps. Each action has a source step, a target step, and a verb (action=0 APPROVE, 1=REJECT). The state machine BLOCKS any status change that isn't a defined workflow_action — that's how the plugin enforces 'you cannot skip the principal'."
+        },
+        {
+          "name": "workflow_steps_roles",
+          "meaning": "Which security_roles are authorized to act on a given step. Restricts WHO can approve/reject at each stage. Example: 'Pending Principal Approval' is restricted to roles where role.name='Principal'."
+        },
+        {
+          "name": "workflow_statuses + workflow_statuses_steps",
+          "meaning": "Legacy compatibility layer. Older domain models store status_id pointing at workflow_statuses; the join table maps that to the modern workflow_step_id. Both still work — newer installs increasingly skip the legacy layer."
+        },
+        {
+          "name": "workflow_transitions",
+          "meaning": "Audit trail. Every time a record moves between steps (or its assignee changes, or an admin comments), one row is appended here. Read this to answer 'who approved, when, and why?'."
+        },
+        {
+          "name": "workflow_comments",
+          "meaning": "Free-text comments left during transitions — typically the reason for rejection, or notes from the reviewer. Joined to the source record by (workflow_model_id, model_reference)."
+        },
+        {
+          "name": "assignee_id (on the source row, NOT on workflow-*)",
+          "meaning": "The current handler. When a record advances to a step like 'Pending Principal Approval', the system pushes the row into the principal's queue by setting assignee_id to the principal's security_users.id. UI dashboards filter by assignee_id = current_user to show 'tasks waiting on me'."
+        },
+        {
+          "name": "workflow_rules",
+          "meaning": "JSON-encoded conditional triggers. Example: 'auto-reject staff leave if days_unmarked > 5'. The rule fires on specific events and can transition the workflow without a human action. Powerful for automation; rare in vanilla tenants."
+        }
+      ],
+      "steps": [
+        "openemis_get('workflow-models', params:{_fields:['id','name','model'], limit:50}) — see every domain governed by workflow",
+        "For any specific domain (e.g., admissions): openemis_get('workflows', params:{workflow_model_id:<id>, _fields:['id','code','name']}) — see which workflow templates are configured",
+        "openemis_get('workflow-steps', params:{workflow_id:<id>, _fields:['id','name','category']}) — see the stages in that template, ordered by category",
+        "openemis_get('workflow-actions', params:{workflow_step_id:<step_id>, _fields:['id','name','next_workflow_step_id','action']}) — see which transitions are allowed FROM a given step",
+        "openemis_get('workflow-steps-roles', params:{workflow_step_id:<step_id>}) joined with security-roles to see WHO can act on a given step",
+        "openemis_get('workflow-transitions', params:{workflow_model_id:<id>, model_reference:<row_id>, orderby:'created', order:'desc'}) — audit trail for a specific record"
+      ],
+      "notes": [
+        "WHY THE PLUGIN EXISTS: configurability. The same PHP code powers admission approval in a 30-student village school in Mongolia and a 5,000-student urban academy in Brazil — they just configure different steps, roles, and rules.",
+        "THE THREE SYSTEM STEPS (Open, Pending, Closed) are auto-created with every new workflow and CANNOT be deleted (is_system_defined=1). They guarantee that every workflow has a sensible entry and exit point.",
+        "The plugin EXPLICITLY DOES NOT allow agents (this MCP included) to drive transitions. Workflow-controlled writes require the human-in-the-loop approval chain — see [[mark-student-attendance]] for an example of a workflow-controlled write that we deliberately defer to the OpenEMIS UI.",
+        "Atlas vault reference (if available): /Users/khindol/Documents/Vaults/openemis/Products/Core/plugins/workflow.md describes the full state machine model in detail."
+      ]
     }
   ],
-  "playbook_count": 38
+  "playbook_count": 40
 }

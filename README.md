@@ -4,7 +4,9 @@
 
 # openemis-mcp
 
-**Free, read-only MCP bridge between AI agents and any OpenEMIS instance.**
+**Free, read-only MCP bridge between AI agents and any OpenEMIS school.**
+
+[**OpenEMIS**](https://www.openemis.org) is a free, open-source **school management information system** developed by UNESCO and KORDIT. It runs the day-to-day administration of every kind of educational institution — kindergartens, primary schools, secondary schools, secondary vocational institutions, technical colleges, and universities — managing students, staff, attendance, assessment, infrastructure, meals, scholarships, examinations, training, and ministry-level reporting. This MCP gives AI agents read-only access to the data in any OpenEMIS school so you can ask questions in plain English and get answers in seconds.
 
 Built on the published **OpenEMIS Core API** (reference: [api.openemis.org/core](https://api.openemis.org/core)) and verified against the public demo at [demo.openemis.org/core](https://demo.openemis.org/core).
 
@@ -27,13 +29,13 @@ No code. No JSON. Just ask.
 | `openemis_health` | Ping the configured instance — real login round-trip |
 | `openemis_list_domains` | List the 9 curated domains (Attendance, Assessment, Staff, Student…) |
 | `openemis_discover` | Topic → up to 30 scoped endpoints. Keeps conversations small |
-| `openemis_list_playbooks` | List all 38 playbooks — 24 read-only here, 14 stubs that redirect to mcp-pro |
+| `openemis_list_playbooks` | List all 40 playbooks — 26 read-only here, 14 stubs that redirect to mcp-pro |
 | `openemis_get_playbook` | Load a playbook by id — full steps, resources, gotcha notes |
 | `openemis_get` | Unified read: list or singleton, any resource, any filter |
 
-**24 read-only playbooks** covering attendance, assessment, student profiles, staff profiles, infrastructure, meals, risk dashboards, class reports, timetables, audit logs, accreditation/registration, and more — each verified against the v5 manifest at 100% resource coverage. **14 additional playbook stubs** are discoverable here but redirect to **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)** for the actual write/auth steps.
+**26 read-only playbooks** covering attendance, assessment, student profiles, staff profiles, infrastructure, meals, risk dashboards, class reports, timetables, audit logs, school accreditation / registration, **admission and enrolment queue state**, and a primer on how the OpenEMIS workflow plugin powers every multi-step approval — each verified against the v5 manifest at 100% resource coverage. **14 additional playbook stubs** are discoverable here but redirect to **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)** for the actual write/auth steps.
 
-**Translations:** [Русский](docs/translations/README.ru.md) · [Español](docs/translations/README.es.md) · [हिन्दी](docs/translations/README.hi.md) · [العربية](docs/translations/README.ar.md) — the original 17 view playbooks also translated in all four languages; 7 newer playbooks (added in v1.1.0 for Core 5.10.0) are English-only for now.
+**Translations:** [Русский](docs/translations/README.ru.md) · [Español](docs/translations/README.es.md) · [हिन्दी](docs/translations/README.hi.md) · [العربية](docs/translations/README.ar.md) — the original 17 view playbooks also translated in all four languages; 9 newer playbooks (added in v1.1.0 for Core 5.10.0, plus the two workflow playbooks) are English-only for now.
 
 > ✏️ **Write operations** (creating/updating records in OpenEMIS) require **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**. This free server is intentionally read-only — `post`, `put`, and `delete` are not available.
 
@@ -44,7 +46,7 @@ No code. No JSON. Just ask.
 | | **Free** | **Individual Pro** | **Institution Pro** | **Country Pro** |
 |---|---|---|---|---|
 | Read tools (all 675 resources, Core 5.10.0) | ✅ | ✅ | ✅ | ✅ |
-| 24 read playbooks (17 × 5 languages + 7 EN) | ✅ | ✅ | ✅ | ✅ |
+| 26 read playbooks (17 × 5 languages + 9 EN) | ✅ | ✅ | ✅ | ✅ |
 | 14 write / auth playbooks (mark-attendance, enrol, set-accreditation…) | stub | ✅ | ✅ | ✅ |
 | stdio mode (Claude Code, Cursor, Cline) | ✅ | ✅ | ✅ | ✅ |
 | **HTTP server mode** (Oracle / VPS — install once, connect by URL) | — | ✅ | ✅ | ✅ |
@@ -165,6 +167,8 @@ Loaded via `openemis_get_playbook` — full English content in `data/playbooks.j
 | 22 | `query-student-absence-history` | Attendance | Aggregate absences via institution-student-absences + absence-days. |
 | 23 | `query-user-activity-audit-log` | Security | Query the POCOR-9697 user_activities per-field audit trail. |
 | 24 | `view-class-roster` | Institution | Walk institution-classes → institution-class-students → student details. |
+| 25 | `view-admission-and-enrolment-queue-state` | Workflow | Answer "where is this future student in the admission/enrolment queue?" — resolves status_id → workflow_step name, current assignee, full transition history. |
+| 26 | `explain-workflow-system` | Workflow | Primer for "why does this approval take 4 steps?" — explains workflow_models, steps, statuses, transitions, role-based assignees, and why the plugin makes approval chains configurable per tenant. |
 
 ### Write / auth playbooks (stubs — install [mcp-pro](https://github.com/tixuz/openemis-mcp-pro))
 
@@ -190,7 +194,7 @@ The handler then collapses the batch into a single round-trip. Default off (comp
 ```
 Agent (Claude / Cursor / Codex / …)
         │ MCP stdio
-openemis-mcp  ←  6 read tools + 24 read playbooks + 14 redirect stubs
+openemis-mcp  ←  6 read tools + 26 read playbooks + 14 redirect stubs
         │ HTTPS + Bearer JWT
 OpenEMIS Core API  /api/v5/{resource}   (3,355 endpoints across 675 resources)
 ```
@@ -204,7 +208,7 @@ Domain-scoped discovery keeps conversations small — `openemis_discover("attend
 ## Docs
 
 - [Resource Reference](docs/resources.md) — all 675 resources with method availability (Core 5.10.0)
-- [Playbooks](docs/playbooks/) — 17 view playbooks in 5 languages + 7 newer English-only playbooks (translations follow)
+- [Playbooks](docs/playbooks/) — 17 view playbooks in 5 languages + 9 newer English-only playbooks (translations follow)
 - [ACKNOWLEDGEMENTS.md](ACKNOWLEDGEMENTS.md) — the AI team that built this
 
 ---
