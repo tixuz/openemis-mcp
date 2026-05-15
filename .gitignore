@@ -2,3 +2,9 @@ node_modules/
 dist/
 .env
 *.js.map
+
+# transient agent workspace
+tmp/
+
+# macOS
+.DS_Store
