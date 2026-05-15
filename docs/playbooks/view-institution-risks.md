@@ -1,3 +1,14 @@
+---
+title: "View Institution Risks — Risk Summary & Alert Rules in OpenEMIS"
+description: "OpenEMIS playbook to view an institution's configured student risks, early-warning alert rules, and recent alert delivery logs. School management MCP guide."
+keywords:
+  - OpenEMIS
+  - student risks
+  - school management system
+  - education management
+  - early-warning
+---
+
 # View Institution Risk Summary and Alert Rules
 
 > 📖 **Read-only server.** Playbooks that create or update records require **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
@@ -7,6 +18,8 @@
 **Playbook ID:** `view-institution-risks`
 
 ## Description
+
+This OpenEMIS playbook explains how to view an institution's student risk configuration — which risk types are enabled, the early-warning alert rules, and recent alert delivery logs — using the OpenEMIS school management API.
 
 View which risks are configured for an institution, the alert rules that fire when thresholds are crossed, and recent alert delivery logs. `institution-risks` has a composite PK (`risk_id` + `institution_id`) — no integer `id` field. Alerts link to AlertRules via a **string name↔feature binding**, not an integer FK.
 
@@ -86,3 +99,5 @@ No `institution_id` or `academic_period_id` filter. Filter by `feature` to scope
 3. `openemis_get { resource: "alerts" }` → 3 alert definitions (names: "LowAttendance", "HighAbsence", "FailingGrade")
 4. `openemis_get { resource: "alert-rules", params: { } }` → "LowAttendance" rule: enabled=1, method=Email, threshold=75
 5. `openemis_get { resource: "alert-logs", params: { feature: "LowAttendance" } }` → 4 emails sent (status=1), 1 failed (status=-1) last week
+
+*When to use: ask this playbook when an admin or ministry officer needs to see a school's student risk configuration and early-warning alert rules in the OpenEMIS education management system.*

@@ -1,3 +1,13 @@
+---
+title: "البنية التحتية للمؤسسة — المباني والمرافق في OpenEMIS"
+description: "دليل OpenEMIS لعرض البنية التحتية المادية للمدرسة: الأراضي والمباني والمرافق وبيانات WASH. استعلام MCP لإدارة التعليم."
+keywords:
+  - OpenEMIS
+  - نظام إدارة المدارس
+  - إدارة التعليم
+  - البنية التحتية
+---
+
 # عرض البنية التحتية للمؤسسة (الأراضي، المباني، المرافق، المياه والصرف الصحي والنظافة)
 
 > 📖 **Read-only server.** Playbooks that create or update records require **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
@@ -7,6 +17,8 @@
 **معرف دليل التشغيل:** `view-institution-infrastructure`
 
 ## الوصف
+
+يشرح دليل OpenEMIS هذا كيفية عرض البنية التحتية المادية للمدرسة — الأراضي والمباني ومرافق الكهرباء وبيانات WASH — باستخدام واجهة برمجة تطبيقات نظام إدارة المدارس OpenEMIS.
 
 عرض البنية التحتية المادية للمؤسسة: قطع الأراضي، المباني لكل قطعة أرض، المرافق (الكهرباء)، وسجلات المياه والصرف الصحي والنظافة (WASH). **الأراضي والمباني ليست محددة النطاق بواسطة `academic_period_id`** — تمت إزالة هذا الحقل في POCOR-8037. أما المرافق وسجلات المياه والصرف الصحي والنظافة فهي محددة النطاق بواسطة `academic_period_id`.
 
@@ -85,3 +97,5 @@
 4. `openemis_get { resource: "infrastructure-utility-electricities", params: { institution_id: 6, academic_period_id: 1, is_current: 1 } }` → كهرباء شبكة، حالة جيدة
 5. `openemis_get { resource: "infrastructure-wash-waters", params: { institution_id: 6, academic_period_id: 1 } }` → مياه موصولة بالأنابيب، وظيفية
 6. `openemis_get { resource: "infrastructure-wash-sanitations", params: { institution_id: 6, academic_period_id: 1 } }` → 4 مراحيض ذكور، 4 مراحيض إناث وظيفية
+
+*متى تُستخدم: استخدم هذا الدليل عندما يحتاج مدير إلى بيانات البنية التحتية للمدرسة — المباني والمرافق وبيانات WASH — في OpenEMIS.*

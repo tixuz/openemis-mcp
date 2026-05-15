@@ -1,3 +1,13 @@
+---
+title: "Riesgos de la Institución — Resumen y Reglas de Alerta en OpenEMIS"
+description: "Guía OpenEMIS para ver los riesgos de estudiantes configurados en una institución, reglas de alerta temprana y registros de entrega. MCP para gestión educativa."
+keywords:
+  - OpenEMIS
+  - riesgos de estudiantes
+  - sistema de gestión escolar
+  - gestión educativa
+---
+
 # Ver Resumen de Riesgos Institucionales y Reglas de Alerta
 
 > 📖 **Read-only server.** Playbooks that create or update records require **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
@@ -7,6 +17,8 @@
 **ID del Playbook:** `view-institution-risks`
 
 ## Descripción
+
+Este playbook de OpenEMIS explica cómo ver la configuración de riesgos de estudiantes en una institución — tipos de riesgo habilitados, reglas de alerta temprana y registros recientes — usando la API del sistema de gestión escolar OpenEMIS.
 
 Vea qué riesgos están configurados para una institución, las reglas de alerta que se activan cuando se cruzan los umbrales y los registros recientes de entrega de alertas. `institution-risks` tiene una PK compuesta (`risk_id` + `institution_id`) — no tiene un campo entero `id`. Las alertas se vinculan a AlertRules mediante un **enlace de nombre de cadena↔característica**, no una FK entera.
 
@@ -86,3 +98,5 @@ No hay filtro `institution_id` o `academic_period_id`. Filtre por `feature` para
 3. `openemis_get { resource: "alerts" }` → 3 definiciones de alerta (nombres: "LowAttendance", "HighAbsence", "FailingGrade")
 4. `openemis_get { resource: "alert-rules", params: { } }` → regla "LowAttendance": enabled=1, method=Email, threshold=75
 5. `openemis_get { resource: "alert-logs", params: { feature: "LowAttendance" } }` → 4 correos enviados (status=1), 1 fallido (status=-1) la semana pasada
+
+*Cuándo usar: use este playbook cuando un administrador necesite verificar la configuración de riesgos de estudiantes y las reglas de alerta temprana en OpenEMIS.*

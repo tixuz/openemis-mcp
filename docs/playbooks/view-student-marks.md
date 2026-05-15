@@ -1,8 +1,21 @@
+---
+title: "View Student Marks — Assessment Results in OpenEMIS"
+description: "OpenEMIS playbook to look up a student's exam marks and assessment results for a subject or academic period. School management MCP query guide."
+keywords:
+  - OpenEMIS
+  - school management system
+  - education management
+  - student marks
+  - assessment results
+---
+
 # Look Up a Student's Marks and Assessment Results for a Subject or Period
 
 > 📖 **Read-only server.** Playbooks that create or update records require **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
 
 **Domain:** Assessment · **Audience:** teacher, admin, parent
+
+This OpenEMIS playbook explains how to retrieve a student's exam marks and assessment results for any subject or academic period in the OpenEMIS school management system.
 
 Retrieve a student's scored results from assessment-item-results for one or more assessments in a given academic period. This playbook first locates the relevant assessment definitions and period identifiers, then fetches the raw mark rows, and finally enriches them with subject names from education-subjects. Results include the numeric mark plus a grading_option_id which can be resolved against the assessment's grading table for a letter grade or pass/fail label.
 
@@ -56,3 +69,5 @@ The agent will:
 1. Call `openemis_discover` or `openemis_list_playbooks` to find this playbook
 2. Follow the steps above
 3. Return the answer in plain English
+
+*When to use: ask this playbook when a parent, teacher, or admin needs to see a student's assessment marks or exam results for a specific subject or academic period in OpenEMIS.*

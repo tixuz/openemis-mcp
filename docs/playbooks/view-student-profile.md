@@ -1,8 +1,21 @@
+---
+title: "View Student Profile — Guardian Contacts & Absence History in OpenEMIS"
+description: "OpenEMIS playbook to view a student's enrollment record, guardian contacts, and attendance absence history. School management MCP query guide."
+keywords:
+  - OpenEMIS
+  - school management system
+  - student attendance
+  - education management
+  - student profile
+---
+
 # View Student Profile, Guardian Contacts, and Absence History
 
 > 📖 **Read-only server.** Playbooks that create or update records require **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
 
 **Domain:** Student · **Audience:** teacher, admin
+
+This OpenEMIS playbook explains how to retrieve a student's full enrollment record, their guardian contact list, and recent attendance absence history from the OpenEMIS school management system.
 
 Retrieve a student's full enrollment record, the list of guardians associated with them, and their recent absence history in one workflow. The guardian step enriches each contact with the relationship type (e.g., mother, father, legal guardian) by resolving the guardian-relations lookup table. Absence history is fetched from student-attendance-marked-records — each row is an absence or late event; days with no row are implicitly present.
 
@@ -48,3 +61,5 @@ The agent will:
 1. Call `openemis_discover` or `openemis_list_playbooks` to find this playbook
 2. Follow the steps above
 3. Return the answer in plain English
+
+*When to use: ask this playbook when a teacher or admin needs a student's full enrollment details, guardian contacts, and attendance absence history from the OpenEMIS school management system.*

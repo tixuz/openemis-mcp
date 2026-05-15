@@ -1,8 +1,20 @@
+---
+title: "Horario del Estudiante — Horario Personal en OpenEMIS"
+description: "Guía OpenEMIS para ver el horario personal de un estudiante: asignaturas, docentes, aulas y franjas horarias. MCP para sistema de gestión escolar."
+keywords:
+  - OpenEMIS
+  - sistema de gestión escolar
+  - gestión educativa
+  - horario
+---
+
 # Ver el Horario de un Estudiante (Vista de Padre/Madre o Estudiante)
 
 > 📖 **Read-only server.** Playbooks that create or update records require **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
 
 **Dominio:** Horario · **Audiencia:** padre/madre, estudiante
+
+Este playbook de OpenEMIS explica cómo recuperar el horario personal de un estudiante — asignaturas, docentes, aulas y franjas horarias — desde el sistema de gestión escolar OpenEMIS.
 
 Dado un ID de estudiante, devuelve el horario de clases — asignaturas, docentes, aulas y franjas horarias para el período académico actual. Esta es la vista personal que un estudiante o padre/madre vería, mostrando la clase específica en la que el estudiante está matriculado.
 
@@ -47,3 +59,5 @@ El agente hará:
 1. Llamar a `openemis_discover` o `openemis_list_playbooks` para encontrar este playbook
 2. Seguir los pasos anteriores
 3. Devolver la respuesta en lenguaje sencillo
+
+*Cuándo usar: use este playbook cuando un estudiante o padre necesite ver el horario personal de clases para el período académico actual en OpenEMIS.*

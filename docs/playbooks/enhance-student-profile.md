@@ -1,3 +1,14 @@
+---
+title: "Enhance Student Profile — Contacts, Nationality & Special Needs in OpenEMIS"
+description: "OpenEMIS playbook to augment a student profile with contact details, nationality, and special-needs assessments. School management MCP query guide."
+keywords:
+  - OpenEMIS
+  - school management system
+  - education management
+  - student profile
+  - special needs
+---
+
 # Enhance Student Profile with Contacts, Nationality, and Special Needs
 
 > 📖 **Read-only server.** Playbooks that create or update records require **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
@@ -7,6 +18,8 @@
 **Playbook ID:** `enhance-student-profile`
 
 ## Description
+
+This OpenEMIS playbook explains how to augment a student profile with contact details, nationality information, special-needs assessments, and special-needs plans from the OpenEMIS school management system.
 
 Augment an existing student profile view by fetching direct contact details, nationality assignments, special-needs assessments, and special-needs plans. All four enhancement resources filter by `security_user_id` (the student's global user ID from `security_users`), **NOT** by `student_id` (the enrollment FK). Empty results for special-needs are valid — most students have no records.
 
@@ -75,3 +88,5 @@ Filter by `security_user_id` and optionally `academic_period_id`.
 3. `openemis_get { resource: "user-nationalities", params: { security_user_id: 102 } }` → Malaysian (preferred)
 4. `openemis_get { resource: "user-special-needs-assessments", params: { security_user_id: 102 } }` → [] (none)
 5. `openemis_get { resource: "user-special-needs-plans", params: { security_user_id: 102 } }` → [] (none)
+
+*When to use: ask this playbook when you need to enrich a student profile with contacts, nationality, or special-needs records from the OpenEMIS school management system.*

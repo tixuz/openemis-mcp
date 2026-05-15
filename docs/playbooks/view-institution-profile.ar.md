@@ -1,3 +1,13 @@
+---
+title: "ملف المؤسسة التعليمية — تفاصيل المدرسة في OpenEMIS"
+description: "دليل OpenEMIS لعرض الملف الكامل للمدرسة: السجل الأساسي والصفوف النشطة والمنطقة وجهات الاتصال. استعلام MCP لإدارة التعليم."
+keywords:
+  - OpenEMIS
+  - نظام إدارة المدارس
+  - إدارة التعليم
+  - المؤسسة
+---
+
 # عرض الملف الشخصي الكامل للمؤسسة التعليمية
 
 > 📖 **Read-only server.** Playbooks that create or update records require **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
@@ -7,6 +17,8 @@
 **معرف دليل الإجراءات:** `view-institution-profile`
 
 ## الوصف
+
+يشرح دليل OpenEMIS هذا كيفية عرض الملف الكامل لمؤسسة تعليمية — السجل الأساسي والصفوف النشطة والمنطقة الجغرافية وجهات الاتصال — باستخدام واجهة برمجة تطبيقات نظام إدارة المدارس OpenEMIS.
 
 عرض معلومات مفصلة عن مؤسسة تعليمية: السجل الأساسي، الصفوف النشطة، المنطقة الجغرافية، وأشخاص الاتصال. تتبع الخطوات الترتيب القياسي — جلب بيانات المؤسسة الأساسية أولاً، ثم الصفوف، ثم تحديد المنطقة الجغرافية، ثم جهات الاتصال.
 
@@ -67,3 +79,5 @@
 2. `openemis_get { resource: "institution-grades", params: { institution_id: 6, academic_period_id: 1 } }` → الصفوف 1–6
 3. `openemis_get { resource: "institution-localities" }` → مطابقة locality_id=2 → "سيلانغور"
 4. `openemis_get { resource: "institution-contact-persons", params: { institution_id: 6 } }` → جين دو، المديرة
+
+*متى تُستخدم: استخدم هذا الدليل عندما تحتاج إلى الملف الكامل للمدرسة — الصفوف والموقع وجهات الاتصال — في نظام إدارة التعليم OpenEMIS.*

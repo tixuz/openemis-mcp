@@ -1,3 +1,13 @@
+---
+title: "छात्र प्रोफ़ाइल बढ़ाएँ — संपर्क और विशेष आवश्यकताएं OpenEMIS में"
+description: "OpenEMIS प्लेबुक जो छात्र प्रोफ़ाइल को संपर्क, राष्ट्रीयता और विशेष आवश्यकता रिकॉर्ड के साथ बढ़ाती है। शिक्षा प्रबंधन MCP गाइड।"
+keywords:
+  - OpenEMIS
+  - स्कूल प्रबंधन प्रणाली
+  - शिक्षा प्रबंधन
+  - छात्र प्रोफ़ाइल
+---
+
 # छात्र प्रोफ़ाइल को संपर्क, राष्ट्रीयता और विशेष आवश्यकताओं के साथ बढ़ाएँ
 
 > 📖 **Read-only server.** Playbooks that create or update records require **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
@@ -7,6 +17,8 @@
 **प्लेबुक आईडी:** `enhance-student-profile`
 
 ## विवरण
+
+यह OpenEMIS प्लेबुक बताती है कि OpenEMIS स्कूल प्रबंधन प्रणाली के API का उपयोग करके छात्र प्रोफ़ाइल को संपर्क, राष्ट्रीयता और विशेष शैक्षिक आवश्यकता रिकॉर्ड के साथ कैसे बढ़ाया जाए।
 
 मौजूदा छात्र प्रोफ़ाइल दृश्य को सीधे संपर्क विवरण, राष्ट्रीयता असाइनमेंट, विशेष-आवश्यकता आकलन और विशेष-आवश्यकता योजनाएँ प्राप्त करके बढ़ाएँ। सभी चार वृद्धि संसाधन `security_user_id` (छात्र का `security_users` से वैश्विक उपयोगकर्ता आईडी) द्वारा फ़िल्टर करते हैं, **न कि** `student_id` (नामांकन FK) द्वारा। विशेष-आवश्यकताओं के लिए खाली परिणाम वैध हैं — अधिकांश छात्रों के कोई रिकॉर्ड नहीं होते।
 
@@ -75,3 +87,5 @@
 3. `openemis_get { resource: "user-nationalities", params: { security_user_id: 102 } }` → Malaysian (preferred)
 4. `openemis_get { resource: "user-special-needs-assessments", params: { security_user_id: 102 } }` → [] (none)
 5. `openemis_get { resource: "user-special-needs-plans", params: { security_user_id: 102 } }` → [] (none)
+
+*कब उपयोग करें: इस प्लेबुक का उपयोग करें जब OpenEMIS में छात्र प्रोफ़ाइल को संपर्क, राष्ट्रीयता या विशेष आवश्यकता रिकॉर्ड के साथ समृद्ध करना हो।*

@@ -1,8 +1,20 @@
+---
+title: "Resumen de la Institución — Estudiantes, Personal y Vacantes en OpenEMIS"
+description: "Guía OpenEMIS para obtener los conteos básicos de una escuela: estudiantes matriculados, personal activo y puestos vacantes. MCP para gestión educativa."
+keywords:
+  - OpenEMIS
+  - sistema de gestión escolar
+  - gestión educativa
+  - institución
+---
+
 # Información básica de la institución — Conteos de estudiantes, personal y puestos vacantes
 
 > 📖 **Read-only server.** Playbooks that create or update records require **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
 
 **Dominio:** Institución · **Audiencia:** administrador, padre
+
+Este playbook de OpenEMIS explica cómo obtener un resumen básico de una escuela — total de estudiantes matriculados, personal activo y puestos vacantes — usando la API del sistema de gestión escolar OpenEMIS.
 
 La consulta clásica "cuénteme sobre esta escuela". Una búsqueda única de la institución seguida de tres llamadas de conteo que utilizan los metadatos de paginación para obtener los totales sin descargar cada registro.
 
@@ -48,3 +60,5 @@ El agente hará:
 1. Llamar a `openemis_discover` o `openemis_list_playbooks` para encontrar este playbook
 2. Seguir los pasos anteriores
 3. Devolver la respuesta en lenguaje sencillo
+
+*Cuándo usar: use este playbook para obtener un resumen rápido de una institución — estudiantes, personal y vacantes — en el sistema de gestión educativa OpenEMIS.*

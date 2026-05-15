@@ -1,14 +1,28 @@
+---
+title: "openemis-mcp — AI bridge for OpenEMIS school management"
+description: "Free, read-only MCP server that connects AI assistants to OpenEMIS school management. Query student attendance, risks, staff, and 675 resources."
+keywords:
+  - OpenEMIS
+  - school management system
+  - education management
+  - student attendance
+  - student risks
+  - MCP server
+---
+
 <p align="center">
-  <img src="assets/logo.png" alt="openemis-mcp logo" width="320">
+  <img src="assets/logo.png" alt="openemis-mcp logo — AI bridge for OpenEMIS school management" width="320">
 </p>
 
-# openemis-mcp
+# openemis-mcp — AI bridge for OpenEMIS school management
 
 **Free, read-only MCP bridge between AI agents and any OpenEMIS school.**
 
 [**OpenEMIS**](https://www.openemis.org) is a free, open-source **school management information system** developed by UNESCO and KORDIT. It runs the day-to-day administration of every kind of educational institution — kindergartens, primary schools, secondary schools, secondary vocational institutions, technical colleges, and universities — managing students, staff, attendance, assessment, infrastructure, meals, scholarships, examinations, training, and ministry-level reporting. This MCP gives AI agents read-only access to the data in any OpenEMIS school so you can ask questions in plain English and get answers in seconds.
 
 Built on the published **OpenEMIS Core API** (reference: [api.openemis.org/core](https://api.openemis.org/core)) and verified against the public demo at [demo.openemis.org/core](https://demo.openemis.org/core).
+
+> **What this is:** openemis-mcp is a free MCP server that connects AI assistants (Claude, Cursor, Codex) to the OpenEMIS school management system. It exposes 675 resources — students, student attendance, student risks, staff, exams, infrastructure — across 26 curated read-only playbooks, plus 14 redirect stubs for write operations.
 
 Ask in plain English:
 
@@ -132,7 +146,7 @@ Each line is a JSON object: `{ts, type:"tool_call"|"tool_result"|"tool_error", t
 
 24 read-only workflow guides — see [docs/playbooks/](docs/playbooks/). Write-side playbooks (mark attendance, enrol a student, set school accreditation, etc.) are discoverable here as stubs that point at **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
 
-### Read playbooks (this MCP)
+### Read playbooks (school data lookups)
 
 | # | Playbook | Domain | Translations |
 |---|---|---|---|
@@ -209,6 +223,8 @@ Domain-scoped discovery keeps conversations small — `openemis_discover("attend
 
 - [Resource Reference](docs/resources.md) — all 675 resources with method availability (Core 5.10.0)
 - [Playbooks](docs/playbooks/) — 17 view playbooks in 5 languages + 9 newer English-only playbooks (translations follow)
+- [GLOSSARY.md](docs/GLOSSARY.md) — key terms: OpenEMIS, MCP, attendance, student risks, and more
+- [FAQ.md](docs/FAQ.md) — common questions about school management with OpenEMIS MCP
 - [ACKNOWLEDGEMENTS.md](ACKNOWLEDGEMENTS.md) — the AI team that built this
 
 ---

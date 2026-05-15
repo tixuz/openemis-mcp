@@ -1,3 +1,13 @@
+---
+title: "संस्थान भोजन कार्यक्रम — छात्र भागीदारी OpenEMIS में"
+description: "OpenEMIS प्लेबुक जो स्कूल के भोजन कार्यक्रम, पोषण सामग्री और छात्र भागीदारी दिखाती है। शिक्षा प्रबंधन MCP गाइड।"
+keywords:
+  - OpenEMIS
+  - स्कूल प्रबंधन प्रणाली
+  - शिक्षा प्रबंधन
+  - भोजन
+---
+
 # संस्थान भोजन कार्यक्रम और छात्र भागीदारी देखें
 
 > 📖 **Read-only server.** Playbooks that create or update records require **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
@@ -7,6 +17,8 @@
 **प्लेबुक आईडी:** `view-institution-meals`
 
 ## विवरण
+
+यह OpenEMIS प्लेबुक बताती है कि OpenEMIS स्कूल प्रबंधन प्रणाली के API का उपयोग करके किसी स्कूल के भोजन कार्यक्रम — कार्यक्रम प्रकार, पोषण सामग्री और छात्र भागीदारी — कैसे देखें।
 
 किसी संस्थान द्वारा चलाए जा रहे भोजन कार्यक्रम, उनकी पोषण सामग्री और कौन से छात्र नामांकित हैं, देखें। `institution_id` और `academic_period_id` द्वारा स्कोप किया गया। मुख्य ध्यान देने योग्य बात: `meal-nutritional-records` में `meal_nutritions` टेबल के लिए FK `nutritional_content_id` है — **न कि** `meal_nutrition_id`।
 
@@ -77,3 +89,5 @@ API संसाधन `institution-meal-students` `student_meal_marked_records`
 2. `meal-programme-types`, `meal-implementers`, `meal-benefits` को समानांतर में प्राप्त करें → लेबल रिज़ॉल्व करें
 3. `openemis_get { resource: "meal-nutritional-records", params: { meal_programme_id: 3 } }` → प्रोटीन 15g, कार्ब्स 45g, कैलोरी 280kcal (नाम रिज़ॉल्व करने के लिए nutritional_content_id का उपयोग करके)
 4. `openemis_get { resource: "institution-meal-students", params: { institution_id: 6, academic_period_id: 1, meal_programme_id: 3 } }` → इस टर्म में 312 छात्र-दिन रिकॉर्ड
+
+*कब उपयोग करें: इस प्लेबुक का उपयोग करें जब OpenEMIS में स्कूल के भोजन कार्यक्रम या छात्र भागीदारी की जानकारी चाहिए।*

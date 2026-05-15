@@ -1,3 +1,13 @@
+---
+title: "تعزيز ملف الطالب — جهات الاتصال والاحتياجات الخاصة في OpenEMIS"
+description: "دليل OpenEMIS لتعزيز ملف الطالب بجهات الاتصال والجنسية وتقييمات الاحتياجات الخاصة. استعلام MCP لإدارة التعليم."
+keywords:
+  - OpenEMIS
+  - نظام إدارة المدارس
+  - إدارة التعليم
+  - ملف الطالب
+---
+
 # تعزيز ملف الطالب بالجهات الاتصال والجنسية والاحتياجات الخاصة
 
 > 📖 **Read-only server.** Playbooks that create or update records require **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
@@ -7,6 +17,8 @@
 **معرف الدليل:** `enhance-student-profile`
 
 ## الوصف
+
+يشرح دليل OpenEMIS هذا كيفية تعزيز ملف الطالب بجهات الاتصال والجنسية وتقييمات الاحتياجات الخاصة باستخدام واجهة برمجة تطبيقات نظام إدارة المدارس OpenEMIS.
 
 قم بتعزيز عرض ملف الطالب الحالي من خلال جلب تفاصيل الاتصال المباشرة، وتعيينات الجنسية، وتقييمات الاحتياجات الخاصة، وخطط الاحتياجات الخاصة. جميع موارد التعزيز الأربعة تُرشَّح بواسطة `security_user_id` (معرف المستخدم العام للطالب من `security_users`)، **وليس** بواسطة `student_id` (المفتاح الخارجي للتسجيل). النتائج الفارغة للاحتياجات الخاصة صالحة — معظم الطلاب ليس لديهم سجلات.
 
@@ -75,3 +87,5 @@
 3. `openemis_get { resource: "user-nationalities", params: { security_user_id: 102 } }` → Malaysian (preferred)
 4. `openemis_get { resource: "user-special-needs-assessments", params: { security_user_id: 102 } }` → [] (none)
 5. `openemis_get { resource: "user-special-needs-plans", params: { security_user_id: 102 } }` → [] (none)
+
+*متى تُستخدم: استخدم هذا الدليل عندما تحتاج إلى إثراء ملف الطالب بجهات الاتصال أو الجنسية أو سجلات الاحتياجات الخاصة في OpenEMIS.*

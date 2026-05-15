@@ -1,3 +1,14 @@
+---
+title: "View Staff Profile — Position, Leave & Contacts in OpenEMIS"
+description: "OpenEMIS playbook to view a staff member's full profile: position history, leave records, historical positions, and contact details. School management MCP guide."
+keywords:
+  - OpenEMIS
+  - school management system
+  - education management
+  - staff profile
+  - staff attendance
+---
+
 # View a Staff Member's Full Profile
 
 > 📖 **Read-only server.** Playbooks that create or update records require **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
@@ -7,6 +18,8 @@
 **Playbook ID:** `view-staff-profile`
 
 ## Description
+
+This OpenEMIS playbook explains how to view a staff member's complete profile — current and historical position assignments, leave history, and direct contact details — using the OpenEMIS school management API.
 
 View a staff member's current and historical position profiles, leave history, historical positions, and direct contact details. Combines four resources using the correct filter keys for each — there are two distinct staff identity fields (`staff_id` vs `institution_staff_id`) that must not be confused.
 
@@ -71,3 +84,5 @@ Filter by `security_user_id` — this is the staff member's global user ID (same
 2. `openemis_get { resource: "institution-staff-leave", params: { staff_id: 88, orderby: "date_from", order: "desc" } }` → 3 leave records
 3. `openemis_get { resource: "historical-staff-positions", params: { institution_id: 6 } }` → 2 past positions
 4. `openemis_get { resource: "user-contacts", params: { security_user_id: 88 } }` → mobile +60-12-345-6789
+
+*When to use: ask this playbook when an admin or HR officer needs a staff member's full profile — positions, leave history, and contacts — from the OpenEMIS school management system.*

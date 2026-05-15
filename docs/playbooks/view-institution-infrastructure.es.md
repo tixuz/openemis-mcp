@@ -1,3 +1,13 @@
+---
+title: "Infraestructura de la Institución — Edificios y WASH en OpenEMIS"
+description: "Guía OpenEMIS para ver la infraestructura física de una escuela: terrenos, edificios, servicios públicos y datos WASH. MCP para gestión educativa."
+keywords:
+  - OpenEMIS
+  - sistema de gestión escolar
+  - gestión educativa
+  - infraestructura
+---
+
 # Ver Infraestructura de la Institución (Terrenos, Edificios, Servicios Públicos, WASH)
 
 > 📖 **Read-only server.** Playbooks that create or update records require **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
@@ -7,6 +17,8 @@
 **ID del Playbook:** `view-institution-infrastructure`
 
 ## Descripción
+
+Este playbook de OpenEMIS explica cómo ver la infraestructura física de una escuela — terrenos, edificios, servicios de electricidad y datos WASH — usando la API del sistema de gestión escolar OpenEMIS.
 
 Ver la infraestructura física de una institución: parcelas de terreno, edificios por terreno, servicios públicos (electricidad) y registros WASH (agua y saneamiento). **Los terrenos y edificios NO están delimitados por `academic_period_id`** — ese campo fue eliminado en POCOR-8037. Los servicios públicos y WASH SÍ están delimitados por `academic_period_id`.
 
@@ -85,3 +97,5 @@ Filtrar por `institution_id` Y `academic_period_id`. Campos de conteo: `infrastr
 4. `openemis_get { resource: "infrastructure-utility-electricities", params: { institution_id: 6, academic_period_id: 1, is_current: 1 } }` → electricidad de red, buena condición
 5. `openemis_get { resource: "infrastructure-wash-waters", params: { institution_id: 6, academic_period_id: 1 } }` → agua entubada, funcional
 6. `openemis_get { resource: "infrastructure-wash-sanitations", params: { institution_id: 6, academic_period_id: 1 } }` → 4 inodoros masculinos, 4 femeninos funcionales
+
+*Cuándo usar: use este playbook cuando un administrador necesite los datos de infraestructura de una escuela — edificios, servicios públicos y WASH — en OpenEMIS.*

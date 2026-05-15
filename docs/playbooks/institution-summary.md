@@ -1,8 +1,21 @@
+---
+title: "Institution Summary — Students, Staff & Vacancies in OpenEMIS"
+description: "OpenEMIS playbook to get a school's basic counts: current student enrolment, active staff, and vacant positions. School management MCP query guide."
+keywords:
+  - OpenEMIS
+  - school management system
+  - education management
+  - institution summary
+  - student enrolment
+---
+
 # Institution Basic Info — Counts of Students, Staff, Vacant Positions
 
 > 📖 **Read-only server.** Playbooks that create or update records require **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
 
 **Domain:** Institution · **Audience:** admin, parent
+
+This OpenEMIS playbook explains how to retrieve a school's basic summary — total enrolled students, active staff count, and vacant positions — using the OpenEMIS school management API with minimal API calls.
 
 The classic "tell me about this school" query. A single institution lookup followed by three count calls using pagination metadata to get totals without downloading every record.
 
@@ -48,3 +61,5 @@ The agent will:
 1. Call `openemis_discover` or `openemis_list_playbooks` to find this playbook
 2. Follow the steps above
 3. Return the answer in plain English
+
+*When to use: ask this playbook when you need a quick institution overview — total students, staff, and vacancies — for any school in the OpenEMIS education management system.*

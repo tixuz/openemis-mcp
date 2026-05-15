@@ -1,8 +1,21 @@
+---
+title: "View Class Report — Report Card Overview in OpenEMIS"
+description: "OpenEMIS playbook to view the class-level report card overview: subjects, assessment results, and student marks for a grade. School management MCP guide."
+keywords:
+  - OpenEMIS
+  - school management system
+  - education management
+  - report card
+  - student marks
+---
+
 # View Class-Level Report Card Overview for a Grade
 
 > 📖 **Read-only server.** Playbooks that create or update records require **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
 
 **Domain:** Report · **Audience:** teacher, admin
+
+This OpenEMIS playbook explains how to view the class-level report card overview — subjects, assessment items, and marks for all students in a grade — using the OpenEMIS school management API.
 
 Retrieve the report card configuration for a class, list the subjects included in it, and pull the assessment item results for all students in that grade and period. This gives a class-level overview equivalent to what a teacher sees on the report card summary screen. Note that this is a read workflow — PDF generation requires a separate async process (see the generate-student-report-card-pdf playbook).
 
@@ -48,3 +61,5 @@ The agent will:
 1. Call `openemis_discover` or `openemis_list_playbooks` to find this playbook
 2. Follow the steps above
 3. Return the answer in plain English
+
+*When to use: ask this playbook when a teacher or admin needs a class-level summary of student marks across all subjects — equivalent to the OpenEMIS report card summary screen.*

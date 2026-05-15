@@ -1,3 +1,13 @@
+---
+title: "Perfil del Personal — Posiciones y Contactos en OpenEMIS"
+description: "Guía OpenEMIS para ver el perfil completo de un miembro del personal: posiciones, historial de licencias y contactos. MCP para gestión educativa."
+keywords:
+  - OpenEMIS
+  - sistema de gestión escolar
+  - gestión educativa
+  - personal
+---
+
 # Ver el perfil completo de un miembro del personal
 
 > 📖 **Read-only server.** Playbooks that create or update records require **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
@@ -7,6 +17,8 @@
 **ID del playbook:** `view-staff-profile`
 
 ## Descripción
+
+Este playbook de OpenEMIS explica cómo ver el perfil completo de un miembro del personal — posiciones actuales e históricas, historial de licencias y contactos — usando la API del sistema de gestión escolar OpenEMIS.
 
 Vea los perfiles de posición actuales e históricos, el historial de licencias, las posiciones históricas y los datos de contacto directo de un miembro del personal. Combina cuatro recursos utilizando las claves de filtro correctas para cada uno — existen dos campos de identidad del personal distintos (`staff_id` vs `institution_staff_id`) que no deben confundirse.
 
@@ -71,3 +83,5 @@ Filtre por `security_user_id` — este es el ID global de usuario del miembro de
 2. `openemis_get { resource: "institution-staff-leave", params: { staff_id: 88, orderby: "date_from", order: "desc" } }` → 3 registros de licencia
 3. `openemis_get { resource: "historical-staff-positions", params: { institution_id: 6 } }` → 2 posiciones pasadas
 4. `openemis_get { resource: "user-contacts", params: { security_user_id: 88 } }` → móvil +60-12-345-6789
+
+*Cuándo usar: use este playbook cuando un administrador o RRHH necesite el perfil completo de un miembro del personal — posiciones, licencias y contactos — en OpenEMIS.*

@@ -1,8 +1,20 @@
+---
+title: "Perfil del Estudiante — Contactos de Tutores e Historial de Ausencias en OpenEMIS"
+description: "Guía OpenEMIS para ver el perfil completo de un estudiante, contactos de tutores e historial de asistencia. MCP para gestión educativa."
+keywords:
+  - OpenEMIS
+  - sistema de gestión escolar
+  - asistencia de estudiantes
+  - gestión educativa
+---
+
 # Ver perfil del estudiante, contactos de tutores e historial de ausencias
 
 > 📖 **Read-only server.** Playbooks that create or update records require **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
 
 **Dominio:** Estudiante · **Audiencia:** docente, administrador
+
+Este playbook de OpenEMIS explica cómo recuperar el registro de inscripción completo de un estudiante, la lista de tutores y el historial reciente de ausencias desde el sistema de gestión escolar OpenEMIS.
 
 Recupere el registro completo de inscripción de un estudiante, la lista de tutores asociados a él y su historial reciente de ausencias en un solo flujo de trabajo. El paso de tutores enriquece cada contacto con el tipo de relación (por ejemplo, madre, padre, tutor legal) al resolver la tabla de búsqueda de relaciones de tutores. El historial de ausencias se obtiene de student-attendance-marked-records — cada fila es un evento de ausencia o retraso; los días sin fila están implícitamente presentes.
 
@@ -48,3 +60,5 @@ El agente hará:
 1. Llamar a `openemis_discover` o `openemis_list_playbooks` para encontrar este playbook
 2. Seguir los pasos anteriores
 3. Devolver la respuesta en lenguaje sencillo
+
+*Cuándo usar: use este playbook cuando un docente o administrador necesite el perfil completo de un estudiante, los contactos de tutores y el historial de asistencia en OpenEMIS.*

@@ -1,3 +1,13 @@
+---
+title: "Riesgos del Estudiante — Perfil de Riesgo y Casos de Bienestar en OpenEMIS"
+description: "Guía OpenEMIS para ver la puntuación de riesgo de un estudiante, desglose de criterios y casos de bienestar o protección abiertos. MCP para gestión educativa."
+keywords:
+  - OpenEMIS
+  - riesgos de estudiantes
+  - sistema de gestión escolar
+  - gestión educativa
+---
+
 # Ver el Perfil de Riesgo y Casos de Bienestar de un Estudiante
 
 > 📖 **Read-only server.** Playbooks that create or update records require **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
@@ -7,6 +17,8 @@
 **ID del Playbook:** `view-student-risks`
 
 ## Descripción
+
+Este playbook de OpenEMIS explica cómo ver la puntuación de riesgo calculada de un estudiante — desglose de criterios de alerta temprana y casos de bienestar abiertos — usando la API del sistema de gestión escolar OpenEMIS.
 
 Vea la puntuación de riesgo calculada de un estudiante, los criterios de riesgo individuales que contribuyeron a ella y cualquier caso de bienestar o protección abierto para ese estudiante. `institution-risks` tiene una PK compuesta — no tiene un `id` entero. `institution-cases` está controlado por flujo de trabajo — GET siempre es seguro, pero las escrituras deben realizarse a través de la aplicación OpenEMIS.
 
@@ -75,3 +87,5 @@ Filtre por `institution_id`. `institution-cases` está **controlado por flujo de
 2. `openemis_get { resource: "risks", params: { academic_period_id: 1 } }` → "Riesgo de Asistencia", "Riesgo Académico"
 3. `openemis_get { resource: "student-risks-criterias", params: { institution_student_risk_id: 445 } }` → criterio de ausencia: 85, criterio de calificaciones: 60
 4. `openemis_get { resource: "institution-cases", params: { institution_id: 6 } }` → 1 caso abierto, Prioridad: Alta, Tipo: Bienestar
+
+*Cuándo usar: use este playbook cuando un consejero o administrador necesite verificar la puntuación de riesgo de un estudiante y los casos de bienestar abiertos en OpenEMIS.*

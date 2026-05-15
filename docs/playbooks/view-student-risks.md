@@ -1,3 +1,14 @@
+---
+title: "View Student Risks — Risk Profile & Welfare Cases in OpenEMIS"
+description: "OpenEMIS playbook to view a student's risk score, early-warning criteria breakdown, and welfare/safeguarding cases. School management MCP query guide."
+keywords:
+  - OpenEMIS
+  - student risks
+  - school management system
+  - education management
+  - early-warning
+---
+
 # View a Student's Risk Profile and Welfare Cases
 
 > 📖 **Read-only server.** Playbooks that create or update records require **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
@@ -7,6 +18,8 @@
 **Playbook ID:** `view-student-risks`
 
 ## Description
+
+This OpenEMIS playbook explains how to view a student's calculated risk score — the individual early-warning criteria breakdown and any open welfare or safeguarding cases — using the OpenEMIS school management API.
 
 View a student's calculated risk score, the individual risk criteria that contributed to it, and any welfare or safeguarding cases opened for that student. `institution-risks` has a composite PK — no integer `id`. `institution-cases` is workflow-controlled — GET is always safe, but writes must go through the OpenEMIS application.
 
@@ -75,3 +88,5 @@ Filter by `institution_id`. `institution-cases` is **workflow-controlled** — `
 2. `openemis_get { resource: "risks", params: { academic_period_id: 1 } }` → "Attendance Risk", "Academic Risk"
 3. `openemis_get { resource: "student-risks-criterias", params: { institution_student_risk_id: 445 } }` → absence criterion: 85, marks criterion: 60
 4. `openemis_get { resource: "institution-cases", params: { institution_id: 6 } }` → 1 open case, Priority: High, Type: Welfare
+
+*When to use: ask this playbook when a counsellor, teacher, or admin needs to check a student's risk score and any open welfare cases in the OpenEMIS early-warning system.*

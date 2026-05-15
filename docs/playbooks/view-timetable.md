@@ -1,8 +1,21 @@
+---
+title: "View Timetable — Class or Teacher Schedule in OpenEMIS"
+description: "OpenEMIS playbook to view the weekly timetable for a class or teacher: subjects, periods, rooms, and academic period. School management MCP query guide."
+keywords:
+  - OpenEMIS
+  - school management system
+  - education management
+  - timetable
+  - class schedule
+---
+
 # View Timetable for a Class or Teacher
 
 > 📖 **Read-only server.** Playbooks that create or update records require **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
 
 **Domain:** Schedule · **Audience:** teacher, admin, student
+
+This OpenEMIS playbook explains how to retrieve the weekly class or teacher timetable — subjects, period slots, rooms, and assigned teachers — from the OpenEMIS school management system.
 
 Retrieve the weekly schedule for a specific institution class — including day, period slot, subject, and assigned teacher — for the current or specified academic period. The timetable is stored in institution-schedule-timetables; class-grade mapping from institution-class-grades is used to enrich the response with education grade context. For a student's personal timetable view (parent or student-facing), use the view-student-timetable playbook instead.
 
@@ -43,3 +56,5 @@ The agent will:
 1. Call `openemis_discover` or `openemis_list_playbooks` to find this playbook
 2. Follow the steps above
 3. Return the answer in plain English
+
+*When to use: ask this playbook when a teacher, admin, or student needs the weekly timetable for an institution class in OpenEMIS — days, subjects, rooms, and period slots.*

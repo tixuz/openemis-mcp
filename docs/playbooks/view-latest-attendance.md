@@ -1,8 +1,21 @@
+---
+title: "View Latest Attendance — Class Absence Stats in OpenEMIS"
+description: "OpenEMIS playbook to read student attendance stats for a class: today, week-to-date, and chronic absentees. School management MCP query guide."
+keywords:
+  - OpenEMIS
+  - student attendance
+  - school management system
+  - education management
+  - chronic absentees
+---
+
 # Read Attendance Stats for a Class — Today / Week / Chronic Absentees
 
 > 📖 **Read-only server.** Playbooks that create or update records require **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
 
 **Domain:** Attendance · **Audience:** teacher, admin, parent
+
+This OpenEMIS playbook explains how to read student attendance statistics for a class — today's absences, week-to-date totals, and chronic absentees — using the OpenEMIS school management API.
 
 Quick snapshot: who was absent today, week-to-date totals, and chronic absentees. OpenEMIS does NOT store a row per present student — presence is inferred by absence-by-omission once a day is marked. Reading attendance correctly requires three layers: (1) which days were actually taken as rolls; (2) which days had no_scheduled_class=99 (holiday/cancelled — skip for stats); (3) for the remaining MARKED days, pull absence events — every rostered student without a row that day is PRESENT.
 
@@ -60,3 +73,5 @@ The agent will:
 - The "chronic absentee" calculation must use marked days only — using the full calendar count (e.g., 30 days in April) will under-report presence for any day a teacher forgot to take roll.
 - `no_scheduled_class` sentinels: 99 = no class that day (holiday, force-majeure, teacher sick, field trip); 0 = class was scheduled and happened. Readers must filter on this field.
 - For a parent or guardian view of their own child: filter `student-attendance-marked-records` by `student_id` AND `institution_class_id`. They can see their own child's absence events but not the full class roster unless permissions allow it.
+
+*When to use: ask this playbook when a teacher or admin needs a student attendance summary for a class — today, this week, or to identify students at chronic-absentee risk in OpenEMIS.*

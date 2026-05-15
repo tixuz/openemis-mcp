@@ -1,8 +1,21 @@
+---
+title: "Student Dashboard — Attendance, Behavior & Marks in OpenEMIS"
+description: "OpenEMIS playbook to view a student's latest attendance, behavior incidents, and exam marks in one summary. Uses the school management MCP server."
+keywords:
+  - OpenEMIS
+  - student attendance
+  - school management system
+  - education management
+  - student marks
+---
+
 # Parent/Student Dashboard — Latest Attendance, Behavior, Marks
 
 > 📖 **Read-only server.** Playbooks that create or update records require **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
 
 **Domain:** Student · **Audience:** parent, student
+
+This OpenEMIS playbook explains how to build a compact student dashboard showing the latest attendance record, any behavior incidents, and recent assessment marks — the three data points parents ask about most in an OpenEMIS school management context.
 
 Aggregate the three things parents ask about most: how often has my child been absent lately, any behavior incidents, and recent test or assessment marks. This playbook pulls all three data sets in a compact sequence and returns a single summary view.
 
@@ -49,3 +62,5 @@ The agent will:
 1. Call `openemis_discover` or `openemis_list_playbooks` to find this playbook
 2. Follow the steps above
 3. Return the answer in plain English
+
+*When to use: ask this playbook when a parent or guardian wants a quick overview of their child's student attendance, behavior, and marks in OpenEMIS — ideal for parent-teacher meetings or progress queries.*

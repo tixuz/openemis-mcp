@@ -1,3 +1,13 @@
+---
+title: "ملف الموظف — المناصب وجهات الاتصال في OpenEMIS"
+description: "دليل OpenEMIS لعرض الملف الكامل لعضو هيئة التدريس: المناصب وسجل الإجازات وجهات الاتصال. استعلام MCP لإدارة التعليم."
+keywords:
+  - OpenEMIS
+  - نظام إدارة المدارس
+  - إدارة التعليم
+  - الموظفون
+---
+
 # عرض الملف الشخصي الكامل لأحد أعضاء الهيئة التدريسية
 
 > 📖 **Read-only server.** Playbooks that create or update records require **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
@@ -7,6 +17,8 @@
 **معرف دليل التشغيل:** `view-staff-profile`
 
 ## الوصف
+
+يشرح دليل OpenEMIS هذا كيفية عرض الملف الكامل لعضو هيئة التدريس — المناصب الحالية والتاريخية وسجل الإجازات وجهات الاتصال — باستخدام واجهة برمجة تطبيقات نظام إدارة المدارس OpenEMIS.
 
 عرض الملف الشخصي الحالي والتاريخي لأحد أعضاء الهيئة التدريسية فيما يتعلق بالمناصب، وسجل الإجازات، والمناصب التاريخية، ومعلومات الاتصال المباشرة. يجمع بين أربعة موارد باستخدام مفاتيح التصفية الصحيحة لكل منها — هناك حقلان مختلفان لهوية العضو (`staff_id` مقابل `institution_staff_id`) يجب عدم الخلط بينهما.
 
@@ -71,3 +83,5 @@
 2. `openemis_get { resource: "institution-staff-leave", params: { staff_id: 88, orderby: "date_from", order: "desc" } }` → 3 سجلات إجازة
 3. `openemis_get { resource: "historical-staff-positions", params: { institution_id: 6 } }` → منصبان سابقان
 4. `openemis_get { resource: "user-contacts", params: { security_user_id: 88 } }` → جوال +60-12-345-6789
+
+*متى تُستخدم: استخدم هذا الدليل عندما يحتاج مدير أو موارد بشرية إلى الملف الكامل لعضو هيئة التدريس — المناصب والإجازات وجهات الاتصال — في OpenEMIS.*

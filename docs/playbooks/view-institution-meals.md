@@ -1,3 +1,14 @@
+---
+title: "View Institution Meals — Meal Programmes & Student Participation in OpenEMIS"
+description: "OpenEMIS playbook to view a school's meal programmes, nutritional content, and student enrolment in feeding schemes. School management MCP query guide."
+keywords:
+  - OpenEMIS
+  - school management system
+  - education management
+  - institution meals
+  - student nutrition
+---
+
 # View Institution Meal Programmes and Student Participation
 
 > 📖 **Read-only server.** Playbooks that create or update records require **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
@@ -7,6 +18,8 @@
 **Playbook ID:** `view-institution-meals`
 
 ## Description
+
+This OpenEMIS playbook explains how to view a school's meal programmes — programme types, nutritional content, and which students are enrolled — using the OpenEMIS school management API.
 
 View the meal programmes an institution runs, their nutritional content, and which students are enrolled. Scoped by `institution_id` and `academic_period_id`. Key gotcha: in `meal-nutritional-records` the FK to the `meal_nutritions` table is `nutritional_content_id` — **not** `meal_nutrition_id`.
 
@@ -77,3 +90,5 @@ The API resource `institution-meal-students` maps to the `student_meal_marked_re
 2. Fetch `meal-programme-types`, `meal-implementers`, `meal-benefits` in parallel → resolve labels
 3. `openemis_get { resource: "meal-nutritional-records", params: { meal_programme_id: 3 } }` → protein 15g, carbs 45g, calories 280kcal (using nutritional_content_id to resolve names)
 4. `openemis_get { resource: "institution-meal-students", params: { institution_id: 6, academic_period_id: 1, meal_programme_id: 3 } }` → 312 student-day records this term
+
+*When to use: ask this playbook when you need information about a school's meal programmes, nutritional content, or student meal participation in the OpenEMIS school management system.*

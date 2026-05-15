@@ -1,3 +1,14 @@
+---
+title: "View Institution Infrastructure — Land, Buildings & WASH in OpenEMIS"
+description: "OpenEMIS playbook to view a school's physical infrastructure: land parcels, buildings, utilities, and WASH (water, sanitation) records. School management MCP guide."
+keywords:
+  - OpenEMIS
+  - school management system
+  - education management
+  - institution infrastructure
+  - WASH
+---
+
 # View Institution Infrastructure (Land, Buildings, Utilities, WASH)
 
 > 📖 **Read-only server.** Playbooks that create or update records require **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
@@ -7,6 +18,8 @@
 **Playbook ID:** `view-institution-infrastructure`
 
 ## Description
+
+This OpenEMIS playbook explains how to view a school's physical infrastructure data — land parcels, buildings, electricity utilities, and WASH (water, sanitation, hygiene) records — using the OpenEMIS school management API.
 
 View the physical infrastructure of an institution: land parcels, buildings per land, utilities (electricity), and WASH records (water and sanitation). **Land and buildings are NOT scoped by `academic_period_id`** — that field was removed in POCOR-8037. Utilities and WASH ARE scoped by `academic_period_id`.
 
@@ -85,3 +98,5 @@ Filter by `institution_id` AND `academic_period_id`. Count fields: `infrastructu
 4. `openemis_get { resource: "infrastructure-utility-electricities", params: { institution_id: 6, academic_period_id: 1, is_current: 1 } }` → grid electricity, good condition
 5. `openemis_get { resource: "infrastructure-wash-waters", params: { institution_id: 6, academic_period_id: 1 } }` → piped water, functional
 6. `openemis_get { resource: "infrastructure-wash-sanitations", params: { institution_id: 6, academic_period_id: 1 } }` → 4 male, 4 female toilets functional
+
+*When to use: ask this playbook when an admin or facilities officer needs a school's infrastructure data — land, buildings, utilities, and WASH — from the OpenEMIS school management system.*

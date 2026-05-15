@@ -1,8 +1,20 @@
+---
+title: "Panel del Estudiante — Asistencia, Comportamiento y Notas en OpenEMIS"
+description: "Guía OpenEMIS para ver la asistencia de estudiantes, incidentes de comportamiento y calificaciones recientes en un resumen. MCP para gestión educativa."
+keywords:
+  - OpenEMIS
+  - asistencia de estudiantes
+  - sistema de gestión escolar
+  - gestión educativa
+---
+
 # Panel de Padres/Estudiantes — Asistencia, Comportamiento y Calificaciones Recientes
 
 > 📖 **Read-only server.** Playbooks that create or update records require **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
 
 **Dominio:** Estudiante · **Audiente:** padre, estudiante
+
+Este playbook de OpenEMIS explica cómo obtener un panel del estudiante — asistencia de estudiantes reciente, incidentes de comportamiento y calificaciones — usando la API del sistema de gestión escolar OpenEMIS.
 
 Consolida las tres cosas sobre las que los padres más preguntan: ¿con qué frecuencia ha estado ausente mi hijo/a últimamente, ha habido incidentes de comportamiento y cuáles son las calificaciones recientes de exámenes o evaluaciones? Este playbook extrae los tres conjuntos de datos en una secuencia compacta y devuelve una vista resumida única.
 
@@ -49,3 +61,5 @@ El agente hará:
 1. Llamar a `openemis_discover` o `openemis_list_playbooks` para encontrar este playbook
 2. Seguir los pasos anteriores
 3. Devolver la respuesta en lenguaje sencillo
+
+*Cuándo usar: use este playbook cuando un padre o tutor necesite un resumen de la asistencia de estudiantes, comportamiento y calificaciones en OpenEMIS.*

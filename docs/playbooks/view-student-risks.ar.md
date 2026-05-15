@@ -1,3 +1,13 @@
+---
+title: "مخاطر الطلاب — ملف المخاطر وقضايا الرعاية في OpenEMIS"
+description: "دليل OpenEMIS لعرض درجة مخاطر الطالب وتفاصيل معايير الإنذار المبكر وقضايا الرعاية المفتوحة. استعلام MCP لإدارة التعليم."
+keywords:
+  - OpenEMIS
+  - مخاطر الطلاب
+  - نظام إدارة المدارس
+  - إدارة التعليم
+---
+
 # عرض ملف المخاطر وقضايا الرعاية للطالب
 
 > 📖 **Read-only server.** Playbooks that create or update records require **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
@@ -7,6 +17,8 @@
 **معرف الدليل:** `view-student-risks`
 
 ## الوصف
+
+يشرح دليل OpenEMIS هذا كيفية عرض درجة المخاطر المحسوبة للطالب — تفاصيل معايير الإنذار المبكر وقضايا الرعاية المفتوحة — باستخدام واجهة برمجة تطبيقات نظام إدارة المدارس OpenEMIS.
 
 عرض درجة المخاطر المحسوبة للطالب، ومعايير المخاطر الفردية التي ساهمت فيها، وأي قضايا رعاية أو حماية تم فتحها لهذا الطالب. `institution-risks` له مفتاح أساسي مركب — لا يوجد `id` رقمي. `institution-cases` يتم التحكم به عبر سير العمل — طلبات GET آمنة دائمًا، ولكن عمليات الكتابة يجب أن تتم عبر تطبيق OpenEMIS.
 
@@ -75,3 +87,5 @@
 2. `openemis_get { resource: "risks", params: { academic_period_id: 1 } }` → "Attendance Risk", "Academic Risk"
 3. `openemis_get { resource: "student-risks-criterias", params: { institution_student_risk_id: 445 } }` → absence criterion: 85, marks criterion: 60
 4. `openemis_get { resource: "institution-cases", params: { institution_id: 6 } }` → 1 open case, Priority: High, Type: Welfare
+
+*متى تُستخدم: استخدم هذا الدليل عندما يحتاج مرشد أو مدير إلى التحقق من درجة مخاطر الطالب وقضايا الرعاية المفتوحة في OpenEMIS.*

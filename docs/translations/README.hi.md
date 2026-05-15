@@ -1,12 +1,26 @@
+---
+title: "openemis-mcp — OpenEMIS स्कूल प्रबंधन प्रणाली के लिए AI ब्रिज"
+description: "मुफ्त MCP सर्वर जो AI असिस्टेंट को OpenEMIS स्कूल प्रबंधन प्रणाली से जोड़ता है। छात्र उपस्थिति, जोखिम, स्टाफ और 675 संसाधन क्वेरी करें।"
+keywords:
+  - OpenEMIS
+  - स्कूल प्रबंधन प्रणाली
+  - शिक्षा प्रबंधन
+  - छात्र उपस्थिति
+  - छात्र जोखिम
+  - MCP
+---
+
 <p align="center">
-  <img src="assets/logo.png" alt="openemis-mcp logo" width="320">
+  <img src="assets/logo.png" alt="openemis-mcp logo — OpenEMIS स्कूल प्रबंधन प्रणाली के लिए AI ब्रिज" width="320">
 </p>
 
-# openemis-mcp
+# openemis-mcp — OpenEMIS स्कूल प्रबंधन प्रणाली के लिए AI ब्रिज
 
 **मुफ्त, केवल-पढ़ने योग्य MCP ब्रिज AI एजेंटों और किसी भी OpenEMIS इंस्टेंस के बीच।**
 
 OpenEMIS यूनेस्को और KORDIT द्वारा विकसित एक मुफ़्त, ओपन-सोर्स स्कूल प्रबंधन सूचना प्रणाली (SMIS) है, जिसका उपयोग किंडरगार्टन से लेकर विश्वविद्यालयों और माध्यमिक व्यावसायिक संस्थानों तक किया जाता है।
+
+> **यह क्या है:** openemis-mcp एक मुफ्त MCP सर्वर है जो AI असिस्टेंट को OpenEMIS स्कूल प्रबंधन प्रणाली से जोड़ता है। यह 26 केवल-पढ़ने योग्य प्लेबुक्स के माध्यम से 675 संसाधन (छात्र उपस्थिति, छात्र जोखिम, स्टाफ, परीक्षाएं) उपलब्ध कराता है।
 
 प्रकाशित **OpenEMIS Core API** पर निर्मित (संदर्भ: [api.openemis.org/core](https://api.openemis.org/core)) और सार्वजनिक डेमो [demo.openemis.org/core](https://demo.openemis.org/core) पर सत्यापित।
 
@@ -159,6 +173,8 @@ OpenEMIS Core API  /api/v5/{resource}   (3,355 एंडपॉइंट्स / 
 
 - [Resource Reference](docs/resources.md) — सभी 675 संसाधन विधि उपलब्धता के साथ (Core 5.10.0)
 - [Playbooks](docs/playbooks/) — 5 भाषाओं में 17 view प्लेबुक्स + 9 नए केवल अंग्रेजी में (अनुवाद बाद में)
+- [GLOSSARY.md](docs/GLOSSARY.md) — मुख्य शब्द: OpenEMIS, MCP, छात्र उपस्थिति, जोखिम और अधिक
+- [FAQ.md](docs/FAQ.md) — OpenEMIS MCP के साथ शिक्षा प्रबंधन के बारे में सामान्य प्रश्न
 - [ACKNOWLEDGEMENTS.md](ACKNOWLEDGEMENTS.md) — AI टीम जिसने इसे बनाया
 
 ---

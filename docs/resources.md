@@ -1,4 +1,17 @@
-# OpenEMIS MCP — Resource Reference
+---
+title: "OpenEMIS MCP — Resource Reference for School Management"
+description: "Complete reference for all 675 OpenEMIS resources (Core 5.10.0). Students, attendance, staff, risks, exams — GET endpoints for every school management domain."
+keywords:
+  - OpenEMIS
+  - school management system
+  - education management
+  - student attendance
+  - student risks
+  - MCP server
+  - resource reference
+---
+
+# OpenEMIS MCP — Resource Reference for School Management
 
 > **675 resources** · **3355 endpoints** · v1.1.0 · OpenEMIS Core 5.10.0
 >
@@ -754,3 +767,12 @@
 | `trip-types` | — | ✅ | — | — | — | — (pro) |
 | `webhook-events` | — | ✅ | — | — | — | — (pro) |
 | `webhooks` | — | ✅ | — | — | — | — (pro) |
+
+---
+
+## Related docs
+
+- [README](../README.md) — overview and install guide for the OpenEMIS MCP server
+- [Playbooks](playbooks/) — 26 step-by-step school data query guides (attendance, students, staff, risks, and more)
+- [GLOSSARY.md](GLOSSARY.md) — definitions for OpenEMIS and education management terms
+- [FAQ.md](FAQ.md) — common questions about using this school management MCP

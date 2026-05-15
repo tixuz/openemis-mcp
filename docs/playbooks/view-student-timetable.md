@@ -1,8 +1,21 @@
+---
+title: "View Student Timetable — Personal Schedule in OpenEMIS"
+description: "OpenEMIS playbook to view a student's personal timetable: subjects, teachers, rooms, and time slots for the current academic period. School management MCP guide."
+keywords:
+  - OpenEMIS
+  - school management system
+  - education management
+  - student timetable
+  - class schedule
+---
+
 # See a Student's Timetable (Parent / Student View)
 
 > 📖 **Read-only server.** Playbooks that create or update records require **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
 
 **Domain:** Schedule · **Audience:** parent, student
+
+This OpenEMIS playbook explains how to retrieve a student's personal timetable — subjects, teachers, rooms, and time slots — from the OpenEMIS school management system.
 
 Given a student id, return the class timetable — subjects, teachers, rooms, and time slots for the current academic period. This is the personal view a student or parent would see, showing the specific class the student is enrolled in.
 
@@ -47,3 +60,5 @@ The agent will:
 1. Call `openemis_discover` or `openemis_list_playbooks` to find this playbook
 2. Follow the steps above
 3. Return the answer in plain English
+
+*When to use: ask this playbook when a student or parent wants to see the student's personal class timetable for the current academic period in OpenEMIS.*

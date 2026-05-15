@@ -1,3 +1,13 @@
+---
+title: "Инфраструктура учреждения — здания и WASH в OpenEMIS"
+description: "Руководство OpenEMIS по просмотру физической инфраструктуры школы: земля, здания, коммунальные услуги, водоснабжение и санитария. MCP для управления образованием."
+keywords:
+  - OpenEMIS
+  - школьная информационная система
+  - управление образованием
+  - инфраструктура
+---
+
 # Просмотр инфраструктуры учреждения (земля, здания, коммунальные услуги, WASH)
 
 > 📖 **Read-only server.** Playbooks that create or update records require **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
@@ -7,6 +17,8 @@
 **ID сценария:** `view-institution-infrastructure`
 
 ## Описание
+
+Это руководство OpenEMIS объясняет, как просмотреть физическую инфраструктуру школы — земельные участки, здания, коммунальные услуги и данные WASH — через API школьной информационной системы OpenEMIS.
 
 Просмотр физической инфраструктуры учреждения: земельные участки, здания на каждом участке, коммунальные услуги (электричество) и записи WASH (водоснабжение и санитария). **Земля и здания НЕ привязаны к `academic_period_id`** — это поле было удалено в POCOR-8037. Коммунальные услуги и WASH ПРИВЯЗАНЫ к `academic_period_id`.
 
@@ -85,3 +97,5 @@
 4. `openemis_get { resource: "infrastructure-utility-electricities", params: { institution_id: 6, academic_period_id: 1, is_current: 1 } }` → сетевое электричество, хорошее состояние
 5. `openemis_get { resource: "infrastructure-wash-waters", params: { institution_id: 6, academic_period_id: 1 } }` → водопроводная вода, функционирует
 6. `openemis_get { resource: "infrastructure-wash-sanitations", params: { institution_id: 6, academic_period_id: 1 } }` → 4 мужских, 4 женских туалета функционируют
+
+*Когда использовать: используйте это руководство, когда администратору нужны данные об инфраструктуре школы — здания, коммунальные услуги и WASH — в OpenEMIS.*

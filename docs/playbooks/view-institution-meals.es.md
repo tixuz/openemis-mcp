@@ -1,3 +1,13 @@
+---
+title: "Programas de Alimentación — Participación de Estudiantes en OpenEMIS"
+description: "Guía OpenEMIS para ver los programas de alimentación de una escuela, contenido nutricional y participación de estudiantes. MCP para gestión educativa."
+keywords:
+  - OpenEMIS
+  - sistema de gestión escolar
+  - gestión educativa
+  - alimentación
+---
+
 # Ver Programas de Alimentación Institucionales y Participación Estudiantil
 
 > 📖 **Read-only server.** Playbooks that create or update records require **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
@@ -7,6 +17,8 @@
 **ID del Playbook:** `view-institution-meals`
 
 ## Descripción
+
+Este playbook de OpenEMIS explica cómo ver los programas de alimentación de una escuela — tipos de programa, contenido nutricional y participación de estudiantes — usando la API del sistema de gestión escolar OpenEMIS.
 
 Vea los programas de alimentación que una institución ejecuta, su contenido nutricional y qué estudiantes están inscritos. Delimitado por `institution_id` y `academic_period_id`. Advertencia clave: en `meal-nutritional-records` la FK a la tabla `meal_nutritions` es `nutritional_content_id` — **no** `meal_nutrition_id`.
 
@@ -77,3 +89,5 @@ El recurso de la API `institution-meal-students` se mapea a la tabla `student_me
 2. Obtenga `meal-programme-types`, `meal-implementers`, `meal-benefits` en paralelo → resuelva etiquetas
 3. `openemis_get { resource: "meal-nutritional-records", params: { meal_programme_id: 3 } }` → proteína 15g, carbohidratos 45g, calorías 280kcal (usando nutritional_content_id para resolver nombres)
 4. `openemis_get { resource: "institution-meal-students", params: { institution_id: 6, academic_period_id: 1, meal_programme_id: 3 } }` → 312 registros de estudiante-día este período
+
+*Cuándo usar: use este playbook cuando necesite información sobre los programas de alimentación de una escuela o la participación de estudiantes en OpenEMIS.*

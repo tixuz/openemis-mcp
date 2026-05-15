@@ -1,9 +1,21 @@
+---
+title: "Puestos Vacantes — Gestión de Personal en OpenEMIS"
+description: "Guía OpenEMIS para contar puestos vacantes de personal en una institución o en todo el sistema. Consulta MCP para gestión educativa."
+keywords:
+  - OpenEMIS
+  - sistema de gestión escolar
+  - gestión educativa
+  - personal
+---
+
 # Contar Puestos Vacantes (por institución o a nivel de sistema, opcionalmente filtrado por rol)
 
 > 📖 **Read-only server.** Playbooks that create or update records require **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
 
 
 **Dominio:** Personal · **Audiencia:** admin, hr
+
+Este playbook de OpenEMIS explica cómo contar los puestos vacantes de personal en una institución educativa o en todo el sistema de gestión escolar OpenEMIS.
 
 Un puesto está vacante cuando o bien (a) no se le ha asignado ningún miembro del personal, o bien (b) el FTE (Equivalente de Tiempo Completo) total de todo el personal en ese puesto es inferior a 1.00 (100%). Esto captura tanto los casos de "nadie asignado" como los de "infra-dotación". La consulta puede acotarse a una única institución o ejecutarse en todo el sistema. Para filtrar por un rol específico —como profesor—, se debe hacer coincidir contra los nombres del título del puesto.
 
@@ -57,3 +69,5 @@ El agente hará lo siguiente:
 - FTE es una cadena como `'1.00'` en la respuesta de la API — analícela a flotante antes de sumarla.
 - Considere solo las filas de `institution_staff` que estén actualmente activas — típicamente, `staff_status_id` corresponde a un código de "Asignado" o "Actual".
 - NO incluya al personal con fecha de finalización o que haya renunciado en la suma del FTE (ellos liberan el puesto).
+
+*Cuándo usar: use este playbook cuando necesite contar los puestos de personal sin cubrir en una escuela o en el sistema de gestión educativa OpenEMIS.*

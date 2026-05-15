@@ -1,8 +1,20 @@
+---
+title: "Informe de Clase — Resumen de Boleta de Calificaciones en OpenEMIS"
+description: "Guía OpenEMIS para ver el resumen de la boleta de calificaciones a nivel de clase: asignaturas y calificaciones de todos los estudiantes. MCP para gestión educativa."
+keywords:
+  - OpenEMIS
+  - sistema de gestión escolar
+  - gestión educativa
+  - informe
+---
+
 # Ver la vista general de la boleta de calificaciones a nivel de clase para un grado
 
 > 📖 **Read-only server.** Playbooks that create or update records require **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
 
 **Dominio:** Reportes · **Audiencia:** docente, administrador
+
+Este playbook de OpenEMIS explica cómo ver el resumen de la boleta de calificaciones a nivel de clase — asignaturas y calificaciones de todos los estudiantes de un grado — usando la API del sistema de gestión escolar OpenEMIS.
 
 Recupere la configuración de la boleta de calificaciones para una clase, liste las materias incluidas en ella y obtenga los resultados de los ítems de evaluación para todos los estudiantes de ese grado y período. Esto proporciona una vista general a nivel de clase equivalente a lo que un docente ve en la pantalla de resumen de la boleta de calificaciones. Tenga en cuenta que este es un flujo de trabajo de lectura — la generación de PDF requiere un proceso asíncrono separado (consulte el playbook `generate-student-report-card-pdf`).
 
@@ -48,3 +60,5 @@ El agente hará:
 1. Llamar a `openemis_discover` o `openemis_list_playbooks` para encontrar este playbook
 2. Seguir los pasos anteriores
 3. Devolver la respuesta en español claro
+
+*Cuándo usar: use este playbook cuando un docente o administrador necesite un resumen de calificaciones de la clase por asignatura en OpenEMIS.*

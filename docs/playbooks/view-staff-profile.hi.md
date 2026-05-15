@@ -1,3 +1,13 @@
+---
+title: "कर्मचारी प्रोफ़ाइल — पद और संपर्क OpenEMIS में"
+description: "OpenEMIS प्लेबुक जो कर्मचारी का पूर्ण प्रोफ़ाइल दिखाती है: पद, अवकाश इतिहास और संपर्क। शिक्षा प्रबंधन MCP गाइड।"
+keywords:
+  - OpenEMIS
+  - स्कूल प्रबंधन प्रणाली
+  - शिक्षा प्रबंधन
+  - कर्मचारी
+---
+
 # किसी कर्मचारी का पूर्ण प्रोफ़ाइल देखें
 
 > 📖 **Read-only server.** Playbooks that create or update records require **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
@@ -7,6 +17,8 @@
 **प्लेबुक आईडी:** `view-staff-profile`
 
 ## विवरण
+
+यह OpenEMIS प्लेबुक बताती है कि OpenEMIS स्कूल प्रबंधन प्रणाली के API का उपयोग करके किसी कर्मचारी का पूर्ण प्रोफ़ाइल — वर्तमान और ऐतिहासिक पद, अवकाश इतिहास और संपर्क — कैसे देखें।
 
 किसी कर्मचारी की वर्तमान और ऐतिहासिक पद प्रोफ़ाइल, अवकाश इतिहास, ऐतिहासिक पद, और सीधे संपर्क विवरण देखें। चार संसाधनों को प्रत्येक के लिए सही फ़िल्टर कुंजियों का उपयोग करके जोड़ता है — दो अलग-अलग कर्मचारी पहचान फ़ील्ड (`staff_id` बनाम `institution_staff_id`) हैं जिन्हें भ्रमित नहीं किया जाना चाहिए।
 
@@ -71,3 +83,5 @@
 2. `openemis_get { resource: "institution-staff-leave", params: { staff_id: 88, orderby: "date_from", order: "desc" } }` → 3 अवकाश रिकॉर्ड
 3. `openemis_get { resource: "historical-staff-positions", params: { institution_id: 6 } }` → 2 पिछले पद
 4. `openemis_get { resource: "user-contacts", params: { security_user_id: 88 } }` → मोबाइल +60-12-345-6789
+
+*कब उपयोग करें: इस प्लेबुक का उपयोग करें जब प्रशासक या HR को OpenEMIS में किसी कर्मचारी का पूर्ण प्रोफ़ाइल — पद, अवकाश और संपर्क — चाहिए।*

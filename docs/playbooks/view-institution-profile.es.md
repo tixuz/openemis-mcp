@@ -1,3 +1,13 @@
+---
+title: "Perfil de la Institución — Detalles de la Escuela en OpenEMIS"
+description: "Guía OpenEMIS para ver el perfil completo de una escuela: registro principal, grados activos, localidad y contactos. MCP para gestión educativa."
+keywords:
+  - OpenEMIS
+  - sistema de gestión escolar
+  - gestión educativa
+  - institución
+---
+
 # Ver perfil completo de la institución
 
 > 📖 **Read-only server.** Playbooks that create or update records require **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
@@ -7,6 +17,8 @@
 **ID del playbook:** `view-institution-profile`
 
 ## Descripción
+
+Este playbook de OpenEMIS explica cómo ver el perfil completo de una institución educativa — registro principal, grados activos, localidad y contactos — usando la API del sistema de gestión escolar OpenEMIS.
 
 Ver información detallada sobre una institución: registro principal, grados activos, localidad y personas de contacto. Los pasos siguen el orden canónico — primero se obtiene la institución principal, luego los grados, luego se resuelve la localidad y finalmente los contactos.
 
@@ -67,3 +79,5 @@ Filtrar por `institution_id`. Un registro con `preferred=1` es el contacto princ
 2. `openemis_get { resource: "institution-grades", params: { institution_id: 6, academic_period_id: 1 } }` → grados 1–6
 3. `openemis_get { resource: "institution-localities" }` → coincidir locality_id=2 → "Selangor"
 4. `openemis_get { resource: "institution-contact-persons", params: { institution_id: 6 } }` → Jane Doe, Directora
+
+*Cuándo usar: use este playbook cuando necesite el perfil completo de una escuela — grados, ubicación y contactos — en el sistema de gestión educativa OpenEMIS.*

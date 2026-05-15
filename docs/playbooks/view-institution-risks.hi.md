@@ -1,3 +1,13 @@
+---
+title: "संस्थान जोखिम सारांश — प्रारंभिक चेतावनी OpenEMIS में"
+description: "OpenEMIS प्लेबुक जो संस्थान में छात्र जोखिम कॉन्फ़िगरेशन, प्रारंभिक चेतावनी अलर्ट नियम और हाल के लॉग दिखाती है। शिक्षा प्रबंधन MCP गाइड।"
+keywords:
+  - OpenEMIS
+  - छात्र जोखिम
+  - स्कूल प्रबंधन प्रणाली
+  - शिक्षा प्रबंधन
+---
+
 # संस्था जोखिम सारांश और अलर्ट नियम देखें
 
 > 📖 **Read-only server.** Playbooks that create or update records require **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
@@ -7,6 +17,8 @@
 **प्लेबुक आईडी:** `view-institution-risks`
 
 ## विवरण
+
+यह OpenEMIS प्लेबुक बताती है कि OpenEMIS स्कूल प्रबंधन प्रणाली के API का उपयोग करके किसी संस्थान में छात्र जोखिम कॉन्फ़िगरेशन — प्रारंभिक चेतावनी अलर्ट नियम और हाल के डिलीवरी लॉग — कैसे देखें।
 
 देखें कि किस संस्था के लिए कौन से जोखिम कॉन्फ़िगर किए गए हैं, वे अलर्ट नियम जो थ्रेशोल्ड पार होने पर ट्रिगर होते हैं, और हाल के अलर्ट डिलीवरी लॉग। `institution-risks` में एक कम्पोजिट प्राइमरी की है (`risk_id` + `institution_id`) — कोई पूर्णांक `id` फ़ील्ड नहीं है। अलर्ट्स, AlertRules से एक **स्ट्रिंग नाम↔फ़ीचर बाइंडिंग** के माध्यम से जुड़ते हैं, पूर्णांक फॉरेन की के माध्यम से नहीं।
 
@@ -86,3 +98,5 @@
 3. `openemis_get { resource: "alerts" }` → 3 अलर्ट परिभाषाएँ (नाम: "LowAttendance", "HighAbsence", "FailingGrade")
 4. `openemis_get { resource: "alert-rules", params: { } }` → "LowAttendance" नियम: enabled=1, method=Email, threshold=75
 5. `openemis_get { resource: "alert-logs", params: { feature: "LowAttendance" } }` → 4 ईमेल भेजे गए (status=1), 1 विफल (status=-1) पिछले सप्ताह
+
+*कब उपयोग करें: इस प्लेबुक का उपयोग करें जब प्रशासक को OpenEMIS में स्कूल की छात्र जोखिम कॉन्फ़िगरेशन और प्रारंभिक चेतावनी अलर्ट नियम देखने हों।*

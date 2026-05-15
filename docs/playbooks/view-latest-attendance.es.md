@@ -1,8 +1,20 @@
+---
+title: "Asistencia de Estudiantes — Estadísticas de Clase en OpenEMIS"
+description: "Guía OpenEMIS para leer la asistencia de estudiantes de una clase: hoy, semana y ausentes crónicos. MCP para sistema de gestión escolar."
+keywords:
+  - OpenEMIS
+  - asistencia de estudiantes
+  - sistema de gestión escolar
+  - gestión educativa
+---
+
 # Leer estadísticas de asistencia para una clase — Hoy / Semana / Ausentes crónicos
 
 > 📖 **Read-only server.** Playbooks that create or update records require **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
 
 **Dominio:** Asistencia · **Audiente:** docente, administrador, padre
+
+Este playbook de OpenEMIS explica cómo leer la asistencia de estudiantes de una clase — ausencias de hoy, totales de la semana y ausentes crónicos — usando la API del sistema de gestión escolar OpenEMIS.
 
 Instantánea rápida: quiénes estuvieron ausentes hoy, totales de la semana hasta la fecha y ausentes crónicos. OpenEMIS NO almacena una fila por estudiante presente — la presencia se infiere por omisión de ausencia una vez que se marca un día. Leer la asistencia correctamente requiere tres capas: (1) qué días se tomaron realmente como listas; (2) qué días tuvieron no_scheduled_class=99 (feriado/cancelado — omitir para estadísticas); (3) para los días MARCADOS restantes, extraer los eventos de ausencia — cada estudiante matriculado sin una fila ese día está PRESENTE.
 
@@ -60,3 +72,5 @@ El agente hará:
 - El cálculo del "ausente crónico" debe usar solo días marcados — usar el conteo total del calendario (ej., 30 días en abril) subreportará la presencia para cualquier día que un docente olvidó tomar lista.
 - Sentinelas de `no_scheduled_class`: 99 = no hubo clase ese día (feriado, fuerza mayor, docente enfermo, excursión); 0 = la clase estaba programada y ocurrió. Los lectores deben filtrar por este campo.
 - Para una vista de un padre o tutor de su propio hijo: filtre `student-attendance-marked-records` por `student_id` Y `institution_class_id`. Pueden ver los eventos de ausencia de su propio hijo pero no la lista completa de la clase a menos que los permisos lo permitan.
+
+*Cuándo usar: use este playbook cuando un docente o administrador necesite un resumen de la asistencia de estudiantes de una clase en OpenEMIS.*

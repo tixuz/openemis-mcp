@@ -1,3 +1,13 @@
+---
+title: "Perfil de la Clase — Lista de Estudiantes y Docentes en OpenEMIS"
+description: "Guía OpenEMIS para ver el perfil de una clase: estudiantes, asignaturas, asistencia y lista de docentes. MCP para sistema de gestión escolar."
+keywords:
+  - OpenEMIS
+  - sistema de gestión escolar
+  - asistencia de estudiantes
+  - gestión educativa
+---
+
 # Ver perfil completo de la clase
 
 > 📖 **Servidor de solo lectura.** Los playbooks que crean o actualizan registros requieren **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
@@ -7,6 +17,8 @@
 **ID del playbook:** `view-class-profile`
 
 ## Descripción
+
+Este playbook de OpenEMIS explica cómo ver el perfil completo de una clase — estudiantes matriculados, asignaturas, resumen de asistencia de estudiantes y lista de docentes — usando la API del sistema de gestión escolar OpenEMIS.
 
 Vea el perfil de una clase: asignación de nivel de grado, lista de estudiantes matriculados, materias activas, resumen de asistencia mensual y la lista completa de docentes (tutor de clase + docentes secundarios + docentes de materia). El recurso de asistencia utiliza una clave primaria compuesta — no hay un campo entero `id`; siempre use filtros de tipo lista para obtenerlo. La lista de docentes está distribuida en tres tablas y requiere una operación de fan-out + deduplicación.
 
@@ -121,3 +133,5 @@ openemis_get { resource: "security-users",
    - `openemis_get { resource: "institution-subject-staff", params: { institution_subject_id: 101 } }` × 7 → docentes de materia `[7, 23, 41, 58, …]`
    - Unión + deduplicación → `{7, 12, 19, 23, 41, 58, …}`
    - `openemis_get { resource: "security-users", params: { ids: "7,12,19,23,41,58" } }` → nombres en una llamada
+
+*Cuándo usar: use este playbook cuando un docente o administrador necesite el perfil completo de una clase — estudiantes, asignaturas y docentes — en OpenEMIS.*

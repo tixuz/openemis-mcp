@@ -1,3 +1,14 @@
+---
+title: "View Class Profile — Student Roster & Teacher List in OpenEMIS"
+description: "OpenEMIS playbook to view a class profile: grade level, enrolled student roster, subjects, attendance summary, and teacher roster. School management MCP guide."
+keywords:
+  - OpenEMIS
+  - school management system
+  - education management
+  - class profile
+  - student attendance
+---
+
 # View Full Class Profile
 
 > 📖 **Read-only server.** Playbooks that create or update records require **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
@@ -7,6 +18,8 @@
 **Playbook ID:** `view-class-profile`
 
 ## Description
+
+This OpenEMIS playbook explains how to view a complete class profile — grade level, enrolled student roster, active subjects, monthly attendance summary, and the full teacher roster — using the OpenEMIS school management API.
 
 View a class profile: grade level assignment, enrolled student roster, active subjects, monthly attendance summary, and the full teacher roster (homeroom + secondary + subject teachers). The attendance resource uses a composite primary key — there is no integer `id` field; always use list-style filters to fetch it. The teacher roster is spread across three tables and requires a fan-out + dedupe.
 
@@ -121,3 +134,5 @@ openemis_get { resource: "security-users",
    - `openemis_get { resource: "institution-subject-staff", params: { institution_subject_id: 101 } }` × 7 → subject teachers `[7, 23, 41, 58, …]`
    - Union + dedupe → `{7, 12, 19, 23, 41, 58, …}`
    - `openemis_get { resource: "security-users", params: { ids: "7,12,19,23,41,58" } }` → names in one call
+
+*When to use: ask this playbook when a teacher or admin needs the complete class profile — students, subjects, attendance summary, and teacher roster — for any class in the OpenEMIS school management system.*

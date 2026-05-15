@@ -1,3 +1,13 @@
+---
+title: "برامج الوجبات المدرسية — مشاركة الطلاب في OpenEMIS"
+description: "دليل OpenEMIS لعرض برامج الوجبات المدرسية والمحتوى الغذائي ومشاركة الطلاب. استعلام MCP لإدارة التعليم."
+keywords:
+  - OpenEMIS
+  - نظام إدارة المدارس
+  - إدارة التعليم
+  - الوجبات
+---
+
 # عرض برامج الوجبات المدرسية ومشاركة الطلاب
 
 > 📖 **Read-only server.** Playbooks that create or update records require **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
@@ -7,6 +17,8 @@
 **معرف دليل التشغيل:** `view-institution-meals`
 
 ## الوصف
+
+يشرح دليل OpenEMIS هذا كيفية عرض برامج الوجبات المدرسية — أنواع البرامج والمحتوى الغذائي ومشاركة الطلاب — باستخدام واجهة برمجة تطبيقات نظام إدارة المدارس OpenEMIS.
 
 عرض برامج الوجبات التي تديرها المؤسسة التعليمية، ومحتواها الغذائي، والطلاب المسجلين فيها. يتم تحديد النطاق باستخدام `institution_id` و `academic_period_id`. نقطة انتباه رئيسية: في `meal-nutritional-records` فإن المفتاح الخارجي (FK) لجدول `meal_nutritions` هو `nutritional_content_id` — **وليس** `meal_nutrition_id`.
 
@@ -77,3 +89,5 @@
 2. جلب `meal-programme-types` و `meal-implementers` و `meal-benefits` بالتزامن → حل التسميات
 3. `openemis_get { resource: "meal-nutritional-records", params: { meal_programme_id: 3 } }` → بروتين 15 جم، كربوهيدرات 45 جم، سعرات حرارية 280 كيلو كالوري (باستخدام nutritional_content_id لحل الأسماء)
 4. `openemis_get { resource: "institution-meal-students", params: { institution_id: 6, academic_period_id: 1, meal_programme_id: 3 } }` → 312 سجل طالب-يوم هذا الفصل الدراسي
+
+*متى تُستخدم: استخدم هذا الدليل عندما تحتاج إلى معلومات عن برامج الوجبات المدرسية أو مشاركة الطلاب في OpenEMIS.*

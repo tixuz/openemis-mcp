@@ -1,3 +1,13 @@
+---
+title: "مخاطر المؤسسة — ملخص المخاطر وقواعد الإنذار المبكر في OpenEMIS"
+description: "دليل OpenEMIS لعرض إعداد مخاطر الطلاب في المؤسسة وقواعد الإنذار المبكر وسجلات التسليم. استعلام MCP لإدارة التعليم."
+keywords:
+  - OpenEMIS
+  - مخاطر الطلاب
+  - نظام إدارة المدارس
+  - إدارة التعليم
+---
+
 # عرض ملخص مخاطر المؤسسة وقواعد التنبيه
 
 > 📖 **Read-only server.** Playbooks that create or update records require **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
@@ -7,6 +17,8 @@
 **معرف دليل التشغيل:** `view-institution-risks`
 
 ## الوصف
+
+يشرح دليل OpenEMIS هذا كيفية عرض إعداد مخاطر الطلاب في المؤسسة — أنواع المخاطر المفعّلة وقواعد الإنذار المبكر وسجلات التنبيهات الأخيرة — باستخدام واجهة برمجة تطبيقات نظام إدارة المدارس OpenEMIS.
 
 عرض المخاطر المُهيأة لمؤسسة ما، وقواعد التنبيه التي يتم تشغيلها عند تجاوز العتبات، وسجلات تسليم التنبيهات الحديثة. يحتوي `institution-risks` على مفتاح أساسي مركب (`risk_id` + `institution_id`) — **لا يوجد حقل عدد صحيح `id`**. ترتبط التنبيهات بقواعد التنبيه `AlertRules` عبر **ربط نصي للاسم↔الميزة**، وليس عبر مفتاح أجنبي عدد صحيح.
 
@@ -86,3 +98,5 @@
 3. `openemis_get { resource: "alerts" }` → 3 تعريفات تنبيه (أسماء: "LowAttendance", "HighAbsence", "FailingGrade")
 4. `openemis_get { resource: "alert-rules", params: { } }` → قاعدة "LowAttendance": enabled=1, method=Email, threshold=75
 5. `openemis_get { resource: "alert-logs", params: { feature: "LowAttendance" } }` → 4 رسائل بريد إلكتروني مرسلة (status=1)، 1 فاشلة (status=-1) الأسبوع الماضي
+
+*متى تُستخدم: استخدم هذا الدليل عندما يحتاج مدير إلى التحقق من إعداد مخاطر الطلاب وقواعد الإنذار المبكر في OpenEMIS.*

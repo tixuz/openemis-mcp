@@ -1,3 +1,13 @@
+---
+title: "Питание в учреждении — программы и участие учеников в OpenEMIS"
+description: "Руководство OpenEMIS по просмотру программ питания школы, пищевой ценности и участия учеников. MCP для управления образованием."
+keywords:
+  - OpenEMIS
+  - школьная информационная система
+  - управление образованием
+  - питание
+---
+
 # Просмотр программ питания учреждения и участия студентов
 
 > 📖 **Read-only server.** Playbooks that create or update records require **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
@@ -7,6 +17,8 @@
 **ID руководства:** `view-institution-meals`
 
 ## Описание
+
+Это руководство OpenEMIS объясняет, как просмотреть программы питания школы — виды программ, пищевую ценность и участие учеников — через API школьной информационной системы OpenEMIS.
 
 Просмотр программ питания, которые проводит учреждение, их пищевой ценности и списка зачисленных студентов. Область действия ограничена `institution_id` и `academic_period_id`. Ключевая особенность: в `meal-nutritional-records` внешний ключ к таблице `meal_nutritions` — это `nutritional_content_id`, **а не** `meal_nutrition_id`.
 
@@ -77,3 +89,5 @@
 2. Получите `meal-programme-types`, `meal-implementers`, `meal-benefits` параллельно → разрешите названия
 3. `openemis_get { resource: "meal-nutritional-records", params: { meal_programme_id: 3 } }` → белки 15г, углеводы 45г, калории 280ккал (используя nutritional_content_id для разрешения названий)
 4. `openemis_get { resource: "institution-meal-students", params: { institution_id: 6, academic_period_id: 1, meal_programme_id: 3 } }` → 312 записей об участии студентов за этот семестр
+
+*Когда использовать: используйте это руководство, когда нужна информация о программах питания школы или участии учеников в OpenEMIS.*

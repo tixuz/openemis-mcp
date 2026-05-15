@@ -1,12 +1,26 @@
+---
+title: "openemis-mcp — Puente de IA para el sistema de gestión escolar OpenEMIS"
+description: "Servidor MCP gratuito que conecta asistentes de IA con OpenEMIS, el sistema de gestión escolar. Consulte asistencia de estudiantes, riesgos, personal y 675 recursos."
+keywords:
+  - OpenEMIS
+  - sistema de gestión escolar
+  - gestión educativa
+  - asistencia de estudiantes
+  - riesgos de estudiantes
+  - MCP
+---
+
 <p align="center">
-  <img src="assets/logo.png" alt="openemis-mcp logo" width="320">
+  <img src="assets/logo.png" alt="openemis-mcp logo — Puente de IA para el sistema de gestión escolar OpenEMIS" width="320">
 </p>
 
-# openemis-mcp
+# openemis-mcp — Puente de IA para el sistema de gestión escolar OpenEMIS
 
 **Puente MCP gratuito y de solo lectura entre agentes de IA y cualquier instancia de OpenEMIS.**
 
 OpenEMIS es un sistema de gestión escolar (SGE) gratuito y de código abierto desarrollado por UNESCO y KORDIT, utilizado desde jardines de infancia hasta universidades y centros de formación profesional.
+
+> **Qué es esto:** openemis-mcp es un servidor MCP gratuito que conecta asistentes de IA con OpenEMIS, el sistema de gestión escolar. Expone 675 recursos (asistencia de estudiantes, riesgos de estudiantes, personal, exámenes) a través de 26 playbooks de solo lectura.
 
 Construido sobre la **API pública de OpenEMIS Core** (referencia: [api.openemis.org/core](https://api.openemis.org/core)) y verificado contra la demo pública en [demo.openemis.org/core](https://demo.openemis.org/core).
 
@@ -159,6 +173,8 @@ El descubrimiento delimitado por dominio mantiene las conversaciones pequeñas �
 
 - [Referencia de Recursos](docs/resources.md) — los 675 recursos con disponibilidad de métodos (Core 5.10.0)
 - [Playbooks](docs/playbooks/) — 17 playbooks de visualización en 5 idiomas + 9 nuevos sólo en inglés (traducciones a continuación)
+- [GLOSSARY.md](docs/GLOSSARY.md) — términos clave: OpenEMIS, MCP, asistencia de estudiantes, riesgos y más
+- [FAQ.md](docs/FAQ.md) — preguntas frecuentes sobre gestión educativa con OpenEMIS MCP
 - [ACKNOWLEDGEMENTS.md](ACKNOWLEDGEMENTS.md) — el equipo de IA que construyó esto
 
 ---

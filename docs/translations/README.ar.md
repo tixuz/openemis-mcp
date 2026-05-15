@@ -1,12 +1,26 @@
+---
+title: "openemis-mcp — جسر الذكاء الاصطناعي لنظام إدارة المدارس OpenEMIS"
+description: "خادم MCP مجاني يربط مساعدي الذكاء الاصطناعي بـ OpenEMIS نظام إدارة المدارس. استعلم عن حضور الطلاب والمخاطر والموظفين و675 موردًا."
+keywords:
+  - OpenEMIS
+  - نظام إدارة المدارس
+  - إدارة التعليم
+  - حضور الطلاب
+  - مخاطر الطلاب
+  - MCP
+---
+
 <p align="center">
-  <img src="assets/logo.png" alt="openemis-mcp logo" width="320">
+  <img src="assets/logo.png" alt="openemis-mcp logo — جسر الذكاء الاصطناعي لنظام إدارة المدارس OpenEMIS" width="320">
 </p>
 
-# openemis-mcp
+# openemis-mcp — جسر الذكاء الاصطناعي لنظام إدارة المدارس OpenEMIS
 
 **جسر MCP مجاني للقراءة فقط بين وكلاء الذكاء الاصطناعي وأي نسخة من OpenEMIS.**
 
 OpenEMIS هو نظام معلومات إدارة مدرسية مجاني ومفتوح المصدر طورته اليونسكو وKORDIT، ويُستخدم في رياض الأطفال والمدارس ومؤسسات التعليم المهني الثانوي والجامعات.
+
+> **ما هذا:** openemis-mcp خادم MCP مجاني يربط مساعدي الذكاء الاصطناعي بـ OpenEMIS نظام إدارة المدارس. يتيح الوصول إلى 675 موردًا (حضور الطلاب، مخاطر الطلاب، الموظفون، الامتحانات) عبر 26 دليل سير عمل للقراءة فقط.
 
 مبني على **واجهة برمجة تطبيقات OpenEMIS Core** المنشورة (المرجع: [api.openemis.org/core](https://api.openemis.org/core)) وتم التحقق منه مقابل النسخة التجريبية العامة على [demo.openemis.org/core](https://demo.openemis.org/core).
 
@@ -159,6 +173,8 @@ openemis-mcp  ←  6 أدوات قراءة + 26 دليل سير عمل + 14 stub
 
 - [مرجع الموارد](docs/resources.md) — جميع الموارد الـ 675 مع توفر الطرق (Core 5.10.0)
 - [أدلة سير العمل](docs/playbooks/) — 17 دليل عرض بـ 5 لغات + 9 جديدة بالإنجليزية فقط (الترجمات لاحقًا)
+- [GLOSSARY.md](docs/GLOSSARY.md) — المصطلحات الرئيسية: OpenEMIS، MCP، حضور الطلاب، المخاطر والمزيد
+- [FAQ.md](docs/FAQ.md) — أسئلة شائعة حول إدارة التعليم باستخدام OpenEMIS MCP
 - [ACKNOWLEDGEMENTS.md](ACKNOWLEDGEMENTS.md) — فريق الذكاء الاصطناعي الذي بنى هذا
 
 ---

@@ -1,3 +1,13 @@
+---
+title: "संस्थान अवसंरचना — भवन और WASH OpenEMIS में"
+description: "OpenEMIS प्लेबुक जो स्कूल की भौतिक अवसंरचना दिखाती है: भूमि, भवन, उपयोगिताएँ और WASH डेटा। शिक्षा प्रबंधन MCP गाइड।"
+keywords:
+  - OpenEMIS
+  - स्कूल प्रबंधन प्रणाली
+  - शिक्षा प्रबंधन
+  - अवसंरचना
+---
+
 # संस्था अवसंरचना देखें (भूमि, भवन, उपयोगिताएँ, WASH)
 
 > 📖 **Read-only server.** Playbooks that create or update records require **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
@@ -7,6 +17,8 @@
 **प्लेबुक ID:** `view-institution-infrastructure`
 
 ## विवरण
+
+यह OpenEMIS प्लेबुक बताती है कि OpenEMIS स्कूल प्रबंधन प्रणाली के API का उपयोग करके किसी स्कूल की भौतिक अवसंरचना — भूमि, भवन, बिजली उपयोगिताएँ और WASH डेटा — कैसे देखें।
 
 किसी संस्था की भौतिक अवसंरचना देखें: भूमि खंड, प्रति भूमि भवन, उपयोगिताएँ (बिजली), और WASH रिकॉर्ड (पानी और स्वच्छता)। **भूमि और भवन `academic_period_id` द्वारा स्कोप नहीं हैं** — यह फ़ील्ड POCOR-8037 में हटा दी गई थी। उपयोगिताएँ और WASH `academic_period_id` द्वारा स्कोप हैं।
 
@@ -85,3 +97,5 @@
 4. `openemis_get { resource: "infrastructure-utility-electricities", params: { institution_id: 6, academic_period_id: 1, is_current: 1 } }` → ग्रिड बिजली, अच्छी स्थिति
 5. `openemis_get { resource: "infrastructure-wash-waters", params: { institution_id: 6, academic_period_id: 1 } }` → पाइपलाइन पानी, कार्यात्मक
 6. `openemis_get { resource: "infrastructure-wash-sanitations", params: { institution_id: 6, academic_period_id: 1 } }` → 4 पुरुष, 4 महिला शौचालय कार्यात्मक
+
+*कब उपयोग करें: इस प्लेबुक का उपयोग करें जब प्रशासक को OpenEMIS में स्कूल की अवसंरचना — भवन, उपयोगिताएँ और WASH — का डेटा चाहिए।*

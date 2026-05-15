@@ -1,3 +1,14 @@
+---
+title: "View Institution Profile — School Details in OpenEMIS"
+description: "OpenEMIS playbook to view a school's full profile: core record, active grades, locality, and contact persons. School management MCP query guide."
+keywords:
+  - OpenEMIS
+  - school management system
+  - education management
+  - institution profile
+  - school details
+---
+
 # View Full Institution Profile
 
 > 📖 **Read-only server.** Playbooks that create or update records require **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
@@ -7,6 +18,8 @@
 **Playbook ID:** `view-institution-profile`
 
 ## Description
+
+This OpenEMIS playbook explains how to view a school's full institutional profile — core record, active education grades, locality, and contact persons — using the OpenEMIS school management API.
 
 View detailed information about an institution: core record, active grades, locality, and contact persons. Steps follow the canonical order — core institution fetch first, then grades, then locality resolution, then contacts.
 
@@ -67,3 +80,5 @@ Filter by `institution_id`. A record with `preferred=1` is the primary contact (
 2. `openemis_get { resource: "institution-grades", params: { institution_id: 6, academic_period_id: 1 } }` → grades 1–6
 3. `openemis_get { resource: "institution-localities" }` → match locality_id=2 → "Selangor"
 4. `openemis_get { resource: "institution-contact-persons", params: { institution_id: 6 } }` → Jane Doe, Principal
+
+*When to use: ask this playbook when you need the full school profile — grades, location, and contacts — for any institution in the OpenEMIS education management system.*

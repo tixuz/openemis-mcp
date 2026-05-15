@@ -1,8 +1,20 @@
+---
+title: "Horario de Clase o Docente en OpenEMIS"
+description: "Guía OpenEMIS para ver el horario semanal de una clase o docente: asignaturas, períodos y aulas. MCP para sistema de gestión escolar."
+keywords:
+  - OpenEMIS
+  - sistema de gestión escolar
+  - gestión educativa
+  - horario
+---
+
 # Ver Horario para una Clase o Docente
 
 > 📖 **Read-only server.** Playbooks that create or update records require **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
 
 **Dominio:** Horario · **Audiencia:** docente, administrador, estudiante
+
+Este playbook de OpenEMIS explica cómo recuperar el horario semanal de una clase o docente — asignaturas, franjas horarias y aulas — desde el sistema de gestión escolar OpenEMIS.
 
 Recupere el horario semanal para una clase específica de la institución — incluyendo día, franja horaria, asignatura y docente asignado — para el período académico actual o especificado. El horario se almacena en `institution-schedule-timetables`; el mapeo clase-grado de `institution-class-grades` se utiliza para enriquecer la respuesta con el contexto del grado educativo. Para una vista personal del horario de un estudiante (dirigida a padres o estudiantes), utilice el playbook `view-student-timetable` en su lugar.
 
@@ -43,3 +55,5 @@ El agente hará:
 1. Llamará a `openemis_discover` o `openemis_list_playbooks` para encontrar este playbook
 2. Seguirá los pasos anteriores
 3. Devolverá la respuesta en lenguaje sencillo
+
+*Cuándo usar: use este playbook cuando un docente, administrador o estudiante necesite el horario de clases de una institución en OpenEMIS.*

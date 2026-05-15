@@ -1,3 +1,13 @@
+---
+title: "Профиль сотрудника — должности и контакты в OpenEMIS"
+description: "Руководство OpenEMIS по просмотру полного профиля сотрудника: должности, история отпусков, контактные данные. MCP для управления образованием."
+keywords:
+  - OpenEMIS
+  - школьная информационная система
+  - управление образованием
+  - персонал
+---
+
 # Просмотр полного профиля сотрудника
 
 > 📖 **Read-only server.** Playbooks that create or update records require **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
@@ -7,7 +17,9 @@
 **Audience:** admin, hr  
 **Playbook ID:** `view-staff-profile`
 
-## Description
+## Описание
+
+Это руководство OpenEMIS объясняет, как просмотреть полный профиль сотрудника — текущие и прошлые должности, история отпусков и контактные данные — через API школьной информационной системы OpenEMIS.
 
 Просмотр текущих и исторических профилей должности сотрудника, истории отпусков, прошлых должностей и прямых контактных данных. Объединяет четыре ресурса, используя правильные ключи фильтра для каждого из них — необходимо различать два отдельных поля идентификации сотрудника (`staff_id` и `institution_staff_id`).
 
@@ -72,3 +84,5 @@
 2. `openemis_get { resource: "institution-staff-leave", params: { staff_id: 88, orderby: "date_from", order: "desc" } }` → 3 записи об отпуске
 3. `openemis_get { resource: "historical-staff-positions", params: { institution_id: 6 } }` → 2 прошлые должности
 4. `openemis_get { resource: "user-contacts", params: { security_user_id: 88 } }` → мобильный +60-12-345-6789
+
+*Когда использовать: используйте это руководство, когда администратору или HR-специалисту нужны полные данные сотрудника — должности, отпуска и контакты — в OpenEMIS.*

@@ -1,8 +1,20 @@
+---
+title: "Calificaciones del Estudiante — Resultados de Evaluación en OpenEMIS"
+description: "Guía OpenEMIS para consultar las calificaciones y resultados de evaluación de un estudiante por asignatura o período académico. MCP para gestión educativa."
+keywords:
+  - OpenEMIS
+  - sistema de gestión escolar
+  - gestión educativa
+  - calificaciones
+---
+
 # Consultar las calificaciones y resultados de evaluación de un estudiante para una asignatura o período
 
 > 📖 **Read-only server.** Playbooks that create or update records require **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
 
 **Dominio:** Evaluación · **Audiente:** docente, administrador, padre/madre
+
+Este playbook de OpenEMIS explica cómo recuperar las calificaciones de un estudiante y los resultados de evaluación para cualquier asignatura o período académico en el sistema de gestión escolar OpenEMIS.
 
 Recupere los resultados calificados de un estudiante desde `assessment-item-results` para una o más evaluaciones en un período académico determinado. Esta guía primero localiza las definiciones de evaluación y los identificadores de período relevantes, luego obtiene las filas de calificaciones brutas y finalmente las enriquece con los nombres de las asignaturas desde `education-subjects`. Los resultados incluyen la calificación numérica más un `grading_option_id` que puede resolverse contra la tabla de calificación de la evaluación para obtener una letra o etiqueta de aprobado/reprobado.
 
@@ -56,3 +68,5 @@ El agente hará:
 1. Llamar a `openemis_discover` o `openemis_list_playbooks` para encontrar esta guía
 2. Seguir los pasos anteriores
 3. Devolver la respuesta en lenguaje sencillo
+
+*Cuándo usar: use este playbook cuando un padre, docente o administrador necesite ver las calificaciones o resultados de evaluación de un estudiante en OpenEMIS.*

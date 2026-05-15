@@ -1,3 +1,13 @@
+---
+title: "संस्थान प्रोफ़ाइल — OpenEMIS में स्कूल का विवरण"
+description: "OpenEMIS प्लेबुक जो स्कूल का पूर्ण प्रोफ़ाइल दिखाती है: मुख्य रिकॉर्ड, सक्रिय ग्रेड, स्थानीयता और संपर्क। शिक्षा प्रबंधन MCP गाइड।"
+keywords:
+  - OpenEMIS
+  - स्कूल प्रबंधन प्रणाली
+  - शिक्षा प्रबंधन
+  - संस्थान
+---
+
 # संस्थान का पूर्ण प्रोफ़ाइल देखें
 
 > 📖 **Read-only server.** Playbooks that create or update records require **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
@@ -7,6 +17,8 @@
 **प्लेबुक आईडी:** `view-institution-profile`
 
 ## विवरण
+
+यह OpenEMIS प्लेबुक बताती है कि OpenEMIS स्कूल प्रबंधन प्रणाली के API का उपयोग करके किसी शैक्षणिक संस्थान का पूर्ण प्रोफ़ाइल — मुख्य रिकॉर्ड, सक्रिय ग्रेड, स्थानीयता और संपर्क — कैसे देखें।
 
 संस्थान के बारे में विस्तृत जानकारी देखें: मुख्य रिकॉर्ड, सक्रिय ग्रेड, स्थानीयता, और संपर्क व्यक्ति। चरणों का क्रम विहित है — पहले मुख्य संस्थान प्राप्त करें, फिर ग्रेड, फिर स्थानीयता का समाधान, फिर संपर्क।
 
@@ -67,3 +79,5 @@
 2. `openemis_get { resource: "institution-grades", params: { institution_id: 6, academic_period_id: 1 } }` → ग्रेड 1–6
 3. `openemis_get { resource: "institution-localities" }` → locality_id=2 से मिलान → "Selangor"
 4. `openemis_get { resource: "institution-contact-persons", params: { institution_id: 6 } }` → Jane Doe, Principal
+
+*कब उपयोग करें: इस प्लेबुक का उपयोग करें जब आपको OpenEMIS शिक्षा प्रबंधन प्रणाली में किसी स्कूल का पूर्ण प्रोफ़ाइल — ग्रेड, स्थान और संपर्क — चाहिए।*

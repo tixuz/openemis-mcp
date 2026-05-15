@@ -1,3 +1,13 @@
+---
+title: "Ampliar Perfil del Estudiante — Contactos y Necesidades Especiales en OpenEMIS"
+description: "Guía OpenEMIS para ampliar el perfil de un estudiante con contactos, nacionalidad y evaluaciones de necesidades especiales. MCP para gestión educativa."
+keywords:
+  - OpenEMIS
+  - sistema de gestión escolar
+  - gestión educativa
+  - perfil del estudiante
+---
+
 # Ampliar el Perfil del Estudiante con Contactos, Nacionalidad y Necesidades Especiales
 
 > 📖 **Read-only server.** Playbooks that create or update records require **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
@@ -8,6 +18,8 @@
 **ID del Manual de Procedimientos:** `enhance-student-profile`
 
 ## Descripción
+
+Este playbook de OpenEMIS explica cómo ampliar el perfil de un estudiante con contactos, nacionalidad y registros de necesidades especiales usando la API del sistema de gestión escolar OpenEMIS.
 
 Amplíe la vista del perfil de un estudiante existente recuperando detalles de contacto directo, asignaciones de nacionalidad, evaluaciones de necesidades especiales y planes de necesidades especiales. Los cuatro recursos de mejora filtran por `security_user_id` (el ID de usuario global del estudiante desde `security_users`), **NO** por `student_id` (la clave foránea de matrícula). Los resultados vacíos para las necesidades especiales son válidos: la mayoría de los estudiantes no tienen registros.
 
@@ -76,3 +88,5 @@ Filtre por `security_user_id` y opcionalmente por `academic_period_id`.
 3. `openemis_get { resource: "user-nationalities", params: { security_user_id: 102 } }` → Malasio (preferido)
 4. `openemis_get { resource: "user-special-needs-assessments", params: { security_user_id: 102 } }` → [] (ninguno)
 5. `openemis_get { resource: "user-special-needs-plans", params: { security_user_id: 102 } }` → [] (ninguno)
+
+*Cuándo usar: use este playbook cuando necesite enriquecer un perfil de estudiante con contactos, nacionalidad o registros de necesidades especiales en OpenEMIS.*
