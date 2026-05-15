@@ -27,13 +27,13 @@ No code. No JSON. Just ask.
 | `openemis_health` | Ping the configured instance — real login round-trip |
 | `openemis_list_domains` | List the 9 curated domains (Attendance, Assessment, Staff, Student…) |
 | `openemis_discover` | Topic → up to 30 scoped endpoints. Keeps conversations small |
-| `openemis_list_playbooks` | List all 24 curated workflow guides |
+| `openemis_list_playbooks` | List all 38 playbooks — 24 read-only here, 14 stubs that redirect to mcp-pro |
 | `openemis_get_playbook` | Load a playbook by id — full steps, resources, gotcha notes |
 | `openemis_get` | Unified read: list or singleton, any resource, any filter |
 
-**24 curated playbooks** covering attendance, assessment, student profiles, staff profiles, infrastructure, meals, risk dashboards, class reports, timetables, and more — each verified against the v5 manifest at 100% resource coverage.
+**24 read-only playbooks** covering attendance, assessment, student profiles, staff profiles, infrastructure, meals, risk dashboards, class reports, timetables, audit logs, accreditation/registration, and more — each verified against the v5 manifest at 100% resource coverage. **14 additional playbook stubs** are discoverable here but redirect to **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)** for the actual write/auth steps.
 
-**Translations:** [Русский](docs/translations/README.ru.md) · [Español](docs/translations/README.es.md) · [हिन्दी](docs/translations/README.hi.md) · [العربية](docs/translations/README.ar.md) — all 24 playbooks also in all four languages.
+**Translations:** [Русский](docs/translations/README.ru.md) · [Español](docs/translations/README.es.md) · [हिन्दी](docs/translations/README.hi.md) · [العربية](docs/translations/README.ar.md) — the original 17 view playbooks also translated in all four languages; 7 newer playbooks (added in v1.1.0 for Core 5.10.0) are English-only for now.
 
 > ✏️ **Write operations** (creating/updating records in OpenEMIS) require **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**. This free server is intentionally read-only — `post`, `put`, and `delete` are not available.
 
@@ -43,9 +43,9 @@ No code. No JSON. Just ask.
 
 | | **Free** | **Individual Pro** | **Institution Pro** | **Country Pro** |
 |---|---|---|---|---|
-| Read tools (all 645 resources) | ✅ | ✅ | ✅ | ✅ |
-| 24 read playbooks × 5 languages | ✅ | ✅ | ✅ | ✅ |
-| 3 write playbooks (v0.2+) | — | ✅ | ✅ | ✅ |
+| Read tools (all 675 resources, Core 5.10.0) | ✅ | ✅ | ✅ | ✅ |
+| 24 read playbooks (17 × 5 languages + 7 EN) | ✅ | ✅ | ✅ | ✅ |
+| 14 write / auth playbooks (mark-attendance, enrol, set-accreditation…) | stub | ✅ | ✅ | ✅ |
 | stdio mode (Claude Code, Cursor, Cline) | ✅ | ✅ | ✅ | ✅ |
 | **HTTP server mode** (Oracle / VPS — install once, connect by URL) | — | ✅ | ✅ | ✅ |
 | **OpenAPI adapter** (ChatGPT Custom GPT, any REST client) | — | ✅ | ✅ | ✅ |
@@ -128,61 +128,74 @@ Each line is a JSON object: `{ts, type:"tool_call"|"tool_result"|"tool_error", t
 
 ## Playbooks
 
-24 curated workflow guides — see [docs/playbooks/](docs/playbooks/):
+24 read-only workflow guides — see [docs/playbooks/](docs/playbooks/). Write-side playbooks (mark attendance, enrol a student, set school accreditation, etc.) are discoverable here as stubs that point at **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
+
+### Read playbooks (this MCP)
 
 | # | Playbook | Domain | Translations |
 |---|---|---|---|
 | 1 | [Count Vacant Positions](docs/playbooks/count-vacant-positions.md) | Staff | [RU](docs/playbooks/count-vacant-positions.ru.md) · [ES](docs/playbooks/count-vacant-positions.es.md) · [HI](docs/playbooks/count-vacant-positions.hi.md) · [AR](docs/playbooks/count-vacant-positions.ar.md) |
-| 2 | [Mark Student Attendance](docs/playbooks/mark-student-attendance.md) | Attendance | [RU](docs/playbooks/mark-student-attendance.ru.md) · [ES](docs/playbooks/mark-student-attendance.es.md) · [HI](docs/playbooks/mark-student-attendance.hi.md) · [AR](docs/playbooks/mark-student-attendance.ar.md) |
-| 3 | [Mark Staff Attendance](docs/playbooks/mark-staff-attendance.md) | Staff | [RU](docs/playbooks/mark-staff-attendance.ru.md) · [ES](docs/playbooks/mark-staff-attendance.es.md) · [HI](docs/playbooks/mark-staff-attendance.hi.md) · [AR](docs/playbooks/mark-staff-attendance.ar.md) |
-| 4 | [View Student Timetable](docs/playbooks/view-student-timetable.md) | Schedule | [RU](docs/playbooks/view-student-timetable.ru.md) · [ES](docs/playbooks/view-student-timetable.es.md) · [HI](docs/playbooks/view-student-timetable.hi.md) · [AR](docs/playbooks/view-student-timetable.ar.md) |
-| 5 | [Student Dashboard](docs/playbooks/student-dashboard.md) | Student | [RU](docs/playbooks/student-dashboard.ru.md) · [ES](docs/playbooks/student-dashboard.es.md) · [HI](docs/playbooks/student-dashboard.hi.md) · [AR](docs/playbooks/student-dashboard.ar.md) |
-| 6 | [Generate Student Report Card PDF](docs/playbooks/generate-student-report-card-pdf.md) | Report | [RU](docs/playbooks/generate-student-report-card-pdf.ru.md) · [ES](docs/playbooks/generate-student-report-card-pdf.es.md) · [HI](docs/playbooks/generate-student-report-card-pdf.hi.md) · [AR](docs/playbooks/generate-student-report-card-pdf.ar.md) |
-| 7 | [Enrol a New Student](docs/playbooks/enroll-new-student.md) | Student | [RU](docs/playbooks/enroll-new-student.ru.md) · [ES](docs/playbooks/enroll-new-student.es.md) · [HI](docs/playbooks/enroll-new-student.hi.md) · [AR](docs/playbooks/enroll-new-student.ar.md) |
-| 8 | [Record a Behaviour Incident](docs/playbooks/record-behavior-incident.md) | Student | [RU](docs/playbooks/record-behavior-incident.ru.md) · [ES](docs/playbooks/record-behavior-incident.es.md) · [HI](docs/playbooks/record-behavior-incident.hi.md) · [AR](docs/playbooks/record-behavior-incident.ar.md) |
-| 9 | [Submit Exam Marks](docs/playbooks/submit-exam-marks.md) | Assessment | [RU](docs/playbooks/submit-exam-marks.ru.md) · [ES](docs/playbooks/submit-exam-marks.es.md) · [HI](docs/playbooks/submit-exam-marks.hi.md) · [AR](docs/playbooks/submit-exam-marks.ar.md) |
-| 10 | [Institution Summary](docs/playbooks/institution-summary.md) | Institution | [RU](docs/playbooks/institution-summary.ru.md) · [ES](docs/playbooks/institution-summary.es.md) · [HI](docs/playbooks/institution-summary.hi.md) · [AR](docs/playbooks/institution-summary.ar.md) |
-| 11 | [Generate Institution Statistics PDF](docs/playbooks/generate-institution-statistics-pdf.md) | Report | [RU](docs/playbooks/generate-institution-statistics-pdf.ru.md) · [ES](docs/playbooks/generate-institution-statistics-pdf.es.md) · [HI](docs/playbooks/generate-institution-statistics-pdf.hi.md) · [AR](docs/playbooks/generate-institution-statistics-pdf.ar.md) |
-| 12 | [View Latest Attendance](docs/playbooks/view-latest-attendance.md) | Attendance | [RU](docs/playbooks/view-latest-attendance.ru.md) · [ES](docs/playbooks/view-latest-attendance.es.md) · [HI](docs/playbooks/view-latest-attendance.hi.md) · [AR](docs/playbooks/view-latest-attendance.ar.md) |
-| 13 | [View Student Profile](docs/playbooks/view-student-profile.md) | Student | [RU](docs/playbooks/view-student-profile.ru.md) · [ES](docs/playbooks/view-student-profile.es.md) · [HI](docs/playbooks/view-student-profile.hi.md) · [AR](docs/playbooks/view-student-profile.ar.md) |
-| 14 | [View Student Marks](docs/playbooks/view-student-marks.md) | Assessment | [RU](docs/playbooks/view-student-marks.ru.md) · [ES](docs/playbooks/view-student-marks.es.md) · [HI](docs/playbooks/view-student-marks.hi.md) · [AR](docs/playbooks/view-student-marks.ar.md) |
-| 15 | [View Class Report](docs/playbooks/view-class-report.md) | Report | [RU](docs/playbooks/view-class-report.ru.md) · [ES](docs/playbooks/view-class-report.es.md) · [HI](docs/playbooks/view-class-report.hi.md) · [AR](docs/playbooks/view-class-report.ar.md) |
-| 16 | [View Timetable](docs/playbooks/view-timetable.md) | Schedule | [RU](docs/playbooks/view-timetable.ru.md) · [ES](docs/playbooks/view-timetable.es.md) · [HI](docs/playbooks/view-timetable.hi.md) · [AR](docs/playbooks/view-timetable.ar.md) |
-| 17 | [View Full Institution Profile](docs/playbooks/view-institution-profile.md) | Institution | [RU](docs/playbooks/view-institution-profile.ru.md) · [ES](docs/playbooks/view-institution-profile.es.md) · [HI](docs/playbooks/view-institution-profile.hi.md) · [AR](docs/playbooks/view-institution-profile.ar.md) |
-| 18 | [View Full Class Profile](docs/playbooks/view-class-profile.md) | Student | [RU](docs/playbooks/view-class-profile.ru.md) · [ES](docs/playbooks/view-class-profile.es.md) · [HI](docs/playbooks/view-class-profile.hi.md) · [AR](docs/playbooks/view-class-profile.ar.md) |
-| 19 | [View a Staff Member's Full Profile](docs/playbooks/view-staff-profile.md) | Staff | [RU](docs/playbooks/view-staff-profile.ru.md) · [ES](docs/playbooks/view-staff-profile.es.md) · [HI](docs/playbooks/view-staff-profile.hi.md) · [AR](docs/playbooks/view-staff-profile.ar.md) |
-| 20 | [Enhance Student Profile](docs/playbooks/enhance-student-profile.md) | Student | [RU](docs/playbooks/enhance-student-profile.ru.md) · [ES](docs/playbooks/enhance-student-profile.es.md) · [HI](docs/playbooks/enhance-student-profile.hi.md) · [AR](docs/playbooks/enhance-student-profile.ar.md) |
-| 21 | [View Institution Infrastructure](docs/playbooks/view-institution-infrastructure.md) | Institution | [RU](docs/playbooks/view-institution-infrastructure.ru.md) · [ES](docs/playbooks/view-institution-infrastructure.es.md) · [HI](docs/playbooks/view-institution-infrastructure.hi.md) · [AR](docs/playbooks/view-institution-infrastructure.ar.md) |
-| 22 | [View Institution Meals](docs/playbooks/view-institution-meals.md) | Institution | [RU](docs/playbooks/view-institution-meals.ru.md) · [ES](docs/playbooks/view-institution-meals.es.md) · [HI](docs/playbooks/view-institution-meals.hi.md) · [AR](docs/playbooks/view-institution-meals.ar.md) |
-| 23 | [View Student Risk Profile and Welfare Cases](docs/playbooks/view-student-risks.md) | Student | [RU](docs/playbooks/view-student-risks.ru.md) · [ES](docs/playbooks/view-student-risks.es.md) · [HI](docs/playbooks/view-student-risks.hi.md) · [AR](docs/playbooks/view-student-risks.ar.md) |
-| 24 | [View Institution Risk Summary and Alert Rules](docs/playbooks/view-institution-risks.md) | Institution | [RU](docs/playbooks/view-institution-risks.ru.md) · [ES](docs/playbooks/view-institution-risks.es.md) · [HI](docs/playbooks/view-institution-risks.hi.md) · [AR](docs/playbooks/view-institution-risks.ar.md) |
+| 2 | [View Student Timetable](docs/playbooks/view-student-timetable.md) | Schedule | [RU](docs/playbooks/view-student-timetable.ru.md) · [ES](docs/playbooks/view-student-timetable.es.md) · [HI](docs/playbooks/view-student-timetable.hi.md) · [AR](docs/playbooks/view-student-timetable.ar.md) |
+| 3 | [Student Dashboard](docs/playbooks/student-dashboard.md) | Student | [RU](docs/playbooks/student-dashboard.ru.md) · [ES](docs/playbooks/student-dashboard.es.md) · [HI](docs/playbooks/student-dashboard.hi.md) · [AR](docs/playbooks/student-dashboard.ar.md) |
+| 4 | [Institution Summary](docs/playbooks/institution-summary.md) | Institution | [RU](docs/playbooks/institution-summary.ru.md) · [ES](docs/playbooks/institution-summary.es.md) · [HI](docs/playbooks/institution-summary.hi.md) · [AR](docs/playbooks/institution-summary.ar.md) |
+| 5 | [View Latest Attendance](docs/playbooks/view-latest-attendance.md) | Attendance | [RU](docs/playbooks/view-latest-attendance.ru.md) · [ES](docs/playbooks/view-latest-attendance.es.md) · [HI](docs/playbooks/view-latest-attendance.hi.md) · [AR](docs/playbooks/view-latest-attendance.ar.md) |
+| 6 | [View Student Profile](docs/playbooks/view-student-profile.md) | Student | [RU](docs/playbooks/view-student-profile.ru.md) · [ES](docs/playbooks/view-student-profile.es.md) · [HI](docs/playbooks/view-student-profile.hi.md) · [AR](docs/playbooks/view-student-profile.ar.md) |
+| 7 | [View Student Marks](docs/playbooks/view-student-marks.md) | Assessment | [RU](docs/playbooks/view-student-marks.ru.md) · [ES](docs/playbooks/view-student-marks.es.md) · [HI](docs/playbooks/view-student-marks.hi.md) · [AR](docs/playbooks/view-student-marks.ar.md) |
+| 8 | [View Class Report](docs/playbooks/view-class-report.md) | Report | [RU](docs/playbooks/view-class-report.ru.md) · [ES](docs/playbooks/view-class-report.es.md) · [HI](docs/playbooks/view-class-report.hi.md) · [AR](docs/playbooks/view-class-report.ar.md) |
+| 9 | [View Timetable](docs/playbooks/view-timetable.md) | Schedule | [RU](docs/playbooks/view-timetable.ru.md) · [ES](docs/playbooks/view-timetable.es.md) · [HI](docs/playbooks/view-timetable.hi.md) · [AR](docs/playbooks/view-timetable.ar.md) |
+| 10 | [View Full Institution Profile](docs/playbooks/view-institution-profile.md) | Institution | [RU](docs/playbooks/view-institution-profile.ru.md) · [ES](docs/playbooks/view-institution-profile.es.md) · [HI](docs/playbooks/view-institution-profile.hi.md) · [AR](docs/playbooks/view-institution-profile.ar.md) |
+| 11 | [View Full Class Profile](docs/playbooks/view-class-profile.md) | Student | [RU](docs/playbooks/view-class-profile.ru.md) · [ES](docs/playbooks/view-class-profile.es.md) · [HI](docs/playbooks/view-class-profile.hi.md) · [AR](docs/playbooks/view-class-profile.ar.md) |
+| 12 | [View a Staff Member's Full Profile](docs/playbooks/view-staff-profile.md) | Staff | [RU](docs/playbooks/view-staff-profile.ru.md) · [ES](docs/playbooks/view-staff-profile.es.md) · [HI](docs/playbooks/view-staff-profile.hi.md) · [AR](docs/playbooks/view-staff-profile.ar.md) |
+| 13 | [Enhance Student Profile](docs/playbooks/enhance-student-profile.md) | Student | [RU](docs/playbooks/enhance-student-profile.ru.md) · [ES](docs/playbooks/enhance-student-profile.es.md) · [HI](docs/playbooks/enhance-student-profile.hi.md) · [AR](docs/playbooks/enhance-student-profile.ar.md) |
+| 14 | [View Institution Infrastructure](docs/playbooks/view-institution-infrastructure.md) | Institution | [RU](docs/playbooks/view-institution-infrastructure.ru.md) · [ES](docs/playbooks/view-institution-infrastructure.es.md) · [HI](docs/playbooks/view-institution-infrastructure.hi.md) · [AR](docs/playbooks/view-institution-infrastructure.ar.md) |
+| 15 | [View Institution Meals](docs/playbooks/view-institution-meals.md) | Institution | [RU](docs/playbooks/view-institution-meals.ru.md) · [ES](docs/playbooks/view-institution-meals.es.md) · [HI](docs/playbooks/view-institution-meals.hi.md) · [AR](docs/playbooks/view-institution-meals.ar.md) |
+| 16 | [View Student Risk Profile and Welfare Cases](docs/playbooks/view-student-risks.md) | Student | [RU](docs/playbooks/view-student-risks.ru.md) · [ES](docs/playbooks/view-student-risks.es.md) · [HI](docs/playbooks/view-student-risks.hi.md) · [AR](docs/playbooks/view-student-risks.ar.md) |
+| 17 | [View Institution Risk Summary and Alert Rules](docs/playbooks/view-institution-risks.md) | Institution | [RU](docs/playbooks/view-institution-risks.ru.md) · [ES](docs/playbooks/view-institution-risks.es.md) · [HI](docs/playbooks/view-institution-risks.hi.md) · [AR](docs/playbooks/view-institution-risks.ar.md) |
+
+### New in v1.1.0 (OpenEMIS Core 5.10.0)
+
+Loaded via `openemis_get_playbook` — full English content in `data/playbooks.json`. Translations and per-playbook markdown docs land in a follow-up release.
+
+| # | Playbook | Domain | What it does |
+|---|---|---|---|
+| 18 | `diagnose-alert-delivery` | Alerts | Answer "did this alert actually go out?" — walks the POCOR-9509 dispatch pipeline. |
+| 19 | `view-school-accreditation` | Institution | Read institution-accreditations records (POCOR-9610), derive Active/Expired/Future status. |
+| 20 | `view-school-registration` | Institution | Read institution-registrations history with valid_from..valid_to windows. |
+| 21 | `view-institution-budget` | Institution | List institution-budgets per academic period, resolve budget types. |
+| 22 | `query-student-absence-history` | Attendance | Aggregate absences via institution-student-absences + absence-days. |
+| 23 | `query-user-activity-audit-log` | Security | Query the POCOR-9697 user_activities per-field audit trail. |
+| 24 | `view-class-roster` | Institution | Walk institution-classes → institution-class-students → student details. |
+
+### Write / auth playbooks (stubs — install [mcp-pro](https://github.com/tixuz/openemis-mcp-pro))
+
+`mark-student-attendance`, `mark-staff-attendance`, `enroll-new-student`, `record-behavior-incident`, `submit-exam-marks`, `generate-student-report-card-pdf`, `generate-institution-statistics-pdf`, `add-institution-asset`, `record-infrastructure-repair`, `add-meal-programme`, `resolve-my-identity`, `set-school-accreditation`, `set-school-registration`, `mark-student-meal-participation` — all redirect agents to **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**, which ships `openemis_create` / `openemis_update` / `openemis_delete` and per-user authentication.
 ---
 
 ## Core compatibility
 
-Tested against **OpenEMIS Core 5.9** (master, May 2026). 5.7 and 5.8 deployments are also supported — the public REST surface is unchanged.
+Tested against **OpenEMIS Core 5.10.0** (master, May 2026). 5.7 / 5.8 / 5.9 deployments are also supported — the public REST surface is backwards-compatible.
 
 ### Optional capability flag — POCOR-9660 multi-id GET
 
-`openemis_get` accepts `params.ids = "1,2,3"` for batch lookups. By default the handler fans out N parallel single-record GETs (Core ≤ 5.9 master has no native multi-id filter). Once a deployment carries POCOR-9660 (`?id=1,2,3` support in `CrudApiController`), set:
+`openemis_get` accepts `params.ids = "1,2,3"` for batch lookups. By default the handler fans out N parallel single-record GETs. Core 5.10.0 carries POCOR-9660 (`?id=1,2,3` support in `CrudApiController`); flip on with:
 
 ```bash
 OPENEMIS_CORE_IN_OPERATOR=1
 ```
 
-The handler then collapses the batch into a single round-trip. Default off — flip on after upstream merge.
+The handler then collapses the batch into a single round-trip. Default off (compatible with older Core builds) — flip on once your instance is on 5.9+.
 
 ## Architecture
 
 ```
 Agent (Claude / Cursor / Codex / …)
         │ MCP stdio
-openemis-mcp  ←  6 read tools + 24 playbooks
+openemis-mcp  ←  6 read tools + 24 read playbooks + 14 redirect stubs
         │ HTTPS + Bearer JWT
-OpenEMIS Core API  /api/v5/{resource}
+OpenEMIS Core API  /api/v5/{resource}   (3,355 endpoints across 675 resources)
 ```
 
-Domain-scoped discovery keeps conversations small — `openemis_discover("attendance")` returns the 20–30 endpoints relevant to attendance, not all 1,350.
+Domain-scoped discovery keeps conversations small — `openemis_discover("attendance")` returns the 20–30 endpoints relevant to attendance, not all 3,355.
 
 > 🖥️ **Server / HTTP mode** (install once on Oracle, connect from anywhere including ChatGPT) is available in **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
 
@@ -190,8 +203,8 @@ Domain-scoped discovery keeps conversations small — `openemis_discover("attend
 
 ## Docs
 
-- [Resource Reference](docs/resources.md) — all 645 resources with method availability
-- [Playbooks](docs/playbooks/) — 24 workflow guides in English, Russian, Spanish, Hindi, and Arabic
+- [Resource Reference](docs/resources.md) — all 675 resources with method availability (Core 5.10.0)
+- [Playbooks](docs/playbooks/) — 17 view playbooks in 5 languages + 7 newer English-only playbooks (translations follow)
 - [ACKNOWLEDGEMENTS.md](ACKNOWLEDGEMENTS.md) — the AI team that built this
 
 ---
