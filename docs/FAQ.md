@@ -26,7 +26,7 @@ openemis-mcp is a free, open-source MCP (Model Context Protocol) server that con
 
 ## What does this MCP let me ask about?
 
-You can ask about any data in your OpenEMIS instance that falls under the 675 resources the server exposes. Common questions include: student enrolment counts, student attendance records, exam marks and report cards, staff positions and vacancies, school infrastructure (buildings, WASH), meal programmes, student risk scores and early-warning alerts, class timetables, and institutional profiles. Run `openemis_list_playbooks` to see all available guided workflows.
+You can ask about any data in your OpenEMIS instance that falls under the 678 resources the server exposes. Common questions include: student enrolment counts, student attendance records, exam marks and report cards, staff positions and vacancies, school infrastructure (buildings, WASH), meal programmes, student risk scores and early-warning alerts, class timetables, and institutional profiles. Run `openemis_list_playbooks` to see all available guided workflows.
 
 ## How does it help with school management?
 
@@ -63,4 +63,4 @@ You can query a staff member's current and historical position assignments (FTE,
 - [GLOSSARY](GLOSSARY.md) — definitions of key OpenEMIS and MCP terms
 - [README](../README.md) — overview, install, and playbook index
 - [Playbooks](playbooks/) — step-by-step school data query guides
-- [Resource Reference](resources.md) — all 675 OpenEMIS resources
+- [Resource Reference](resources.md) — all 678 OpenEMIS resources

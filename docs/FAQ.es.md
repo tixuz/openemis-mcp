@@ -26,7 +26,7 @@ openemis-mcp es un servidor MCP (Model Context Protocol) gratuito y de código a
 
 ## ¿Sobre qué puedo preguntar con este MCP?
 
-Puede preguntar sobre cualquier dato de su instancia de OpenEMIS dentro de los 675 recursos que expone el servidor. Preguntas comunes incluyen: conteos de matriculación de estudiantes, registros de asistencia de estudiantes, calificaciones y boletines, puestos del personal y vacantes, infraestructura escolar, programas de alimentación, puntuaciones de riesgos de estudiantes y alertas tempranas, horarios de clase y perfiles institucionales.
+Puede preguntar sobre cualquier dato de su instancia de OpenEMIS dentro de los 678 recursos que expone el servidor. Preguntas comunes incluyen: conteos de matriculación de estudiantes, registros de asistencia de estudiantes, calificaciones y boletines, puestos del personal y vacantes, infraestructura escolar, programas de alimentación, puntuaciones de riesgos de estudiantes y alertas tempranas, horarios de clase y perfiles institucionales.
 
 ## ¿Cómo ayuda en la gestión escolar?
 
@@ -63,4 +63,4 @@ Puede consultar los puestos actuales e históricos de un miembro del personal (F
 - [Glosario](GLOSSARY.es.md) — definiciones de términos clave de OpenEMIS y MCP
 - [README](../README.md) — visión general, instalación e índice de playbooks
 - [Playbooks](playbooks/) — guías paso a paso para consultar datos escolares
-- [Referencia de Recursos](resources.md) — los 675 recursos de OpenEMIS
+- [Referencia de Recursos](resources.md) — los 678 recursos de OpenEMIS

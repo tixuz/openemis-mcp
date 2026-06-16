@@ -1,6 +1,6 @@
 ---
 title: "openemis-mcp — Puente de IA para el sistema de gestión escolar OpenEMIS"
-description: "Servidor MCP gratuito que conecta asistentes de IA con OpenEMIS, el sistema de gestión escolar. Consulte asistencia de estudiantes, riesgos, personal y 675 recursos."
+description: "Servidor MCP gratuito que conecta asistentes de IA con OpenEMIS, el sistema de gestión escolar. Consulte asistencia de estudiantes, riesgos, personal y 678 recursos."
 keywords:
   - OpenEMIS
   - sistema de gestión escolar
@@ -20,7 +20,7 @@ keywords:
 
 OpenEMIS es un sistema de gestión escolar (SGE) gratuito y de código abierto desarrollado por UNESCO y KORDIT, utilizado desde jardines de infancia hasta universidades y centros de formación profesional.
 
-> **Qué es esto:** openemis-mcp es un servidor MCP gratuito que conecta asistentes de IA con OpenEMIS, el sistema de gestión escolar. Expone 675 recursos (asistencia de estudiantes, riesgos de estudiantes, personal, exámenes) a través de 26 playbooks de solo lectura.
+> **Qué es esto:** openemis-mcp es un servidor MCP gratuito que conecta asistentes de IA con OpenEMIS, el sistema de gestión escolar. Expone 678 recursos (asistencia de estudiantes, riesgos de estudiantes, personal, exámenes) a través de 26 playbooks de solo lectura.
 
 Construido sobre la **API pública de OpenEMIS Core** (referencia: [api.openemis.org/core](https://api.openemis.org/core)) y verificado contra la demo pública en [demo.openemis.org/core](https://demo.openemis.org/core).
 
@@ -59,7 +59,7 @@ Sin código. Sin JSON. Solo pregunte.
 
 | | **Gratuito** | **Pro Individual** | **Pro Institución** | **Pro País** |
 |---|---|---|---|---|
-| Herramientas de lectura (los 675 recursos, Core 5.10.0) | ✅ | ✅ | ✅ | ✅ |
+| Herramientas de lectura (los 678 recursos, Core 5.13.0) | ✅ | ✅ | ✅ | ✅ |
 | 26 playbooks de lectura (17 × 5 idiomas + 9 EN) | ✅ | ✅ | ✅ | ✅ |
 | 14 playbooks de escritura / auth (mark-attendance, enrol, set-accreditation…) | stub | ✅ | ✅ | ✅ |
 | Modo stdio (Claude Code, Cursor, Cline) | ✅ | ✅ | ✅ | ✅ |
@@ -160,10 +160,10 @@ Agente (Claude / Cursor / Codex / …)
         │ MCP stdio
 openemis-mcp  ←  6 herramientas de lectura + 26 playbooks + 14 stubs
         │ HTTPS + Bearer JWT
-OpenEMIS Core API  /api/v5/{resource}   (3 355 endpoints / 675 recursos, Core 5.10.0)
+OpenEMIS Core API  /api/v5/{resource}   (3 361 endpoints / 678 recursos, Core 5.13.0)
 ```
 
-El descubrimiento delimitado por dominio mantiene las conversaciones pequeñas — `openemis_discover("attendance")` devuelve los 20–30 endpoints relevantes para asistencia, no los 3 355.
+El descubrimiento delimitado por dominio mantiene las conversaciones pequeñas — `openemis_discover("attendance")` devuelve los 20–30 endpoints relevantes para asistencia, no los 3 361.
 
 > 🖥️ **El modo servidor / HTTP** (instalar una vez en Oracle, conectarse desde cualquier lugar incluyendo ChatGPT) está disponible en **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
 
@@ -171,7 +171,7 @@ El descubrimiento delimitado por dominio mantiene las conversaciones pequeñas �
 
 ## Documentación
 
-- [Referencia de Recursos](docs/resources.md) — los 675 recursos con disponibilidad de métodos (Core 5.10.0)
+- [Referencia de Recursos](docs/resources.md) — los 678 recursos con disponibilidad de métodos (Core 5.13.0)
 - [Playbooks](docs/playbooks/) — 17 playbooks de visualización en 5 idiomas + 9 nuevos sólo en inglés (traducciones a continuación)
 - [GLOSSARY.md](docs/GLOSSARY.md) — términos clave: OpenEMIS, MCP, asistencia de estudiantes, riesgos y más
 - [FAQ.md](docs/FAQ.md) — preguntas frecuentes sobre gestión educativa con OpenEMIS MCP

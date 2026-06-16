@@ -1,6 +1,6 @@
 ---
 title: "openemis-mcp — AI bridge for OpenEMIS school management"
-description: "Free, read-only MCP server that connects AI assistants to OpenEMIS school management. Query student attendance, risks, staff, and 675 resources."
+description: "Free, read-only MCP server that connects AI assistants to OpenEMIS school management. Query student attendance, risks, staff, and 678 resources."
 keywords:
   - OpenEMIS
   - school management system
@@ -22,7 +22,7 @@ keywords:
 
 Built on the published **OpenEMIS Core API** (reference: [api.openemis.org/core](https://api.openemis.org/core)) and verified against the public demo at [demo.openemis.org/core](https://demo.openemis.org/core).
 
-> **What this is:** openemis-mcp is a free MCP server that connects AI assistants (Claude, Cursor, Codex) to the OpenEMIS school management system. It exposes 675 resources — students, student attendance, student risks, staff, exams, infrastructure — across 26 curated read-only playbooks, plus 14 redirect stubs for write operations.
+> **What this is:** openemis-mcp is a free MCP server that connects AI assistants (Claude, Cursor, Codex) to the OpenEMIS school management system. It exposes 678 resources — students, student attendance, student risks, staff, exams, infrastructure — across 26 curated read-only playbooks, plus 14 redirect stubs for write operations.
 
 Ask in plain English:
 
@@ -59,7 +59,7 @@ No code. No JSON. Just ask.
 
 | | **Free** | **Individual Pro** | **Institution Pro** | **Country Pro** |
 |---|---|---|---|---|
-| Read tools (all 675 resources, Core 5.10.0) | ✅ | ✅ | ✅ | ✅ |
+| Read tools (all 678 resources, Core 5.13.0) | ✅ | ✅ | ✅ | ✅ |
 | 26 read playbooks (17 × 5 languages + 9 EN) | ✅ | ✅ | ✅ | ✅ |
 | 14 write / auth playbooks (mark-attendance, enrol, set-accreditation…) | stub | ✅ | ✅ | ✅ |
 | stdio mode (Claude Code, Cursor, Cline) | ✅ | ✅ | ✅ | ✅ |
@@ -168,6 +168,12 @@ Each line is a JSON object: `{ts, type:"tool_call"|"tool_result"|"tool_error", t
 | 16 | [View Student Risk Profile and Welfare Cases](docs/playbooks/view-student-risks.md) | Student | [RU](docs/playbooks/view-student-risks.ru.md) · [ES](docs/playbooks/view-student-risks.es.md) · [HI](docs/playbooks/view-student-risks.hi.md) · [AR](docs/playbooks/view-student-risks.ar.md) |
 | 17 | [View Institution Risk Summary and Alert Rules](docs/playbooks/view-institution-risks.md) | Institution | [RU](docs/playbooks/view-institution-risks.ru.md) · [ES](docs/playbooks/view-institution-risks.es.md) · [HI](docs/playbooks/view-institution-risks.hi.md) · [AR](docs/playbooks/view-institution-risks.ar.md) |
 
+### New in v1.2.0 (OpenEMIS Core 5.13.0)
+
+- **List-filtering via the native `IN` operator (POCOR-9660).** `_conditions=<field>:IN(1,2,3)` filters any field by a value list — including non-PK and composite-PK resources — so a class roster is one call: query `institution-class-students` by `institution_class_id`, then `security-users` with `_conditions=id:IN(101,102,103)`. `params.ids="1,2,3"` now collapses to a single `?id=1,2,3` round-trip **by default** (set `OPENEMIS_CORE_IN_OPERATOR=off` only for pre-5.10 cores).
+- **Stricter filter validation (POCOR-9697).** Filtering on a field that does not exist on a resource now returns HTTP 400 instead of being silently ignored — use exact field names from the [Resource Reference](docs/resources.md).
+- **3 new read-only Runtime resources (POCOR-9694):** `tasks`, `task-jobs`, `task-failures` — the OpenEMIS Runtime queue / job / failure projection. **678 resources · 3,361 endpoints** total.
+
 ### New in v1.1.0 (OpenEMIS Core 5.10.0)
 
 Loaded via `openemis_get_playbook` — full English content in `data/playbooks.json`. Translations and per-playbook markdown docs land in a follow-up release.
@@ -191,17 +197,17 @@ Loaded via `openemis_get_playbook` — full English content in `data/playbooks.j
 
 ## Core compatibility
 
-Tested against **OpenEMIS Core 5.10.0** (master, May 2026). 5.7 / 5.8 / 5.9 deployments are also supported — the public REST surface is backwards-compatible.
+Tested against **OpenEMIS Core 5.13.0** (master, June 2026). 5.7 – 5.12 deployments are also supported — the public REST surface is backwards-compatible.
 
-### Optional capability flag — POCOR-9660 multi-id GET
+### Capability flag — POCOR-9660 multi-id GET
 
-`openemis_get` accepts `params.ids = "1,2,3"` for batch lookups. By default the handler fans out N parallel single-record GETs. Core 5.10.0 carries POCOR-9660 (`?id=1,2,3` support in `CrudApiController`); flip on with:
+`openemis_get` accepts `params.ids = "1,2,3"` for batch lookups. Core 5.10+ carries POCOR-9660 (`?id=1,2,3` support in `CrudApiController`), so the handler collapses the batch into a single round-trip **by default**. Pointing at an older Core (5.7 – 5.9) that lacks the native operator? Force the legacy parallel fan-out:
 
 ```bash
-OPENEMIS_CORE_IN_OPERATOR=1
+OPENEMIS_CORE_IN_OPERATOR=off
 ```
 
-The handler then collapses the batch into a single round-trip. Default off (compatible with older Core builds) — flip on once your instance is on 5.9+.
+For composite-PK or view resources — where `ids` does not apply — use `_conditions=<field>:IN(1,2,3)` instead; it filters any field by a value list and works regardless of this flag.
 
 ## Architecture
 
@@ -210,10 +216,10 @@ Agent (Claude / Cursor / Codex / …)
         │ MCP stdio
 openemis-mcp  ←  6 read tools + 26 read playbooks + 14 redirect stubs
         │ HTTPS + Bearer JWT
-OpenEMIS Core API  /api/v5/{resource}   (3,355 endpoints across 675 resources)
+OpenEMIS Core API  /api/v5/{resource}   (3,361 endpoints across 678 resources)
 ```
 
-Domain-scoped discovery keeps conversations small — `openemis_discover("attendance")` returns the 20–30 endpoints relevant to attendance, not all 3,355.
+Domain-scoped discovery keeps conversations small — `openemis_discover("attendance")` returns the 20–30 endpoints relevant to attendance, not all 3,361.
 
 > 🖥️ **Server / HTTP mode** (install once on Oracle, connect from anywhere including ChatGPT) is available in **[openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro)**.
 
@@ -221,7 +227,7 @@ Domain-scoped discovery keeps conversations small — `openemis_discover("attend
 
 ## Docs
 
-- [Resource Reference](docs/resources.md) — all 675 resources with method availability (Core 5.10.0)
+- [Resource Reference](docs/resources.md) — all 678 resources with method availability (Core 5.13.0)
 - [Playbooks](docs/playbooks/) — 17 view playbooks in 5 languages + 9 newer English-only playbooks (translations follow)
 - [GLOSSARY.md](docs/GLOSSARY.md) — key terms: OpenEMIS, MCP, attendance, student risks, and more
 - [FAQ.md](docs/FAQ.md) — common questions about school management with OpenEMIS MCP

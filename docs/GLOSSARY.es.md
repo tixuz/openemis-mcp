@@ -22,7 +22,7 @@ OpenEMIS (Open Education Management Information System) es un sistema de gestió
 
 ### OpenEMIS Core
 
-OpenEMIS Core es la aplicación servidor que alimenta la API REST en `/api/v5/{resource}`. Este servidor MCP apunta a Core 5.10.0, que expone 675 recursos y 3.355 endpoints.
+OpenEMIS Core es la aplicación servidor que alimenta la API REST en `/api/v5/{resource}`. Este servidor MCP apunta a Core 5.13.0, que expone 678 recursos y 3.361 endpoints.
 
 ### MCP (Model Context Protocol)
 
@@ -86,7 +86,7 @@ En openemis-mcp, un playbook es una guía paso a paso que indica al agente de IA
 
 ### Recurso (en términos de MCP)
 
-En openemis-mcp, un recurso es cualquier endpoint de API disponible mediante `GET /api/v5/{resource}`. OpenEMIS Core 5.10.0 expone 675 recursos en dominios como Institución, Estudiante, Personal, Evaluación, Asistencia y Flujo de Trabajo. Ver [Referencia de Recursos](resources.md).
+En openemis-mcp, un recurso es cualquier endpoint de API disponible mediante `GET /api/v5/{resource}`. OpenEMIS Core 5.13.0 expone 678 recursos en dominios como Institución, Estudiante, Personal, Evaluación, Asistencia y Flujo de Trabajo. Ver [Referencia de Recursos](resources.md).
 
 ---
 
@@ -95,4 +95,4 @@ En openemis-mcp, un recurso es cualquier endpoint de API disponible mediante `GE
 - [README](../README.md) — visión general e instalación
 - [FAQ](FAQ.es.md) — preguntas frecuentes
 - [Playbooks](playbooks/) — guías de consulta de datos escolares
-- [Referencia de Recursos](resources.md) — los 675 recursos de OpenEMIS
+- [Referencia de Recursos](resources.md) — los 678 recursos de OpenEMIS

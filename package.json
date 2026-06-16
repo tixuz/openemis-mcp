@@ -1,9 +1,9 @@
 {
   "name": "openemis-mcp",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "mcpName": "io.github.tixuz/openemis",
   "private": false,
-  "description": "Free, read-only MCP server for the OpenEMIS v5 REST API — natural-language queries over 645 resources and 24 curated playbooks",
+  "description": "Free, read-only MCP server for the OpenEMIS v5 REST API — natural-language queries over 678 resources and 26 curated playbooks",
   "license": "MIT",
   "homepage": "https://github.com/tixuz/openemis-mcp#readme",
   "repository": {

@@ -1,6 +1,6 @@
 ---
 title: "OpenEMIS MCP — Resource Reference for School Management"
-description: "Complete reference for all 675 OpenEMIS resources (Core 5.10.0). Students, attendance, staff, risks, exams — GET endpoints for every school management domain."
+description: "Complete reference for all 678 OpenEMIS resources (Core 5.13.0). Students, attendance, staff, risks, exams — GET endpoints for every school management domain."
 keywords:
   - OpenEMIS
   - school management system
@@ -13,7 +13,7 @@ keywords:
 
 # OpenEMIS MCP — Resource Reference for School Management
 
-> **675 resources** · **3355 endpoints** · v1.1.0 · OpenEMIS Core 5.10.0
+> **678 resources** · **3361 endpoints** · v1.2.0 · OpenEMIS Core 5.13.0
 >
 > This is the FREE distribution — read-only. Writes (POST/PUT/DELETE) live in [openemis-mcp-pro](https://github.com/tixuz/openemis-mcp-pro).
 >
@@ -711,6 +711,9 @@ keywords:
 | **── Workflows* ──** | | | | | | |
 | `workflows` | Workflows* | ✅ | — | — | — | — (pro) |
 | `workflows-filters` | Workflows* | ✅ | — | — | — | — (pro) |
+| **── Task* ──** | | | | | | |
+| `task-failures` | Task* | ✅ | — | — | — | — |
+| `task-jobs` | Task* | ✅ | — | — | — | — |
 | **── singletons ──** | | | | | | |
 | `absence-types` | — | ✅ | — | — | — | — (pro) |
 | `areas` | — | ✅ | — | — | — | — (pro) |
@@ -761,6 +764,7 @@ keywords:
 | `risks` | — | ✅ | — | — | — | — (pro) |
 | `shift-options` | — | ✅ | — | — | — | — (pro) |
 | `single-logout` | — | ✅ | — | — | — | — (pro) |
+| `tasks` | — | ✅ | — | — | — | — |
 | `textbooks` | — | ✅ | — | — | — | — (pro) |
 | `themes` | — | ✅ | — | — | — | — (pro) |
 | `transfer-logs` | — | ✅ | — | — | — | — (pro) |

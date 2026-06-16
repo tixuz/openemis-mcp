@@ -22,7 +22,7 @@ OpenEMIS (Open Education Management Information System) is a free, open-source s
 
 ### OpenEMIS Core
 
-OpenEMIS Core is the server-side application that powers the REST API at `/api/v5/{resource}`. This MCP server targets Core 5.10.0, which exposes 675 resources across 3,355 endpoints. Older Core builds (5.7, 5.8, 5.9) are also supported — the public REST surface is backwards-compatible.
+OpenEMIS Core is the server-side application that powers the REST API at `/api/v5/{resource}`. This MCP server targets Core 5.13.0, which exposes 678 resources across 3,361 endpoints. Older Core builds (5.7 – 5.12) are also supported — the public REST surface is backwards-compatible.
 
 ### MCP (Model Context Protocol)
 
@@ -86,7 +86,7 @@ In openemis-mcp, a playbook is a step-by-step guide that tells an AI agent how t
 
 ### Resource (in MCP terms)
 
-In openemis-mcp, a resource is any API endpoint available via `GET /api/v5/{resource}`. OpenEMIS Core 5.10.0 exposes 675 resources across domains like Institution, Student, Staff, Assessment, Attendance, and Workflow. The `openemis_get` tool fetches any resource by name. See the full [Resource Reference](resources.md).
+In openemis-mcp, a resource is any API endpoint available via `GET /api/v5/{resource}`. OpenEMIS Core 5.13.0 exposes 678 resources across domains like Institution, Student, Staff, Assessment, Attendance, and Workflow. The `openemis_get` tool fetches any resource by name. See the full [Resource Reference](resources.md).
 
 ---
 
@@ -95,4 +95,4 @@ In openemis-mcp, a resource is any API endpoint available via `GET /api/v5/{reso
 - [README](../README.md) — overview and install guide
 - [FAQ](FAQ.md) — common questions about OpenEMIS and this MCP server
 - [Playbooks](playbooks/) — step-by-step school data query guides
-- [Resource Reference](resources.md) — all 675 OpenEMIS resources
+- [Resource Reference](resources.md) — all 678 OpenEMIS resources

@@ -22,7 +22,7 @@ OpenEMIS (Open Education Management Information System — मुक्त श�
 
 ### OpenEMIS Core
 
-OpenEMIS Core वह सर्वर-साइड एप्लिकेशन है जो `/api/v5/{resource}` पर REST API संचालित करती है। यह MCP सर्वर Core 5.10.0 को लक्षित करता है, जो 675 संसाधनों और 3,355 एंडपॉइंट्स को उजागर करता है।
+OpenEMIS Core वह सर्वर-साइड एप्लिकेशन है जो `/api/v5/{resource}` पर REST API संचालित करती है। यह MCP सर्वर Core 5.13.0 को लक्षित करता है, जो 678 संसाधनों और 3,361 एंडपॉइंट्स को उजागर करता है।
 
 ### MCP (Model Context Protocol)
 
@@ -86,7 +86,7 @@ openemis-mcp में एक प्लेबुक एक चरण-दर-च�
 
 ### संसाधन (MCP शब्दों में)
 
-openemis-mcp में एक संसाधन `GET /api/v5/{resource}` के माध्यम से उपलब्ध कोई भी API एंडपॉइंट है। OpenEMIS Core 5.10.0 675 संसाधन उजागर करता है। [संसाधन संदर्भ](resources.md) देखें।
+openemis-mcp में एक संसाधन `GET /api/v5/{resource}` के माध्यम से उपलब्ध कोई भी API एंडपॉइंट है। OpenEMIS Core 5.13.0 678 संसाधन उजागर करता है। [संसाधन संदर्भ](resources.md) देखें।
 
 ---
 
@@ -95,4 +95,4 @@ openemis-mcp में एक संसाधन `GET /api/v5/{resource}` के
 - [README](../README.md) — अवलोकन और स्थापना गाइड
 - [FAQ](FAQ.hi.md) — सामान्य प्रश्न
 - [प्लेबुक्स](playbooks/) — स्कूल डेटा क्वेरी गाइड
-- [संसाधन संदर्भ](resources.md) — OpenEMIS के सभी 675 संसाधन
+- [संसाधन संदर्भ](resources.md) — OpenEMIS के सभी 678 संसाधन
